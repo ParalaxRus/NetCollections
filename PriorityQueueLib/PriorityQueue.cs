@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace PriorityQueueLib
 {
     /// <summary>Binary heap base implementation of the priority queue.</summary>
-    public class PriorityQueue<T> where T : IComparable<T>
+    public class PriorityQueue<T> : IEnumerable<T> where T : IComparable<T>
     {
         private List<T> values = new List<T>();
 
@@ -13,7 +14,17 @@ namespace PriorityQueueLib
 
         private void Heapify()
         {
+            for (int i = this.Count / 2; i >= 0; --i)
+            {
+                int current = i;
 
+                int next = 0;
+                do
+                {
+                    next = this.DownHeap(current);
+                }
+                while (next != current);
+            }
         }
 
         /// <summary>Gets index of the parent element.</summary>
@@ -93,6 +104,16 @@ namespace PriorityQueueLib
             }
 
             return n;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this.values.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
 
         public enum Type 
