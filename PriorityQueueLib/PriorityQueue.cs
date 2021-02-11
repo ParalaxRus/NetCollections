@@ -28,12 +28,12 @@ namespace PriorityQueueLib
             for (int i = this.Count / 2; i >= 0; --i)
             {
                 int current = i;
-
-                int next = 0;
+                int next = current;
                 do
                 {
+                    current = next;
                     next = this.DownHeap(current);
-                }
+                }               
                 while (next != current);
             }
         }
@@ -89,7 +89,7 @@ namespace PriorityQueueLib
             r = r < this.Count ? r : i;
             var right = this.values[r];
 
-            // MinHeap: looking for a smaller between two children
+            // MinHeap/MaxHeap: looking for a smaller/bigger between two children
             int n = 0;
             var next = default(T);
             if ( (left.CompareTo(right) * this.ComparisonSign) < 0 )
@@ -103,7 +103,8 @@ namespace PriorityQueueLib
                 next = right;
             }
 
-            // Min heap: swapping with the smallest if bigger or with itself
+            // MinHeap: swapping with the smallest if its bigger than current
+            // MaxHeap: swapping with the bigger if its smaller than current
             if ( (current.CompareTo(next) * this.ComparisonSign) > 0 )
             {
                 this.Swap(i, n);
@@ -139,7 +140,7 @@ namespace PriorityQueueLib
             this.QueueType = type;
         }
 
-        public PriorityQueue(IEnumerable<T> values) : this()
+        public PriorityQueue(IEnumerable<T> values, Type type) : this(type)
         {
             this.values.AddRange(values);
 
@@ -188,10 +189,9 @@ namespace PriorityQueueLib
             this.values.Add(value);
 
             int current = this.GetLast();
-            int parent = -1;
-            while (parent != current)
+            while (current != 0)
             {
-                parent = this.GetParent(current);
+                int parent = this.GetParent(current);
 
                 if ( (this.values[parent].CompareTo(this.values[current]) * this.ComparisonSign) <= 0)
                 {
@@ -200,6 +200,8 @@ namespace PriorityQueueLib
                 }
 
                 this.Swap(parent, current);
+
+                current = parent;
             }
         }
 

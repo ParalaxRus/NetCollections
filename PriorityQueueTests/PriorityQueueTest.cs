@@ -42,6 +42,38 @@ namespace PriorityQueueTests
             }
         }
 
+        private static void AddValuesToHeapShouldConformHeapProperty(PriorityQueue<int>.Type type)
+        {
+            var queue = new PriorityQueue<int>(type);
+
+            var rand = new Random();
+            int size = rand.Next(2, 20);
+            var values = new byte[size];
+            rand.NextBytes(values);
+
+            foreach (var value in values)
+            {
+                queue.Add(value);
+            }
+
+            PriorityQueueTests.CheckQueue(queue, values.Length);
+            PriorityQueueTests.CheckHeap(queue);
+        }
+
+        private static void CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueue<int>.Type type)
+        {
+            var rand = new Random();
+            int size = rand.Next(2, 20);
+            var buffer = new byte[size];
+            rand.NextBytes(buffer);
+
+            var values = Array.ConvertAll(buffer, value => (int)value);
+            var queue = new PriorityQueue<int>(values, type);
+
+            PriorityQueueTests.CheckQueue(queue, values.Length);
+            PriorityQueueTests.CheckHeap(queue);
+        }
+
         [TestMethod]
         public void DefaultCtorShouldCreateEmptyMinHeap()
         {
@@ -94,21 +126,27 @@ namespace PriorityQueueTests
         }
 
         [TestMethod]
-        public void AddValuesToMinHeapShouldComformMinHeapPredicate()
+        public void AddValuesToMinHeapShouldConformMinHeapProperty()
         {
-            var queue = new PriorityQueue<int>();
+            PriorityQueueTests.AddValuesToHeapShouldConformHeapProperty(PriorityQueue<int>.Type.Min);
+        }
 
-            var rand = new Random();
-            var values = new byte[10];
-            rand.NextBytes(values);
+        [TestMethod]
+        public void AddValuesToMaxHeapShouldConformMaxHeapProperty()
+        {
+            PriorityQueueTests.AddValuesToHeapShouldConformHeapProperty(PriorityQueue<int>.Type.Max);
+        }
 
-            foreach (var value in values)
-            {
-                queue.Add(value);
-            }
+        [TestMethod]
+        public void CreateMinHeapFromCollectionShouldCorrectlyHeapify()
+        {
+            PriorityQueueTests.CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueue<int>.Type.Min);
+        }
 
-            PriorityQueueTests.CheckQueue(queue, values.Length);
-            PriorityQueueTests.CheckHeap(queue);
+        [TestMethod]
+        public void CreateMaxHeapFromCollectionShouldCorrectlyHeapify()
+        {
+            PriorityQueueTests.CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueue<int>.Type.Max);
         }
     }
 }
