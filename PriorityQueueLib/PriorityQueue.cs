@@ -12,6 +12,17 @@ namespace PriorityQueueLib
         /// <summary>Min queue by default.</summary>
         private Type type = Type.Min;
 
+        /// <summary>Gets comparison sign.</summary>
+        /// <remarks>All the comparisons are done for the min heap by default.
+        /// Thus for the max heap its needed to reverse all the comparisons.</remarks>
+        private int ComparisonSign
+        {
+            get
+            {
+                return this.QueueType == Type.Min ? 1 : -1;
+            }
+        }
+
         private void Heapify()
         {
             for (int i = this.Count / 2; i >= 0; --i)
@@ -81,7 +92,7 @@ namespace PriorityQueueLib
             // MinHeap: looking for a smaller between two children
             int n = 0;
             var next = default(T);
-            if (left.CompareTo(right) < 0)
+            if ( (left.CompareTo(right) * this.ComparisonSign) < 0 )
             {
                 n = l;
                 next = left;
@@ -93,7 +104,7 @@ namespace PriorityQueueLib
             }
 
             // Min heap: swapping with the smallest if bigger or with itself
-            if (current.CompareTo(next) > 0)
+            if ( (current.CompareTo(next) * this.ComparisonSign) > 0 )
             {
                 this.Swap(i, n);
             }
@@ -116,9 +127,10 @@ namespace PriorityQueueLib
             return this.GetEnumerator();
         }
 
+        /// <summary>Priority heap type.</summary>
         public enum Type 
         {
-            Min = 0,
+            Min,
             Max
         }
 
@@ -176,19 +188,18 @@ namespace PriorityQueueLib
             this.values.Add(value);
 
             int current = this.GetLast();
-            int parent = current;
+            int parent = -1;
             while (parent != current)
             {
                 parent = this.GetParent(current);
 
-                if (this.values[parent].CompareTo(this.values[current]) >= 0)
+                if ( (this.values[parent].CompareTo(this.values[current]) * this.ComparisonSign) <= 0)
                 {
-                    // Stopping up head because parent is smaller and its a min heap
+                    // Parent is smaller and its a min heap
                     break;
                 }
 
                 this.Swap(parent, current);
-                current = parent;
             }
         }
 

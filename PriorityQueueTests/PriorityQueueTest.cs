@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 using PriorityQueueLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 
 namespace PriorityQueueTests
 {
@@ -14,14 +14,32 @@ namespace PriorityQueueTests
             Assert.AreEqual(queue.Empty, count == 0);
         }
 
-        private static bool IsHeap<T>(PriorityQueue<int> queue)
+        private static void CheckHeap(PriorityQueue<int> queue)
         {
+            var values = new List<int>();
+
             foreach (var value in queue)
             {
-                // HERE !!!
+                values.Add(value);
             }
 
-            return true;
+            int sign = queue.QueueType == PriorityQueue<int>.Type.Min ? 1 : -1;
+
+            for (int i = 0; i < values.Count; ++i)
+            {               
+                int l = 2 * i + 1;
+                int r = 2 * i + 2;
+
+                if (l < values.Count)
+                {
+                    Assert.IsTrue(sign * values[i].CompareTo(values[l]) <= 0);
+                }
+
+                if (r < values.Count)
+                {
+                    Assert.IsTrue(sign * values[i].CompareTo(values[r]) <= 0);
+                }
+            }
         }
 
         [TestMethod]
@@ -73,6 +91,24 @@ namespace PriorityQueueTests
             queue.Add(1);
 
             PriorityQueueTests.CheckQueue(queue, 1);
+        }
+
+        [TestMethod]
+        public void AddValuesToMinHeapShouldComformMinHeapPredicate()
+        {
+            var queue = new PriorityQueue<int>();
+
+            var rand = new Random();
+            var values = new byte[10];
+            rand.NextBytes(values);
+
+            foreach (var value in values)
+            {
+                queue.Add(value);
+            }
+
+            PriorityQueueTests.CheckQueue(queue, values.Length);
+            PriorityQueueTests.CheckHeap(queue);
         }
     }
 }
