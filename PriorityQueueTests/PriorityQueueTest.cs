@@ -23,7 +23,7 @@ namespace PriorityQueueTests
                 values.Add(value);
             }
 
-            int sign = queue.QueueType == PriorityQueue<int>.Type.Min ? 1 : -1;
+            int sign = queue.QueueType == PriorityQueueType.Min ? 1 : -1;
 
             for (int i = 0; i < values.Count; ++i)
             {               
@@ -42,7 +42,7 @@ namespace PriorityQueueTests
             }
         }
 
-        private static void AddValuesToHeapShouldConformHeapProperty(PriorityQueue<int>.Type type)
+        private static void AddValuesToHeapShouldConformHeapProperty(PriorityQueueType type)
         {
             var queue = new PriorityQueue<int>(type);
 
@@ -60,7 +60,7 @@ namespace PriorityQueueTests
             PriorityQueueTests.CheckHeap(queue);
         }
 
-        private static void CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueue<int>.Type type)
+        private static void CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueueType type)
         {
             var rand = new Random();
             int size = rand.Next(2, 20);
@@ -72,6 +72,27 @@ namespace PriorityQueueTests
 
             PriorityQueueTests.CheckQueue(queue, values.Length);
             PriorityQueueTests.CheckHeap(queue);
+        }
+
+        private static void PeekShouldReturnTheSameValuesAsTop(PriorityQueueType type)
+        {
+            var rand = new Random();
+            int size = rand.Next(2, 20);
+            var buffer = new byte[size];
+            rand.NextBytes(buffer);
+
+            var values = Array.ConvertAll(buffer, value => (int)value);
+            var queue = new PriorityQueue<int>(values, type);
+
+            while (!queue.Empty)
+            {
+                var val1 = queue.Peek();
+                var val2 = queue.Top();
+
+                Assert.AreEqual(val1, val2);
+            }
+
+            PriorityQueueTests.CheckQueue(queue, 0);
         }
 
         [TestMethod]
@@ -86,9 +107,9 @@ namespace PriorityQueueTests
         [TestMethod]
         public void CtorWithTypeShouldCreateEmptyHeapOfTheSpecifiedType()
         {
-            var queue = new PriorityQueue<int>(PriorityQueue<int>.Type.Max);
+            var queue = new PriorityQueue<int>(PriorityQueueType.Max);
 
-            Assert.AreEqual(queue.QueueType, PriorityQueue<int>.Type.Max);
+            Assert.AreEqual(queue.QueueType, PriorityQueueType.Max);
             PriorityQueueTests.CheckQueue(queue, 0);
         }
 
@@ -128,25 +149,37 @@ namespace PriorityQueueTests
         [TestMethod]
         public void AddValuesToMinHeapShouldConformMinHeapProperty()
         {
-            PriorityQueueTests.AddValuesToHeapShouldConformHeapProperty(PriorityQueue<int>.Type.Min);
+            PriorityQueueTests.AddValuesToHeapShouldConformHeapProperty(PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void AddValuesToMaxHeapShouldConformMaxHeapProperty()
         {
-            PriorityQueueTests.AddValuesToHeapShouldConformHeapProperty(PriorityQueue<int>.Type.Max);
+            PriorityQueueTests.AddValuesToHeapShouldConformHeapProperty(PriorityQueueType.Max);
         }
 
         [TestMethod]
         public void CreateMinHeapFromCollectionShouldCorrectlyHeapify()
         {
-            PriorityQueueTests.CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueue<int>.Type.Min);
+            PriorityQueueTests.CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void CreateMaxHeapFromCollectionShouldCorrectlyHeapify()
         {
-            PriorityQueueTests.CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueue<int>.Type.Max);
+            PriorityQueueTests.CreateHeapFromCollectionShouldCorrectlyHeapify(PriorityQueueType.Max);
+        }
+
+        [TestMethod]
+        public void PeekMinQueueShouldReturnTheSameValuesAsTop()
+        {
+            PriorityQueueTests.PeekShouldReturnTheSameValuesAsTop(PriorityQueueType.Min);
+        }
+
+        [TestMethod]
+        public void PeekMaxQueueShouldReturnTheSameValuesAsTop()
+        {
+            PriorityQueueTests.PeekShouldReturnTheSameValuesAsTop(PriorityQueueType.Max);
         }
     }
 }
