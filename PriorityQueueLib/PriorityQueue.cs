@@ -159,6 +159,7 @@ namespace PriorityQueueLib
         }
 
         /// <summary>Peeks first element.</summary>
+        /// <timecomplexity>O(1)</timecomplexity>
         public T Peek()
         {
             if (this.Empty)
@@ -170,6 +171,7 @@ namespace PriorityQueueLib
         }
 
         /// <summary>Removes element from the top of the queue.</summary>
+        /// <timecomplexity>O(h) in the worst case where h is height of the binary tree.</timecomplexity>
         public virtual T Top()
         {
             // Storing top
@@ -191,6 +193,7 @@ namespace PriorityQueueLib
         }
 
         /// <summary>Adds value to the queue.</summary>
+        /// <timecomplexity>O(h) in the worst case where h is height of the binary tree.</timecomplexity> 
         public virtual void Add(T value)
         {
             this.values.Add(value);

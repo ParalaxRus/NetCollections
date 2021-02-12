@@ -60,6 +60,7 @@ namespace PriorityQueueLib
         }
 
         /// <summary>Removes element from the top of the queue.</summary>
+        /// <timecomplexity>O(h) in the worst case where h is height of the binary tree.</timecomplexity>
         public override T Top()
         {
             var value = base.Top();
@@ -70,6 +71,7 @@ namespace PriorityQueueLib
         }
 
         /// <summary>Adds value to the queue.</summary>
+        /// <timecomplexity>O(h) in the worst case where h is height of the binary tree.</timecomplexity>
         public override void Add(T value)
         {
             base.Add(value);
@@ -78,6 +80,7 @@ namespace PriorityQueueLib
         }
 
         /// <summary>Checks whether queue contains specified value or not.</summary>
+        /// <timecomplexity>O(1)</timecomplexity>
         public bool Contains(T value)
         {
             return this.lookup.ContainsKey(value);

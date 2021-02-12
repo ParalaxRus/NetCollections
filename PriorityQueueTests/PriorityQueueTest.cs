@@ -95,6 +95,37 @@ namespace PriorityQueueTests
             PriorityQueueTests.CheckQueue(queue, 0);
         }
 
+        private static void AddTopAddMultipleValuesShouldProduceValidQueue(PriorityQueueType type)
+        {
+            var rand = new Random();
+            int size = rand.Next(2, 20);
+            var buffer = new byte[size];
+            rand.NextBytes(buffer);
+
+            var queue = new PriorityQueue<int>(type);
+            foreach (var val in buffer)
+            {
+                queue.Add(val);
+            }
+
+            int toRemove = rand.Next(0, size - 1);
+            for (int i = 0; i < toRemove; ++i)
+            {
+                queue.Top();
+            }
+
+            int size1 = rand.Next(2, 20);
+            var buffer1 = new byte[size1];
+            rand.NextBytes(buffer1);
+
+            foreach (var val in buffer1)
+            {
+                queue.Add(val);
+            }
+
+            PriorityQueueTests.CheckHeap(queue);
+        }
+
         [TestMethod]
         public void DefaultCtorShouldCreateEmptyMinHeap()
         {
@@ -180,6 +211,18 @@ namespace PriorityQueueTests
         public void PeekMaxQueueShouldReturnTheSameValuesAsTop()
         {
             PriorityQueueTests.PeekShouldReturnTheSameValuesAsTop(PriorityQueueType.Max);
+        }
+
+        [TestMethod]
+        public void AddTopAddMultipleValuesShouldProduceValidMinQueue()
+        {
+            PriorityQueueTests.AddTopAddMultipleValuesShouldProduceValidQueue(PriorityQueueType.Min);
+        }
+
+        [TestMethod]
+        public void AddTopAddMultipleValuesShouldProduceValidMaxQueue()
+        {
+            PriorityQueueTests.AddTopAddMultipleValuesShouldProduceValidQueue(PriorityQueueType.Max);
         }
     }
 }
