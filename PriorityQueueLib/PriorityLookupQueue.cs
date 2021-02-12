@@ -64,7 +64,7 @@ namespace PriorityQueueLib
         {
             var value = base.Top();
 
-            this.lookup.Remove(value);
+            this.LookupRemove(value);
 
             return value;
         }
