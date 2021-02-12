@@ -17,9 +17,6 @@ namespace PriorityQueueLib
         /// <summary>Array of values as per binary heap design.</summary>
         private List<T> values = new List<T>();
 
-        /// <summary>Min queue by default.</summary>
-        private Type type = Type.Min;
-
         /// <summary>Gets comparison sign.</summary>
         /// <remarks>All the comparisons are done for the min heap by default.
         /// Thus for the max heap its needed to reverse all the comparisons.</remarks>
@@ -173,7 +170,7 @@ namespace PriorityQueueLib
         }
 
         /// <summary>Removes element from the top of the queue.</summary>
-        public T Top()
+        public virtual T Top()
         {
             // Storing top
             var value = this.Peek();
@@ -194,7 +191,7 @@ namespace PriorityQueueLib
         }
 
         /// <summary>Adds value to the queue.</summary>
-        public void Add(T value)
+        public virtual void Add(T value)
         {
             this.values.Add(value);
 

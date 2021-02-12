@@ -100,7 +100,7 @@ namespace PriorityQueueTests
         {
             var queue = new PriorityQueue<int>();
 
-            Assert.AreEqual(queue.QueueType, PriorityQueue<int>.Type.Min);
+            Assert.AreEqual(queue.QueueType, PriorityQueueType.Min);
             PriorityQueueTests.CheckQueue(queue, 0);
         }
 
