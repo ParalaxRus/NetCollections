@@ -4,9 +4,15 @@ using System.Collections.Generic;
 
 namespace PriorityQueueLib
 {
-    /// <summary>Binary heap base implementation of the priority queue.</summary>
+    /// <summary>Binary heap base implementation of the priority queue. 
+    /// Current implementation allows duplicates.</summary>
     public class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable<T>
     {
+        #region Details
+
+        /// <summary>A value indicating that element is not present in the heap.</summary>
+        private const int NotFound = -1;
+
         /// <summary>Array of values as per binary heap design.</summary>
         private List<T> values = new List<T>();
 
@@ -122,6 +128,22 @@ namespace PriorityQueueLib
             return n;
         }
 
+        /// <summary>Finds specified value in the queue if any.</summary>
+        private int Find(T value)
+        {
+            for (int i = 0; i < this.values.Count; ++i)
+            {
+                if (value.CompareTo(this.values[i]) == 0)
+                {
+                    return i;
+                }
+            }
+
+            return PriorityQueue<T>.NotFound;
+        }
+
+        #endregion
+
         #region Properties
 
         /// <summary>Gets queue size.</summary>
@@ -202,6 +224,49 @@ namespace PriorityQueueLib
 
                 current = parent;
             }
+        }
+
+        /// <summary>Checks whether queue contains specified value or not.</summary>
+        /// <timecomplexity>O(n) in the worst case where n is length of the queue.</timecomplexity>
+        public virtual bool Contains(T value)
+        {
+            return (this.Find(value) != PriorityQueue<T>.NotFound);
+        }
+
+        /// <summary>Changes value of the existing element while preserving heap property.</summary>
+        /// <remarks>Equivalent to increase/decrease key operator defined for a binary heap.</remarks>
+        /// <timecomplexity>O(n*h) in the worst case, where n is size and h is height of the heap.</timecomplexity>
+        /// <returns>Returns true if the value has been updated otherwise false.</returns>
+        public virtual bool Update(T oldValue, T newValue)
+        {
+            if (oldValue.CompareTo(newValue) == 0)
+            {
+                // No update to perform
+                return false;
+            }
+
+            int index = this.Find(oldValue);
+            if (index == PriorityQueue<T>.NotFound)
+            {
+                // Value not found
+                return false;
+            }
+
+            // There might be multiple elements which are equal to the old value
+            while (index != PriorityQueue<T>.NotFound)
+            {
+                // Removing an old value
+                int last = this.GetLast();
+                this.Swap(index, last);
+                this.values.RemoveAt(last);
+
+                // Adding a new value
+                this.Add(newValue);
+
+                index = this.Find(oldValue);
+            }
+
+            return true;
         }
 
         #region IEnumerable

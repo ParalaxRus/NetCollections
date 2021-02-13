@@ -81,9 +81,24 @@ namespace PriorityQueueLib
 
         /// <summary>Checks whether queue contains specified value or not.</summary>
         /// <timecomplexity>O(1)</timecomplexity>
-        public bool Contains(T value)
+        public override bool Contains(T value)
         {
             return this.lookup.ContainsKey(value);
+        }
+
+        /// <summary>Changes value of the existing element while preserving heap property.</summary>
+        /// <remarks>Equivalent to increase/decrease key operator defined for a binary heap.</remarks>
+        /// <timecomplexity>???</timecomplexity>
+        /// <returns>Returns true if the value has been updated otherwise false.</returns>
+        public override bool Update(T oldValue, T newValue)
+        {
+            if (oldValue.CompareTo(newValue) == 0)
+            {
+                // No update to perform
+                return false;
+            }
+
+            throw new NotImplementedException();
         }
     }
 }
