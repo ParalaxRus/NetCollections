@@ -4,15 +4,8 @@ using System.Collections.Generic;
 
 namespace PriorityQueueLib
 {
-    /// <summary>Priority heap type.</summary>
-    public enum PriorityQueueType 
-    {
-        Min,
-        Max
-    }
-
     /// <summary>Binary heap base implementation of the priority queue.</summary>
-    public class PriorityQueue<T> : IEnumerable<T> where T : IComparable<T>
+    public class PriorityQueue<T> : IPriorityQueue<T> where T : IComparable<T>
     {
         /// <summary>Array of values as per binary heap design.</summary>
         private List<T> values = new List<T>();
@@ -129,22 +122,18 @@ namespace PriorityQueueLib
             return n;
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return this.values.GetEnumerator();
-        }
+        #region Properties
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
+        /// <summary>Gets queue size.</summary>
+        public int Count { get { return this.values.Count; }}
 
-        /// <summary>Priority heap type.</summary>
-        public enum Type 
-        {
-            Min,
-            Max
-        }
+        /// <summary>Checks whether queue is empty or not.</summary>
+        public bool Empty { get {return (this.Count == 0); }}
+
+        /// <summary>Gets queue type.</summary>
+        public PriorityQueueType QueueType { get; private set; }
+
+        #endregion
 
         public PriorityQueue(PriorityQueueType type = PriorityQueueType.Min)
         {    
@@ -215,13 +204,18 @@ namespace PriorityQueueLib
             }
         }
 
-        /// <summary>Gets queue size.</summary>
-        public int Count { get { return this.values.Count; }}
+        #region IEnumerable
 
-        /// <summary>Checks whether queue is empty or not.</summary>
-        public bool Empty { get {return (this.Count == 0); }}
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this.values.GetEnumerator();
+        }
 
-        /// <summary>Gets queue type.</summary>
-        public PriorityQueueType QueueType { get; private set; }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+
+        #endregion
     }
 }
