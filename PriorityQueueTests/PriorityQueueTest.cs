@@ -9,13 +9,13 @@ namespace PriorityQueueTests
     [TestClass]
     public class PriorityQueueTests
     {
-        private static void CheckQueue<T>(IPriorityQueue<T> queue, int count) where T : IComparable<T>
+        private static void CheckQueue(PriorityQueueBase queue, int count)
         {
             Assert.AreEqual(queue.Count, count);
             Assert.AreEqual(queue.Empty, count == 0);
         }
 
-        private static void CheckHeap<T>(IPriorityQueue<T> queue) where T : IComparable<T>
+        private static void CheckHeap<T>(PriorityQueue<T> queue) where T : IComparable<T>
         {
             var values = new List<T>();
 
@@ -77,7 +77,7 @@ namespace PriorityQueueTests
 
             foreach (var value in values)
             {
-                queue.Add(value);
+                queue.Enqueue(value);
             }
 
             PriorityQueueTests.CheckQueue(queue, values.Count());
@@ -99,7 +99,7 @@ namespace PriorityQueueTests
             while (!queue.Empty)
             {
                 var val1 = queue.Peek();
-                var val2 = queue.Top();
+                var val2 = queue.Dequeue();
 
                 Assert.AreEqual(val1, val2);
             }
@@ -114,20 +114,20 @@ namespace PriorityQueueTests
             var queue = new PriorityQueue<int>(type);
             foreach (var val in values)
             {
-                queue.Add(val);
+                queue.Enqueue(val);
             }
 
             var rand = new Random();
             int toRemove = rand.Next(0, values.Count() - 1);
             for (int i = 0; i < toRemove; ++i)
             {
-                queue.Top();
+                queue.Dequeue();
             }
 
             values = PriorityQueueTests.CreateValues();
             foreach (var val in values)
             {
-                queue.Add(val);
+                queue.Enqueue(val);
             }
 
             PriorityQueueTests.CheckHeap(queue);
@@ -140,20 +140,20 @@ namespace PriorityQueueTests
             var queue = new PriorityQueue<WeightedUri>(type);
             foreach (var val in values)
             {
-                queue.Add(val);
+                queue.Enqueue(val);
             }
 
             var rand = new Random();
             int toRemove = rand.Next(0, values.Count() - 1);
             for (int i = 0; i < toRemove; ++i)
             {
-                queue.Top();
+                queue.Dequeue();
             }
 
             values = PriorityQueueTests.CreateCustomValues();
             foreach (var val in values)
             {
-                queue.Add(val);
+                queue.Enqueue(val);
             }
 
             PriorityQueueTests.CheckHeap(queue);
@@ -197,7 +197,7 @@ namespace PriorityQueueTests
             Action action = () => 
             {
                 var queue = new PriorityQueue<int>();
-                queue.Top();
+                queue.Dequeue();
             };
 
             Assert.ThrowsException<InvalidOperationException>(action);
@@ -207,7 +207,7 @@ namespace PriorityQueueTests
         public void AddElementShouldSetEmptyToFalseAndCountToOne()
         {
             var queue = new PriorityQueue<int>();
-            queue.Add(1);
+            queue.Enqueue(1);
 
             PriorityQueueTests.CheckQueue(queue, 1);
         }
@@ -328,7 +328,7 @@ namespace PriorityQueueTests
             Action action = () => 
             {
                 var queue = new PriorityQueue<WeightedUri>();
-                queue.Top();
+                queue.Dequeue();
             };
 
             Assert.ThrowsException<InvalidOperationException>(action);
@@ -338,7 +338,7 @@ namespace PriorityQueueTests
         public void AddElementShouldSetEmptyToFalseAndCountToOneCustom()
         {
             var queue = new PriorityQueue<WeightedUri>();
-            queue.Add(new WeightedUri(new Uri("https://www.test.com"), 1));
+            queue.Enqueue(new WeightedUri(new Uri("https://www.test.com"), 1));
 
             PriorityQueueTests.CheckQueue(queue, 1);
         }

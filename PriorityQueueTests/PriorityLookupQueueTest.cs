@@ -6,7 +6,7 @@ namespace PriorityQueueTests
     [TestClass]
     public class PriorityLookupQueueTests
     {
-        [TestMethod]
+        /*[TestMethod]
         public void EmptyQueueShouldNotContainValue()
         {
             var queue = new PriorityLookupQueue<int>();
@@ -52,6 +52,6 @@ namespace PriorityQueueTests
             }
 
             Assert.IsFalse(queue.Contains(7));
-        }
+        }*/
     }
 }
