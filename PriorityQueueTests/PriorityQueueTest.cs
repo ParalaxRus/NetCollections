@@ -9,7 +9,7 @@ namespace PriorityQueueTests
     [TestClass]
     public class PriorityQueueTests
     {
-        private static void CheckQueue(PriorityQueueBase queue, int count)
+        public static void CheckQueue(PriorityQueueBase queue, int count)
         {
             Assert.AreEqual(queue.Count, count);
             Assert.AreEqual(queue.Empty, count == 0);

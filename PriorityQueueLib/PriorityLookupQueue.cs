@@ -6,7 +6,7 @@ namespace PriorityQueueLib
 {
     /// <summary>Binary heap base implementation of the priority queue with the fast look up.</summary>
     /// <summary>Does not support duplicate values.</summary>
-    public class PriorityLookupQueue<K, V> : PriorityQueueBase, IEnumerable<K> where K : IComparable<K>
+    public class PriorityLookupQueue<K, V> : PriorityQueueBase, IEnumerable<KeyValuePair<K,V>> where K : IComparable<K>
     {
         #region Details
 
@@ -166,7 +166,7 @@ namespace PriorityQueueLib
 
         /// <summary>Removes element from the top of the queue.</summary>
         /// <timecomplexity>O(h) in the worst case where h is height of the binary tree.</timecomplexity>
-        public KeyValuePair<K,V> Top()
+        public KeyValuePair<K,V> Dequeue()
         {
             // Storing top
             var value = this.Peek();
@@ -250,14 +250,14 @@ namespace PriorityQueueLib
 
         #region IEnumerable
 
-        public IEnumerator<K> GetEnumerator()
+        public IEnumerator<KeyValuePair<K,V>> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.array.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.array.GetEnumerator();
         }
 
         #endregion
