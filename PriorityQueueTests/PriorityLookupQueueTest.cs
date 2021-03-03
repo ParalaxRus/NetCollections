@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using PriorityQueueLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace PriorityQueueTests
 {
@@ -62,37 +63,35 @@ namespace PriorityQueueTests
             }
         }
 
-        /*private static IEnumerable<KeyValuePair<K,V>> CreateValues<K,V>()
+        private static IEnumerable<KeyValuePair<int, Uri>> CreateValues()
         {
             var rand = new Random();
             int size = rand.Next(2, 20);
 
-            var buffer = new byte[size];
-            rand.NextBytes(buffer);
-
-            var values = new List<WeightedUri>();
-            foreach (var val in buffer)
+            var values = new List<KeyValuePair<int,Uri>>();
+            for (int i = 0; i < size; ++i)
             {
-                values.Add(new WeightedUri(new Uri("https://www.test.com"), val));
+                var kvp = new KeyValuePair<int, Uri>(i,  new Uri(string.Format("https://www.test{0}.com", i)));
+                values.Add(kvp);
             }
 
             return values;
-        }*/
+        }
 
-        /*private static void AddValuesShouldConformHeapProperty<T>(IEnumerable<T> values, PriorityQueueType type) where T : IComparable<T>
+        private static void AddValuesShouldConformHeapProperty<K,V>(IEnumerable<KeyValuePair<K,V>> values, PriorityQueueType type) where K : IComparable<K>
         {
-            var queue = new PriorityQueue<T>(type);
+            var queue = new PriorityLookupQueue<K,V>(type);
 
             foreach (var value in values)
             {
-                queue.Enqueue(value);
+                queue.Enqueue(value.Key, value.Value);
             }
 
             PriorityQueueTests.CheckQueue(queue, values.Count());
-            PriorityQueueTests.CheckHeap(queue);
+            PriorityLookupQueueTests.CheckHeap(queue);
         }
 
-        private static void CreateFromCollectionShouldHeapifyCorrecly<T>(IEnumerable<T> values, PriorityQueueType type) where T : IComparable<T>
+        /*private static void CreateFromCollectionShouldHeapifyCorrecly<T>(IEnumerable<T> values, PriorityQueueType type) where T : IComparable<T>
         {
             var queue = new PriorityQueue<T>(values, type);
 
@@ -210,6 +209,36 @@ namespace PriorityQueueTests
         }
 
         [TestMethod]
+        public void AddDuplicateValueShouldThrowInvalidOperationException()
+        {
+            var queue = new PriorityLookupQueue<int, Uri>();
+            queue.Enqueue(1, new Uri("https://www.test.com"));
+
+            Action action = () => 
+            {
+                queue.Enqueue(2, new Uri("https://www.test.com"));
+            };
+
+            Assert.ThrowsException<InvalidOperationException>(action);
+        }
+
+        [TestMethod]
+        public void AddDuplicateKeyIsValidAndShouldAddItAfterAlreadyExistingKey()
+        {
+            var queue = new PriorityLookupQueue<int, Uri>();
+            queue.Enqueue(1, new Uri("https://www.test1.com"));
+            queue.Enqueue(1, new Uri("https://www.test2.com"));
+
+            var kvp1 = queue.Dequeue();
+            Assert.AreEqual(kvp1.Key, 1);
+            Assert.AreEqual(kvp1.Value, new Uri("https://www.test1.com"));
+
+            var kvp2 = queue.Dequeue();
+            Assert.AreEqual(kvp2.Key, 1);
+            Assert.AreEqual(kvp2.Value, new Uri("https://www.test2.com"));
+        }
+
+        [TestMethod]
         public void AddElementShouldSetEmptyToFalseAndCountToOne()
         {
             var queue = new PriorityLookupQueue<int, Uri>();
@@ -218,21 +247,21 @@ namespace PriorityQueueTests
             PriorityQueueTests.CheckQueue(queue, 1);
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void AddValuesToMinHeapShouldConformMinHeapProperty()
         {
-            PriorityQueueTests.AddValuesShouldConformHeapProperty(
-                PriorityQueueTests.CreateValues(),  PriorityQueueType.Min);
+            PriorityLookupQueueTests.AddValuesShouldConformHeapProperty(
+                PriorityLookupQueueTests.CreateValues(), PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void AddValuesToMaxHeapShouldConformMaxHeapProperty()
         {
-            PriorityQueueTests.AddValuesShouldConformHeapProperty(
-                PriorityQueueTests.CreateValues(),  PriorityQueueType.Max);
+            PriorityLookupQueueTests.AddValuesShouldConformHeapProperty(
+                PriorityLookupQueueTests.CreateValues(), PriorityQueueType.Max);
         }
 
-        [TestMethod]
+        /*[TestMethod]
         public void CreateMinHeapFromCollectionShouldCorrectlyHeapify()
         {
             PriorityQueueTests.CreateFromCollectionShouldHeapifyCorrecly(
