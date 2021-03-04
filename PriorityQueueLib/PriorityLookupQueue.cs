@@ -16,9 +16,8 @@ namespace PriorityQueueLib
         /// <summary>Lookup table (value, array index).</summary>
         private Dictionary<V, int> lookup = new Dictionary<V, int>();
 
-        /// <summary>Adds priority and value at the corresponding index.</summary>
-        /// <timecomplexity>O(1)</timecomplexity>
-        private void Add(K priority, V value)
+        /// <summary>Adds priority/value pair to the end of array.</summary>
+        private void AddLast(K priority, V value)
         {
             if (this.lookup.ContainsKey(value))
             {
@@ -30,14 +29,15 @@ namespace PriorityQueueLib
             this.lookup.Add(value, this.GetLast());
         }
 
-        /// <summary>Removes priority and value corresponding to the specified index.</summary>
-        /// <timecomplexity>O(n) in the worst case and O(1) to remove last element.</timecomplexity>
-        private void Remove(int index)
+        /// <summary>Removes last element.</summary>
+        private void RemoveLast()
         {
-            if (index >= this.Count)
+            if (this.Empty)
             {
-                throw new ArgumentException("Invalid index");
+                throw new ArgumentException("Queue is empty");
             }
+
+            int index = this.GetLast();
 
             var value = this.array[index].Value;
             if (!this.lookup.ContainsKey(value))
@@ -144,7 +144,7 @@ namespace PriorityQueueLib
                 var key = keyEnumerator.Current;
                 var value = valueEnumerator.Current;
 
-                this.Add(key, value);
+                this.AddLast(key, value);
             }
 
             if ( keyEnumerator.MoveNext() || valueEnumerator.MoveNext() )
@@ -178,8 +178,7 @@ namespace PriorityQueueLib
             int last = this.GetLast();
             this.Swap(0, last);
 
-            // Removing last
-            this.Remove(this.GetLast());
+            this.RemoveLast();
 
             if (!this.Empty)
             {
@@ -193,8 +192,7 @@ namespace PriorityQueueLib
         /// <timecomplexity>O(h) in the worst case where h is height of the binary tree.</timecomplexity> 
         public void Enqueue(K priority, V value)
         {
-            // Adding to the end
-            this.Add(priority, value);
+            this.AddLast(priority, value);
 
             int current = this.GetLast();
             while (current != 0)
@@ -206,7 +204,8 @@ namespace PriorityQueueLib
 
                 if ( (parentPriority.CompareTo(currentPriority) * this.ComparisonSign) <= 0)
                 {
-                    // Parent is smaller and its a min heap
+                    // parent is smaller and its a min heap or 
+                    // parent is bigger ant its a max heap
                     break;
                 }
 
@@ -216,20 +215,42 @@ namespace PriorityQueueLib
             }
         }
 
-        /// <summary>Changes value of the existing element while preserving heap property.</summary>
+        /// <summary>Sets new priority for the specified value.</summary>
         /// <remarks>Equivalent to increase/decrease key operator defined for a binary heap.</remarks>
-        /// <timecomplexity>???</timecomplexity>
-        /// <returns>Returns true if the value has been updated otherwise false.</returns>
-        /*public override bool Update(T oldValue, T newValue)
+        /// <timecomplexity>O(h) where h is height of the binary tree.</timecomplexity>
+        /// <returns>Old priority.</returns>
+        public K SetPriority(V value, K priority)
         {
-            if (oldValue.CompareTo(newValue) == 0)
+            if (!this.ContainsValue(value))
             {
-                // No update to perform
-                return false;
+                throw new ArgumentException(string.Format("Value {0} does not exist", value));
             }
 
-            throw new NotImplementedException();
-        }*/
+            int index = this.lookup[value];
+            K oldPriority = this.array[index].Key;
+
+            if (priority.CompareTo(oldPriority) == 0)
+            {
+                return oldPriority;
+            }
+
+            // To change priority without BubbleUp() implementation:
+            // 1) Replace current element with the last
+            // 2) Remove last
+            // 3) Bubble down current
+            // 4) Enqueue new element
+            // In the worst case its O(2h) complexity
+
+            this.Swap(index, this.GetLast());
+            this.RemoveLast();
+            if (index < this.Count)
+            {
+                this.BubbleDown(index);
+            }
+            this.Enqueue(priority, value);
+
+            return oldPriority;
+        }
 
         /// <summary>Gets specified value priority.</summary>
         /// <timecomplexity>O(1)</timecomplexity>

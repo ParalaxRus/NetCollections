@@ -151,7 +151,8 @@ namespace PriorityQueueLib
 
                 if ( (this.array[parent].CompareTo(this.array[current]) * this.ComparisonSign) <= 0)
                 {
-                    // Parent is smaller and its a min heap
+                    // parent is smaller and its a min heap or 
+                    // parent is bigger ant its a max heap
                     break;
                 }
 

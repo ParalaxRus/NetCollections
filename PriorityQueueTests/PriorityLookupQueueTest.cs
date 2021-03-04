@@ -127,6 +127,47 @@ namespace PriorityQueueTests
             PriorityLookupQueueTests.CheckHeap(queue);
         }
 
+        private static void GetPriorityExistingValueShouldReturnCorrectKey(PriorityQueueType type)
+        {
+            var kvps = PriorityLookupQueueTests.CreateValues();
+
+            var queue = new PriorityLookupQueue<string, Uri>(type);
+            foreach (var val in kvps)
+            {
+                queue.Enqueue(val.Key, val.Value);
+            }
+
+            var rand = new Random();
+            int index = rand.Next(0, queue.Count);
+            var kvp = kvps.ElementAt(index);
+
+            Assert.AreEqual(queue.GetPriority(kvp.Value), kvp.Key);
+        }
+
+        private static void SetPriorityForExistingValueShouldUpdateIt(PriorityQueueType type)
+        {
+            var kvps = PriorityLookupQueueTests.CreateValues();
+
+            var queue = new PriorityLookupQueue<string, Uri>(type);
+            foreach (var val in kvps)
+            {
+                queue.Enqueue(val.Key, val.Value);
+            }
+
+            var rand = new Random();
+            int index = rand.Next(0, queue.Count);
+            var kvp = kvps.ElementAt(index);
+
+            var priority = Guid.NewGuid().ToString();
+            var oldPriority = queue.SetPriority(kvp.Value, priority);
+
+            Assert.AreEqual(oldPriority, kvp.Key);
+            Assert.AreEqual(queue.GetPriority(kvp.Value), priority);
+            Assert.AreEqual(queue.Count, kvps.Count());
+
+            PriorityLookupQueueTests.CheckHeap(queue);
+        }
+
         #endregion
 
         [TestMethod]
@@ -280,14 +321,45 @@ namespace PriorityQueueTests
         }
 
         [TestMethod]
-        public void GetPriorityExistingValueShouldReturnCorrectKey()
+        public void GetPriorityExistingValueShouldReturnCorrectKeyForMinQueue()
+        {
+            PriorityLookupQueueTests.GetPriorityExistingValueShouldReturnCorrectKey(PriorityQueueType.Min);
+        }
+
+        [TestMethod]
+        public void GetPriorityExistingValueShouldReturnCorrectKeyForMaxQueue()
+        {
+            PriorityLookupQueueTests.GetPriorityExistingValueShouldReturnCorrectKey(PriorityQueueType.Max);
+        }
+
+        #endregion
+
+        #region SetPriority tests
+
+        [TestMethod]
+        public void SetPriorityForNonExistingValueShouldThrowArgumentException()
         {
             var queue = new PriorityLookupQueue<int, string>();
-            queue.Enqueue(5, "five");
-            queue.Enqueue(3, "three");
-            queue.Enqueue(7, "seven");
+            queue.Enqueue(1, "one");
 
-            Assert.AreEqual(queue.GetPriority("three"), 3);
+            Action action = () => 
+            {
+                queue.SetPriority("invalid", 2);
+            };
+
+            Assert.ThrowsException<ArgumentException>(action);
+        }
+
+        [TestMethod]
+        public void SetPriorityForExistingValueShouldUpdateItMinQueue()
+        {
+            PriorityLookupQueueTests.SetPriorityForExistingValueShouldUpdateIt(PriorityQueueType.Min);
+        }
+
+        [TestMethod]
+        public void SetPriorityForExistingValueShouldUpdateItMaxQueue()
+        {
+            PriorityLookupQueueTests.SetPriorityForExistingValueShouldUpdateIt(PriorityQueueType.Max);
         }
 
         #endregion
