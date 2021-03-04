@@ -90,10 +90,13 @@ namespace PriorityQueueLib
         /// <summary>Checks whether queue is empty or not.</summary>
         public override bool Empty { get {return (this.Count == 0); }}
 
+        /// <summary>Default constructor.</summary>
         public PriorityQueue(PriorityQueueType type = PriorityQueueType.Min) : base(type)
         {    
         }
 
+        /// <summary>Constructor with the specified input values.</summary>
+        /// <timecomplexity>Better than O(NlogN) see https://en.wikipedia.org/wiki/Binary_heap.</timecomplexity>
         public PriorityQueue(IEnumerable<T> values, PriorityQueueType type) : base(type)
         {
             this.array.AddRange(values);

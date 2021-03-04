@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace PriorityQueueLib
+﻿namespace PriorityQueueLib
 {
     public enum PriorityQueueType 
     {

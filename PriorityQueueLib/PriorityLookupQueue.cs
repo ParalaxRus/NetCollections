@@ -120,10 +120,13 @@ namespace PriorityQueueLib
         /// <summary>Checks whether queue is empty or not.</summary>
         public override bool Empty { get { return (this.Count == 0); }}
 
+        /// <summary>Default constructor.</summary>
         public PriorityLookupQueue(PriorityQueueType type = PriorityQueueType.Min) : base(type)
         {    
         }
 
+        /// <summary>Constructor with the specified input values.</summary>
+        /// <timecomplexity>Better than O(NlogN) see https://en.wikipedia.org/wiki/Binary_heap.</timecomplexity>
         /// <remarks>Should not call base class PriorityQueue(IEnumerable) ctor 
         /// because lookup indices will be out of sync.</remarks>
         public PriorityLookupQueue(IEnumerable<K> keys, IEnumerable<V> values, PriorityQueueType type) : this(type)

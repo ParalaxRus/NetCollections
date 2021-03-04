@@ -159,6 +159,13 @@ namespace PriorityQueueTests
             PriorityQueueTests.CheckHeap(queue);
         }
 
+        private static void CheckContains<T>(IEnumerable<T> values, T value, PriorityQueueType type, bool contains) where T : IComparable<T>
+        {
+            var queue = new PriorityQueue<T>(values, type);
+
+            Assert.AreEqual(queue.Contains(value), contains);
+        }
+
         #region Value type tests
 
         [TestMethod]
@@ -264,6 +271,31 @@ namespace PriorityQueueTests
         public void AddTopAddMultipleValuesShouldProduceValidMaxQueue()
         {
             PriorityQueueTests.AddRemoveAndAddIntsShouldProduceValidQueue(PriorityQueueType.Max);
+        }
+
+        [TestMethod]
+        public void ContainsForNonExistingVlaueInMinQueueShouldReturnFalse()
+        {           
+            PriorityQueueTests.CheckContains<int>(new int[] { 7, -1, 10 }, 5, PriorityQueueType.Min, false);
+        }
+
+        [TestMethod]
+        public void ContainsForNonExistingVlaueInMaxQueueShouldReturnFalse()
+        {
+            PriorityQueueTests.CheckContains<int>(new int[] { 7, -1, 10 }, 5, PriorityQueueType.Max, false);
+        }
+
+
+        [TestMethod]
+        public void ContainsForExistingVlaueInMinQueueShouldReturnTrue()
+        {
+            PriorityQueueTests.CheckContains<int>(new int[] { 7, -1, 10 }, 7, PriorityQueueType.Min, true);
+        }
+
+        [TestMethod]
+        public void ContainsForExistingVlaueInMaxQueueShouldReturnTrue()
+        {
+            PriorityQueueTests.CheckContains<int>(new int[] { 7, -1, 10 }, 7, PriorityQueueType.Max, true);
         }
 
         #endregion
@@ -395,6 +427,38 @@ namespace PriorityQueueTests
         public void AddTopAddMultipleValuesShouldProduceValidMaxQueueCustom()
         {
             PriorityQueueTests.AddRemoveAndAddCustomShouldProduceValidQueue(PriorityQueueType.Max);
+        }
+
+        [TestMethod]
+        public void ContainsForNonExistingVlaueInMinQueueShouldReturnFalseCustom()
+        {
+            var values = PriorityQueueTests.CreateCustomValues().ToList();
+            var value = new WeightedUri(values[values.Count / 2].Host, -1);
+            PriorityQueueTests.CheckContains<WeightedUri>(values, value, PriorityQueueType.Min, false);
+        }
+
+        [TestMethod]
+        public void ContainsForNonExistingVlaueInMaxQueueShouldReturnFalseCustom()
+        {
+            var values = PriorityQueueTests.CreateCustomValues().ToList();
+            var value = new WeightedUri(values[values.Count / 2].Host, -1);
+            PriorityQueueTests.CheckContains<WeightedUri>(values, value, PriorityQueueType.Max, false);
+        }
+
+        [TestMethod]
+        public void ContainsForExistingVlaueInMinQueueShouldReturnTrueCustom()
+        {
+            var values = PriorityQueueTests.CreateCustomValues().ToList();
+            var value = new WeightedUri(new Uri("https://www.nonexistingvalue.com"), values[values.Count / 2].Weight);
+            PriorityQueueTests.CheckContains<WeightedUri>(values, value, PriorityQueueType.Min, true);
+        }
+
+        [TestMethod]
+        public void ContainsForExistingVlaueInMaxQueueShouldReturnTrueCustom()
+        {
+            var values = PriorityQueueTests.CreateCustomValues().ToList();
+            var value = new WeightedUri(new Uri("https://www.nonexistingvalue.com"), values[values.Count / 2].Weight);
+            PriorityQueueTests.CheckContains<WeightedUri>(values, value, PriorityQueueType.Max, true);
         }
         
         #endregion
