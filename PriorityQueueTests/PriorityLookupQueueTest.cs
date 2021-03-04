@@ -43,28 +43,6 @@ namespace PriorityQueueTests
             }
         }
 
-        private class WeightedUri : IComparable<WeightedUri>
-        {
-            public Uri Host { get; private set; }
-            public int Weight { get; private set; }
-
-            public WeightedUri(Uri host, int weight)
-            {
-                this.Host = host;
-                this.Weight = weight;
-            }
-
-            public int CompareTo(WeightedUri other)
-            {
-                if (other == null) 
-                {
-                    return 1;
-                }
-
-                return this.Weight.CompareTo(other.Weight);
-            }
-        }
-
         private static IEnumerable<KeyValuePair<string, Uri>> CreateValues()
         {
             var rand = new Random();
@@ -285,5 +263,92 @@ namespace PriorityQueueTests
         {
             PriorityLookupQueueTests.AddRemoveAndAddShouldProduceValidQueue(PriorityQueueType.Max);
         }
+
+        #region GetPriority tests
+
+        [TestMethod]
+        public void GetPriorityForNonExistingValueShouldThrowArgumentException()
+        {
+            var queue = new PriorityLookupQueue<int, string>();
+
+            Action action = () => 
+            {
+                queue.GetPriority("test");
+            };
+
+            Assert.ThrowsException<ArgumentException>(action);
+        }
+
+        [TestMethod]
+        public void GetPriorityExistingValueShouldReturnCorrectKey()
+        {
+            var queue = new PriorityLookupQueue<int, string>();
+            queue.Enqueue(5, "five");
+            queue.Enqueue(3, "three");
+            queue.Enqueue(7, "seven");
+
+            Assert.AreEqual(queue.GetPriority("three"), 3);
+        }
+
+        #endregion
+
+        #region Contains tests
+
+        [TestMethod]
+        public void CallContainsValueForEmptyQueueShouldReturnFalse()
+        {
+            var queue = new PriorityLookupQueue<string, string>();
+            
+            Assert.IsFalse(queue.ContainsValue("1"));
+        }
+
+        [TestMethod]
+        public void CallContainsValueForNonExistingValueShouldReturnFalse()
+        {
+            var queue = new PriorityLookupQueue<string, string>();
+            queue.Enqueue("1", "2");
+            
+            Assert.IsFalse(queue.ContainsValue("1"));
+        }
+
+        [TestMethod]
+        public void CallContainsValueForExistingValueShouldReturnTrue()
+        {
+            var queue = new PriorityLookupQueue<string, string>();
+            queue.Enqueue("2", "1");
+            
+            Assert.IsTrue(queue.ContainsValue("1"));
+        }
+
+        [TestMethod]
+        public void CallContainsValueForExistingValueWithDuplicateKeysShouldReturnTrue()
+        {
+            var queue = new PriorityLookupQueue<string, string>();
+            queue.Enqueue("2", "1");
+            queue.Enqueue("2", "2");
+            
+            Assert.IsTrue(queue.ContainsValue("1"));
+        }
+
+        [TestMethod]
+        public void CallContainsValueShouldReturnTrueUntilElementIsInQueue()
+        {
+            var queue = new PriorityLookupQueue<int, string>();
+            queue.Enqueue(-1, Guid.NewGuid().ToString());
+            queue.Enqueue(0, Guid.NewGuid().ToString());
+            queue.Enqueue(1, "value");
+            queue.Enqueue(2, Guid.NewGuid().ToString());
+            queue.Enqueue(3, Guid.NewGuid().ToString());
+            
+            for (int i = 0; i < 3; ++i)
+            {
+                Assert.IsTrue(queue.ContainsValue("value"));
+                queue.Dequeue();
+            }
+
+            Assert.IsFalse(queue.ContainsValue("value"));
+        }
+
+        #endregion
     }
 }
