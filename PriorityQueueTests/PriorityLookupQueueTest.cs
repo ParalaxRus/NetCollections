@@ -9,6 +9,8 @@ namespace PriorityQueueTests
     [TestClass]
     public class PriorityLookupQueueTests
     {
+        #region Private methods
+
         private static void CheckHeap<K, V>(PriorityLookupQueue<K, V> queue) where K : IComparable<K>
         {
             var values = new List<KeyValuePair<K, V>>();
@@ -63,15 +65,16 @@ namespace PriorityQueueTests
             }
         }
 
-        private static IEnumerable<KeyValuePair<int, Uri>> CreateValues()
+        private static IEnumerable<KeyValuePair<string, Uri>> CreateValues()
         {
             var rand = new Random();
             int size = rand.Next(2, 20);
 
-            var values = new List<KeyValuePair<int,Uri>>();
+            var values = new List<KeyValuePair<string, Uri>>();
             for (int i = 0; i < size; ++i)
             {
-                var kvp = new KeyValuePair<int, Uri>(i,  new Uri(string.Format("https://www.test{0}.com", i)));
+                var key = Guid.NewGuid().ToString();
+                var kvp = new KeyValuePair<string, Uri>(key, new Uri(string.Format("https://www.{0}.com", key)));
                 values.Add(kvp);
             }
 
@@ -91,17 +94,23 @@ namespace PriorityQueueTests
             PriorityLookupQueueTests.CheckHeap(queue);
         }
 
-        /*private static void CreateFromCollectionShouldHeapifyCorrecly<T>(IEnumerable<T> values, PriorityQueueType type) where T : IComparable<T>
+        private static void CreateFromCollectionShouldHeapifyCorrecly<K,V>(IEnumerable<KeyValuePair<K,V>> kvps, PriorityQueueType type) where K : IComparable<K>
         {
-            var queue = new PriorityQueue<T>(values, type);
+            var keys = kvps.Select(kvp => kvp.Key);
+            var values = kvps.Select(kvp => kvp.Value);
+
+            var queue = new PriorityLookupQueue<K,V>(keys, values, type);
 
             PriorityQueueTests.CheckQueue(queue, values.Count());
-            PriorityQueueTests.CheckHeap(queue);
+            PriorityLookupQueueTests.CheckHeap(queue);
         }
 
-        private static void PeekShouldReturnTheSameValuesAsTop<T>(IEnumerable<T> values, PriorityQueueType type) where T : IComparable<T>
+        private static void PeekShouldReturnTheSameValuesAsTop<K,V>(IEnumerable<KeyValuePair<K,V>> kvps, PriorityQueueType type) where K : IComparable<K>
         {
-            var queue = new PriorityQueue<T>(values, type);
+            var keys = kvps.Select(kvp => kvp.Key);
+            var values = kvps.Select(kvp => kvp.Value);
+
+            var queue = new PriorityLookupQueue<K,V>(keys, values, type);
 
             while (!queue.Empty)
             {
@@ -114,57 +123,33 @@ namespace PriorityQueueTests
             PriorityQueueTests.CheckQueue(queue, 0);
         }
 
-        private static void AddRemoveAndAddIntsShouldProduceValidQueue(PriorityQueueType type)
+        private static void AddRemoveAndAddShouldProduceValidQueue(PriorityQueueType type)
         {
-            var values = PriorityQueueTests.CreateValues();
-            
-            var queue = new PriorityQueue<int>(type);
-            foreach (var val in values)
+            var kvps = PriorityLookupQueueTests.CreateValues();
+
+            var queue = new PriorityLookupQueue<string,Uri>(type);
+            foreach (var kvp in kvps)
             {
-                queue.Enqueue(val);
+                queue.Enqueue(kvp.Key, kvp.Value);
             }
 
             var rand = new Random();
-            int toRemove = rand.Next(0, values.Count() - 1);
+            int toRemove = rand.Next(0, kvps.Count() - 1);
             for (int i = 0; i < toRemove; ++i)
             {
                 queue.Dequeue();
             }
 
-            values = PriorityQueueTests.CreateValues();
-            foreach (var val in values)
+            kvps = PriorityLookupQueueTests.CreateValues();
+            foreach (var kvp in kvps)
             {
-                queue.Enqueue(val);
+                queue.Enqueue(kvp.Key, kvp.Value);
             }
 
-            PriorityQueueTests.CheckHeap(queue);
+            PriorityLookupQueueTests.CheckHeap(queue);
         }
 
-        private static void AddRemoveAndAddCustomShouldProduceValidQueue(PriorityQueueType type)
-        {
-            var values = PriorityQueueTests.CreateCustomValues();
-            
-            var queue = new PriorityQueue<WeightedUri>(type);
-            foreach (var val in values)
-            {
-                queue.Enqueue(val);
-            }
-
-            var rand = new Random();
-            int toRemove = rand.Next(0, values.Count() - 1);
-            for (int i = 0; i < toRemove; ++i)
-            {
-                queue.Dequeue();
-            }
-
-            values = PriorityQueueTests.CreateCustomValues();
-            foreach (var val in values)
-            {
-                queue.Enqueue(val);
-            }
-
-            PriorityQueueTests.CheckHeap(queue);
-        }*/        
+        #endregion
 
         [TestMethod]
         public void DefaultCtorShouldCreateEmptyMinHeap()
@@ -261,44 +246,44 @@ namespace PriorityQueueTests
                 PriorityLookupQueueTests.CreateValues(), PriorityQueueType.Max);
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void CreateMinHeapFromCollectionShouldCorrectlyHeapify()
         {
-            PriorityQueueTests.CreateFromCollectionShouldHeapifyCorrecly(
-                PriorityQueueTests.CreateValues(), PriorityQueueType.Min);
+            PriorityLookupQueueTests.CreateFromCollectionShouldHeapifyCorrecly(
+                PriorityLookupQueueTests.CreateValues(), PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void CreateMaxHeapFromCollectionShouldCorrectlyHeapify()
         {
-            PriorityQueueTests.CreateFromCollectionShouldHeapifyCorrecly(
-                PriorityQueueTests.CreateValues(), PriorityQueueType.Max);
+            PriorityLookupQueueTests.CreateFromCollectionShouldHeapifyCorrecly(
+                PriorityLookupQueueTests.CreateValues(), PriorityQueueType.Max);
         }
 
         [TestMethod]
         public void PeekMinQueueShouldReturnTheSameValuesAsTop()
         {
-            PriorityQueueTests.PeekShouldReturnTheSameValuesAsTop(
-                PriorityQueueTests.CreateValues(), PriorityQueueType.Min);
+            PriorityLookupQueueTests.PeekShouldReturnTheSameValuesAsTop(
+                PriorityLookupQueueTests.CreateValues(), PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void PeekMaxQueueShouldReturnTheSameValuesAsTop()
         {
-            PriorityQueueTests.PeekShouldReturnTheSameValuesAsTop(
-                PriorityQueueTests.CreateValues(), PriorityQueueType.Max);
+            PriorityLookupQueueTests.PeekShouldReturnTheSameValuesAsTop(
+                PriorityLookupQueueTests.CreateValues(), PriorityQueueType.Max);
         }
 
         [TestMethod]
         public void AddTopAddMultipleValuesShouldProduceValidMinQueue()
         {
-            PriorityQueueTests.AddRemoveAndAddIntsShouldProduceValidQueue(PriorityQueueType.Min);
+            PriorityLookupQueueTests.AddRemoveAndAddShouldProduceValidQueue(PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void AddTopAddMultipleValuesShouldProduceValidMaxQueue()
         {
-            PriorityQueueTests.AddRemoveAndAddIntsShouldProduceValidQueue(PriorityQueueType.Max);
-        }*/
+            PriorityLookupQueueTests.AddRemoveAndAddShouldProduceValidQueue(PriorityQueueType.Max);
+        }
     }
 }
