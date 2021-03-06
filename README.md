@@ -9,7 +9,7 @@ PriorityQueueLib:
 PriorityQueueTests:
  - PriorityQueue unit tests
 
-PriorityQueue online docs:
+PriorityQueue online docs build with DocFx:
  https://paralaxrus.github.io/PriorityQueue/
 
 
