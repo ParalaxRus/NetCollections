@@ -285,7 +285,6 @@ namespace PriorityQueueTests
             PriorityQueueTests.CheckContains<int>(new int[] { 7, -1, 10 }, 5, PriorityQueueType.Max, false);
         }
 
-
         [TestMethod]
         public void ContainsForExistingVlaueInMinQueueShouldReturnTrue()
         {
@@ -321,6 +320,11 @@ namespace PriorityQueueTests
                 }
 
                 return this.Weight.CompareTo(other.Weight);
+            }
+
+            public override string ToString()
+            {
+                return string.Format("Host={0} Weight={1}", this.Host.Host, this.Weight);
             }
         }
 
@@ -462,5 +466,45 @@ namespace PriorityQueueTests
         }
         
         #endregion
+
+        [TestMethod]
+        public void PriorityQueueExample()
+        {
+            var elements = new List<WeightedUri>()
+            {
+                new WeightedUri(new Uri("https://www.test2.com"), 2),
+                new WeightedUri(new Uri("https://www.test1.com"), 1),
+                new WeightedUri(new Uri("https://www.test3.com"), 3),
+            };
+
+            // Create with original seed of elements
+            var queue = new PriorityQueue<WeightedUri>(elements, PriorityQueueType.Max);
+
+            var existing = new WeightedUri(new Uri("https://www.test1.com"), 1);
+            Console.WriteLine("Contains=" + queue.Contains(existing));
+
+            // IEnumerable example
+            Console.WriteLine("Enumerating:");
+            foreach (var element in queue)
+            {
+                Console.WriteLine(element);
+            }
+
+            // Enqueue element with the duplicate max weight
+            queue.Enqueue(new WeightedUri(new Uri("https://www.testduplicate.com"), 3));
+
+            Console.WriteLine("Count=" + queue.Count + " Empty=" + queue.Empty);
+
+            // Peek top of the queue
+            Console.WriteLine("Peek: " + queue.Peek());
+
+            // Draining queue
+            while (!queue.Empty)
+            {
+                Console.WriteLine("Dequeue: " + queue.Dequeue());
+            }
+
+            Console.WriteLine("Count=" + queue.Count + " Empty=" + queue.Empty);
+        }
     }
 }
