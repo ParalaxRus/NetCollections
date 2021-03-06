@@ -1,4 +1,4 @@
-- name: Articles
+- name: Examples
   href: articles/
 - name: Reference
   href: api/
