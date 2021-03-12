@@ -1,4 +1,4 @@
-# PriorityQueue
+# .net collections
 
 .NET collections library:
 - Priority queue implementation C#
