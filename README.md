@@ -1,6 +1,8 @@
 # PriorityQueue
 
-Priority queue implementation C#
+.NET collections library:
+- Priority queue implementation C#
+- Height balanced binary search tree implementation C#
 
 docs:
 Online site generated with the help of DocFx tool
@@ -8,14 +10,17 @@ Online site generated with the help of DocFx tool
 PriorityQueueDocFx:
 DocFx project to generate docs
 
-PriorityQueueLib:
+NetCollections library:
  - PriorityQueue: binary heap based min/max priority queue implementation
  - PriorityLookupQueue: Binary heap based min/max priority queue implementation with the fast lookup
+ - BinarySearchTree: AVL binary search tree
 
-PriorityQueueTests:
+NetCollectionsTests library:
  - PriorityQueue unit tests
+ - PriorityLookupQueue unit tests
+ - BinarySearchTree unit tests
 
-PriorityQueue online docs build with DocFx:
+NetCollections online docs build with DocFx:
  https://paralaxrus.github.io/PriorityQueue/
 
 
