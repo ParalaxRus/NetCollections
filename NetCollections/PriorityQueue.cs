@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace PriorityQueueLib
+namespace NetCollections
 {
     /// <summary>Binary heap base implementation of the priority queue.</summary>
     public class PriorityQueue<T> : PriorityQueueBase, IEnumerable<T> where T : IComparable<T>

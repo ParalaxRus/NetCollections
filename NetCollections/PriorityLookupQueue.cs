@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace PriorityQueueLib
+namespace NetCollections
 {
     /// <summary>Binary heap base implementation of the priority queue with the fast look up.</summary>
     /// <summary>Does not support duplicate values.</summary>

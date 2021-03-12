@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriorityQueueLib", "PriorityQueueLib\PriorityQueueLib.csproj", "{F3325946-1DC9-4935-8A9D-E56FFA05A9B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCollections", "NetCollections\NetCollections.csproj", "{F3325946-1DC9-4935-8A9D-E56FFA05A9B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriorityQueueTests", "PriorityQueueTests\PriorityQueueTests.csproj", "{0F703144-C731-4AF9-B8DF-43F127E6011F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCollectionsTests", "NetCollectionsTests\NetCollectionsTests.csproj", "{0F703144-C731-4AF9-B8DF-43F127E6011F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

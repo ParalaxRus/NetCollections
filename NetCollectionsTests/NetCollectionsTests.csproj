@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PriorityQueueLib\PriorityQueueLib.csproj" />
+    <ProjectReference Include="..\NetCollections\NetCollections.csproj" />
   </ItemGroup>
 
 </Project>

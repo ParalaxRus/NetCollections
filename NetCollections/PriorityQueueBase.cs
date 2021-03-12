@@ -1,4 +1,4 @@
-﻿namespace PriorityQueueLib
+﻿namespace NetCollections
 {
     public enum PriorityQueueType 
     {

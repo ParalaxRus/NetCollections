@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using PriorityQueueLib;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NetCollections;
 
-namespace PriorityQueueTests
+namespace NetCollectionsTests
 {
     [TestClass]
     public class PriorityLookupQueueTests
