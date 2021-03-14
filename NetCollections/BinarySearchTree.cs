@@ -306,6 +306,15 @@ namespace NetCollections
             }
         }
 
+        /// <summary>Updates height after rotation.</summary>
+        private static void UpdateHeightAfterRotation(Node node)
+        {
+            int left = BinarySearchTree<T>.GetHeight(node.Left);
+            int right = BinarySearchTree<T>.GetHeight(node.Right);
+
+            node.Height = Math.Max(left, right) + 1;
+        }
+
         /// <summary>Rotates subtree rooted at the specified node to the left.</summary>
         /// <returns>New subtree root.</returns>
         private Node RotateLeft(Node node)
@@ -315,6 +324,9 @@ namespace NetCollections
             var left = root.Left;
             root.Left = node;
             node.Right = left;
+
+            BinarySearchTree<T>.UpdateHeightAfterRotation(node.Right);
+            BinarySearchTree<T>.UpdateHeightAfterRotation(node);
 
             return root;
         }
@@ -328,6 +340,9 @@ namespace NetCollections
             var right = root.Right;
             root.Right = node;
             node.Left = right;
+
+            BinarySearchTree<T>.UpdateHeightAfterRotation(node.Left);
+            BinarySearchTree<T>.UpdateHeightAfterRotation(node);
 
             return root;
         }
