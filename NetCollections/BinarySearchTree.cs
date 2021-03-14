@@ -6,52 +6,20 @@ namespace NetCollections
 {
     /// <summary>Self balancing binary search tree.</summary>
     /// <remarks>Allows duplicates.<remarks>
-    public class BinarySearchTree<T> : IEnumerable<T> where T : IComparable<T>
+    public partial class BinarySearchTree<T> : IEnumerable<T> where T : IComparable<T>
     {
         #region Details
 
-        Node root = null;
-
-        /// <summary>Binary tree node class.</summary>
-        private class Node
+        /// <summary>Subtree type of heaviness.</summary>
+        private enum HeavinessType
         {
-            public T Value { get; set; }
-            public Node Left { get; set; }
-            public Node Right { get; set; }
-            /// <summary>Parent is needed because most of the methods are iterative.</summary>
-            public Node Parent { get; set; }
-            public int Height { get; set; }
-            public int Count { get; set; }
-
-            /// <summary>Gets children count.</summary>
-            public int Children
-            {
-                get
-                {
-                    int left = this.Left != null ? 1 : 0;
-                    int right = this.Right != null ? 1 : 0;
-
-                    return left + right;
-                }
-            }
-
-            public Node(T value)
-            {
-                this.Value = value;
-                this.Left = null;
-                this.Right = null;
-                this.Parent = null;
-                this.Height = 0;
-                this.Count = 1;
-            }
-
-            public Node(T value, Node parent) : this(value)
-            {
-                this.Parent = parent;
-            }
-
-            
+            LeftLeft,
+            LeftRight,
+            RightLeft,
+            RightRight
         }
+
+        Node root = null;
 
         /// <summary>Recursively checks wether tree is balanced or not.</summary>
         private static bool IsBalanced(Node node, ref int height)
@@ -156,6 +124,12 @@ namespace NetCollections
             return node;
         }
 
+        /// <summary>Get height of the specified node.</summary>
+        private static int GetHeight(Node node)
+        {
+            return node != null ? node.Height : 0;
+        }
+
         /// <summary>Adds node iteratively.</summary>
         private Node AddNode(T value)
         {
@@ -224,7 +198,7 @@ namespace NetCollections
         }
 
         /// <summary>Removes node with the single child.</summary>
-        private void RemoveOneChild(Node node)
+        private void RemoveWithOneChild(Node node)
         {
             var child = node.Left != null ? node.Left : node.Right;
 
@@ -244,10 +218,27 @@ namespace NetCollections
             }
         }
 
-        /// <summary>Removes node with both children.</summary>
-        private void RemoveTwoChildren(Node node)
+        /// <summary>Gets in-order successor.</summary>
+        /// <remarks>Node should have right subtree.</remarks>
+        private Node GetInorderSuccessor(Node node)
         {
+            node = node.Right;
+            while (node.Left != null)
+            {
+                node = node.Left;
+            }
+
+            return node;
+        }
+
+        /// <summary>Removes node with both children.</summary>
+        private void RemoveWithTwoChildren(Node node)
+        {
+            var min = this.GetInorderSuccessor(node);
             
+            node.Value = min.Value;
+
+            this.RemoveWithOneChild(min);
         }
 
         /// <summary>Removes node iteratively.</summary>
@@ -260,11 +251,11 @@ namespace NetCollections
             }
             else if (children == 1)
             {
-                this.RemoveOneChild(node);
+                this.RemoveWithOneChild(node);
             }
             else
             {
-                this.RemoveTwoChildren(node);
+                this.RemoveWithTwoChildren(node);
             }
         }
 
@@ -277,6 +268,7 @@ namespace NetCollections
                 return null;
             }
 
+            // Making sure that no duplicates left
             --node.Count;
             if (node.Count != 0)
             {
@@ -290,11 +282,86 @@ namespace NetCollections
 
         #endregion
 
-        /// <summary>Performs bottom up tree balancing starting with the specified node.</summary>
-        private void Balance(Node node)
+        #region Balance
+
+        /// <summary>Gets heaviness type of the subtree rooted with the specified node and balance factor.</summary>
+        /// <remarks>Should be called for unbalanced subtrees so factor does not belong to [-1, 1].</remarks>
+        private static HeavinessType GetHeaviness(Node node, int factor)
+        {
+            if (factor > 1)
+            {
+                // Left heavy
+                factor = BinarySearchTree<T>.GetHeight(node.Left.Left) - 
+                         BinarySearchTree<T>.GetHeight(node.Left.Right);
+
+                return factor > 0 ? HeavinessType.LeftLeft : HeavinessType.LeftRight;
+            }
+            else
+            {
+                // Right heavy
+                factor = BinarySearchTree<T>.GetHeight(node.Right.Left) - 
+                         BinarySearchTree<T>.GetHeight(node.Right.Right);
+
+                return factor < 0 ? HeavinessType.RightRight : HeavinessType.RightLeft;
+            }
+        }
+
+        private Node RotateLeft(Node node)
         {
             
         }
+
+        private Node RotateRight(Node node)
+        {
+            
+        }
+
+        private Node BalanceSubtree(Node node)
+        {
+            int factor = BinarySearchTree<T>.GetHeight(node.Right) - BinarySearchTree<T>.GetHeight(node.Left);
+
+            if ((factor >= -1) && (factor <= 1))
+            {
+                return node;
+            }
+
+            var heavy = BinarySearchTree<T>.GetHeaviness(node, factor);
+            if (heavy == HeavinessType.LeftLeft)
+            {
+                return this.RotateRight(node);
+            }
+            else if (heavy == HeavinessType.LeftRight)
+            {
+                node.Left = this.RotateLeft(node.Left);
+                return this.RotateRight(node);
+            }
+            else if (heavy == HeavinessType.RightLeft)
+            {
+                node.Right = this.RotateRight(node.Left);
+                return this.RotateLeft(node);
+            }
+            else
+            {
+                return this.RotateLeft(node);
+            }
+        }
+
+        /// <summary>Performs bottom up tree balancing starting with the specified node.</summary>
+        private void Balance(Node node)
+        {
+            while (node != null)
+            {
+                var parent = node.Parent;
+                var type = node.GetNodeType();
+
+                node = this.BalanceSubtree(node);
+
+                parent.Set(node, type);
+                node = parent;
+            }
+        }
+
+        #endregion
 
         #endregion
 
