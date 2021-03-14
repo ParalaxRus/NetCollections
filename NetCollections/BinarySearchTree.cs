@@ -130,7 +130,27 @@ namespace NetCollections
             return node != null ? node.Height : 0;
         }
 
+        /// <summary>Updates height of the specified node.</summary>
+        private static void UpdateHeight(Node node)
+        {
+            int left = BinarySearchTree<T>.GetHeight(node.Left);
+            int right = BinarySearchTree<T>.GetHeight(node.Right);
+
+            node.Height = Math.Max(left, right) + 1;
+        }
+
+        /// <summary>Updates heights from the specified node and up to the root.</summary>
+        private static void UpdateHeightBottomUp(Node node)
+        {
+            while (node != null)
+            {
+                BinarySearchTree<T>.UpdateHeight(node);
+                node = node.Parent;
+            }
+        }
+
         /// <summary>Adds node iteratively.</summary>
+        /// <returns>Newly added node.</returns>
         private Node AddNode(T value)
         {
             if (this.root == null)
@@ -138,8 +158,6 @@ namespace NetCollections
                 this.root = new Node(value);
                 return this.root;
             }
-
-            // BUG: add/remove does not update height
 
             int compare = 0;
             Node parent = null;
@@ -154,6 +172,7 @@ namespace NetCollections
                 }
 
                 parent = current;
+
                 if (compare > 0)
                 {
                     current = current.Right;
@@ -180,46 +199,6 @@ namespace NetCollections
 
         #region Remove
 
-        /// <summary>Removes leaf node.</summary>
-        private void RemoveLeaf(Node node)
-        {
-            if (node == this.root)
-            {
-                this.root = null;
-                return;
-            }
-
-            if (node.Parent.Left == node)
-            {
-                node.Parent.Left = null;
-            }
-            else
-            {
-                node.Parent.Right = null;
-            }
-        }
-
-        /// <summary>Removes node with the single child.</summary>
-        private void RemoveWithOneChild(Node node)
-        {
-            var child = node.Left != null ? node.Left : node.Right;
-
-            if (node == this.root)
-            {
-                this.root = child;
-                return;
-            }
-
-            if (node.Parent.Left == node)
-            {
-                node.Parent.Left = child;
-            }
-            else
-            {
-                node.Parent.Right = child;
-            }
-        }
-
         /// <summary>Gets in-order successor.</summary>
         /// <remarks>Node should have right subtree.</remarks>
         private Node GetInorderSuccessor(Node node)
@@ -233,35 +212,88 @@ namespace NetCollections
             return node;
         }
 
-        /// <summary>Removes node with both children.</summary>
-        private void RemoveWithTwoChildren(Node node)
+        /// <summary>Removes leaf node.</summary>
+        /// <returns>Removed node's parent.</returns>
+        private Node RemoveLeaf(Node node)
         {
-            var min = this.GetInorderSuccessor(node);
-            
-            node.Value = min.Value;
+            if (node == this.root)
+            {
+                this.root = null;
+                return null;
+            }
 
-            this.RemoveWithOneChild(min);
+            if (node.Parent.Left == node)
+            {
+                node.Parent.Left = null;
+            }
+            else
+            {
+                node.Parent.Right = null;
+            }
+
+            return node.Parent;
+        }
+
+        /// <summary>Removes node with the single child.</summary>
+        /// <returns>Removed node's parent.</returns>
+        private Node RemoveWithOneChild(Node node)
+        {
+            var child = node.Left != null ? node.Left : node.Right;
+
+            if (node == this.root)
+            {
+                this.root = child;
+                return null;
+            }
+
+            if (node.Parent.Left == node)
+            {
+                node.Parent.Left = child;
+            }
+            else
+            {
+                node.Parent.Right = child;
+            }
+
+            return node.Parent;
+        }
+
+        /// <summary>Removes node with both children.</summary>
+        /// <returns>Removed node's parent.</returns>
+        private Node RemoveWithTwoChildren(Node node)
+        {
+            var successor = this.GetInorderSuccessor(node);
+            
+            node.Value = successor.Value;
+
+            return this.RemoveWithOneChild(successor);
         }
 
         /// <summary>Removes node iteratively.</summary>
         private void Remove(Node node)
         {
+            // Removed node's parent
+            Node parent = null;
+
             int children = node.Children;
             if (children == 0)
             {
-                this.RemoveLeaf(node);
+                parent = this.RemoveLeaf(node);
             }
             else if (children == 1)
             {
-                this.RemoveWithOneChild(node);
+                parent = this.RemoveWithOneChild(node);
             }
             else
             {
-                this.RemoveWithTwoChildren(node);
+                parent = this.RemoveWithTwoChildren(node);
             }
+
+            BinarySearchTree<T>.UpdateHeightBottomUp(parent);
         }
 
         /// <summary>Removes node iteratively.</summary>
+        /// <returns>Removed node.</returns>
         private Node RemoveNode(T value)
         {
             var node = this.Find(value);
@@ -308,15 +340,6 @@ namespace NetCollections
             }
         }
 
-        /// <summary>Updates height after rotation.</summary>
-        private static void UpdateHeightAfterRotation(Node node)
-        {
-            int left = BinarySearchTree<T>.GetHeight(node.Left);
-            int right = BinarySearchTree<T>.GetHeight(node.Right);
-
-            node.Height = Math.Max(left, right) + 1;
-        }
-
         /// <summary>Rotates subtree rooted at the specified node to the left.</summary>
         /// <returns>New subtree root.</returns>
         private Node RotateLeft(Node node)
@@ -327,8 +350,8 @@ namespace NetCollections
             root.Left = node;
             node.Right = left;
 
-            BinarySearchTree<T>.UpdateHeightAfterRotation(node.Right);
-            BinarySearchTree<T>.UpdateHeightAfterRotation(node);
+            BinarySearchTree<T>.UpdateHeight(node.Right);
+            BinarySearchTree<T>.UpdateHeight(node);
 
             return root;
         }
@@ -343,8 +366,8 @@ namespace NetCollections
             root.Right = node;
             node.Left = right;
 
-            BinarySearchTree<T>.UpdateHeightAfterRotation(node.Left);
-            BinarySearchTree<T>.UpdateHeightAfterRotation(node);
+            BinarySearchTree<T>.UpdateHeight(node.Left);
+            BinarySearchTree<T>.UpdateHeight(node);
 
             return root;
         }
@@ -447,6 +470,8 @@ namespace NetCollections
         public void Add(T value)
         {
             var node = this.AddNode(value);
+
+            BinarySearchTree<T>.UpdateHeightBottomUp(node);
 
             this.Balance(node);
 
