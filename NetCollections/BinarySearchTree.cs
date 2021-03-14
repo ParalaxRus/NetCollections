@@ -139,6 +139,8 @@ namespace NetCollections
                 return this.root;
             }
 
+            // BUG: add/remove does not update height
+
             int compare = 0;
             Node parent = null;
             var current = this.root;
@@ -387,7 +389,15 @@ namespace NetCollections
 
                 node = this.BalanceSubtree(node);
 
-                parent.Set(node, type);
+                if (parent == null)
+                {
+                    this.root = node;
+                }
+                else
+                {
+                    parent.Set(node, type);
+                }
+
                 node = parent;
             }
         }
