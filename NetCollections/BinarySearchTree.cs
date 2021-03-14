@@ -306,14 +306,30 @@ namespace NetCollections
             }
         }
 
+        /// <summary>Rotates subtree rooted at the specified node to the left.</summary>
+        /// <returns>New subtree root.</returns>
         private Node RotateLeft(Node node)
         {
-            
+            var root = node.Right;
+
+            var left = root.Left;
+            root.Left = node;
+            node.Right = left;
+
+            return root;
         }
 
+        /// <summary>Rotates subtree rooted at the specified node to the right.</summary>
+        /// <returns>New subtree root.</returns>
         private Node RotateRight(Node node)
         {
-            
+            var root = node.Left;
+
+            var right = root.Right;
+            root.Right = node;
+            node.Left = right;
+
+            return root;
         }
 
         private Node BalanceSubtree(Node node)
