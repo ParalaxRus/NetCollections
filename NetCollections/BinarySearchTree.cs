@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+[assembly:InternalsVisibleTo("NetCollectionsTests")]
 
 namespace NetCollections
 {
@@ -52,6 +55,42 @@ namespace NetCollections
             return true;
         }
 
+        /// <summary>Recursively checks wether tree is a valid binary search tree or not.</summary>
+        /// <remarks>Algorithm is based on the fact that each previous value in 
+        /// in-order taraversal should be less than current.</remarks>
+        private static bool IsValid(Node n, ref bool found, ref T min)
+        {
+            if (n == null)
+            {   
+                return true;
+            }
+
+            if (!BinarySearchTree<T>.IsValid(n.Left, ref found, ref min))
+            {
+                return false;
+            }
+
+            if ( (n.Left == null) && !found )
+            {
+                // Min node found
+                found = true;
+                min = n.Value;
+            }
+            else
+            {
+                // Previous value (min) in in-order traversal should be less than current value
+                int compare = n.Value.CompareTo(min);
+                if (compare <= 0)
+                {
+                    return false;
+                }
+            }
+
+            // Next previous value (min)
+            min = n.Value;
+            return BinarySearchTree<T>.IsValid(n.Right, ref found, ref min);
+        }
+
         /// <summary>Iterative implementation of the in-order traversal.</summary>
         private IEnumerable<T> InOrder()
         {
@@ -87,13 +126,6 @@ namespace NetCollections
                     node = node.Left;
                 }
             }
-        }
-
-        /// <summary>Recursively checks wether tree is balanced or not.</summary>
-        private bool IsBalanced()
-        {
-            int height = 0;
-            return BinarySearchTree<T>.IsBalanced(this.root, ref height);
         }
 
         /// <summary>Searches for a node with the given value.</summary>
@@ -202,8 +234,6 @@ namespace NetCollections
             
             return node;
         }
-
-        #region Remove
 
         /// <summary>Gets in-order successor.</summary>
         /// <remarks>Node should have right subtree.</remarks>
@@ -320,10 +350,6 @@ namespace NetCollections
             return node;
         }
 
-        #endregion
-
-        #region Balance
-
         /// <summary>Gets heaviness type of the subtree rooted with the specified node and balance factor.</summary>
         /// <remarks>Should be called for unbalanced subtrees so factor does not belong to [-1, 1].</remarks>
         private static HeavinessType GetHeaviness(Node node, int factor)
@@ -432,6 +458,23 @@ namespace NetCollections
         }
 
         #endregion
+
+        #region Internals for unit tests mostly
+
+        /// <summary>Recursively checks wether tree is balanced or not.</summary>
+        internal bool IsBalanced()
+        {
+            int height = 0;
+            return BinarySearchTree<T>.IsBalanced(this.root, ref height);
+        }
+
+        /// <summary>Recursively checks wether tree is a valid binary search tree or not.</summary>
+        internal bool IsValid()
+        {
+            bool found = false;
+            var min = default(T);
+            return BinarySearchTree<T>.IsValid(this.root, ref found, ref min);
+        }
 
         #endregion
 

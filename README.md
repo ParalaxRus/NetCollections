@@ -13,7 +13,7 @@ DocFx project to generate docs
 NetCollections library:
  - PriorityQueue: binary heap based min/max priority queue implementation
  - PriorityLookupQueue: Binary heap based min/max priority queue implementation with the fast lookup
- - BinarySearchTree: AVL binary search tree
+ - BinarySearchTree: Self balanced AVL binary search tree
 
 NetCollectionsTests library:
  - PriorityQueue unit tests

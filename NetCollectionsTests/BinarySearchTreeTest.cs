@@ -12,6 +12,9 @@ namespace NetCollectionsTests
             Assert.AreEqual(tree.Count, count);
             Assert.AreEqual(tree.Height, height);
             Assert.AreEqual(tree.Empty, count == 0);
+
+            Assert.IsTrue(tree.IsBalanced());
+            Assert.IsTrue(tree.IsValid());
         }
 
         [TestMethod]
