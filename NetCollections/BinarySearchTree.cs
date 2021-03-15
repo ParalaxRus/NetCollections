@@ -133,6 +133,12 @@ namespace NetCollections
         /// <summary>Updates height of the specified node.</summary>
         private static void UpdateHeight(Node node)
         {
+            if (node.Children == 0)
+            {
+                node.Height = 0;
+                return;
+            }
+
             int left = BinarySearchTree<T>.GetHeight(node.Left);
             int right = BinarySearchTree<T>.GetHeight(node.Right);
 

@@ -26,6 +26,7 @@ namespace NetCollections
 
             public int Height { get; set; }
 
+            /// <summary>Gets or sets duplicates count.</summary>
             public int Count { get; set; }
 
             /// <summary>Gets children count.</summary>
