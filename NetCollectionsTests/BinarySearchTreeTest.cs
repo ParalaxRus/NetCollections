@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NetCollections;
 
@@ -7,7 +9,10 @@ namespace NetCollectionsTests
     [TestClass]
     public class BinarySearchTreeTests
     {
-        private static void CheckTree<T>(BinarySearchTree<T> tree, int count, int height) where T : IComparable<T>
+        private static void CheckTree<T>(BinarySearchTree<T> tree, 
+                                         int                 count, 
+                                         int                 height, 
+                                         IEnumerable<T>      expectedValues) where T : IComparable<T>
         {
             Assert.AreEqual(tree.Count, count);
             Assert.AreEqual(tree.Height, height);
@@ -15,6 +20,19 @@ namespace NetCollectionsTests
 
             Assert.IsTrue(tree.IsBalanced());
             Assert.IsTrue(tree.IsValid());
+
+            var values = new List<T>();
+            foreach (var v in tree)
+            {
+                values.Add(v);
+            }
+
+            expectedValues.SequenceEqual(values);
+        }
+
+        private static IEnumerable<T> GetSorted<T>(IEnumerable<T> values)
+        {
+            return values.OrderBy(v => v);
         }
 
         [TestMethod]
@@ -22,8 +40,19 @@ namespace NetCollectionsTests
         {
             var tree = new BinarySearchTree<int>();
 
-            BinarySearchTreeTests.CheckTree(tree, 0, 0);
+            BinarySearchTreeTests.CheckTree(tree, 0, 0, new List<int>());
         }
+
+        [TestMethod]
+        public void CtorWithValuesShouldCreateBalancedTree()
+        {
+            var values = TestHelpers.CreateRandomValues();
+            var tree = new BinarySearchTree<byte>(values);
+
+            BinarySearchTreeTests.CheckTree(tree, values.Count(), tree.Height, BinarySearchTreeTests.GetSorted(values));
+        }
+
+        #region Add tests
 
         [TestMethod]
         public void AddTwoNodesShouldSetCountToTwoAndHeightToOne()
@@ -32,7 +61,23 @@ namespace NetCollectionsTests
             tree.Add(1);
             tree.Add(2);
 
-            BinarySearchTreeTests.CheckTree(tree, 2, 1);
+            BinarySearchTreeTests.CheckTree(tree, 2, 1, new int[] { 1, 2 });
+        }
+
+        [TestMethod]
+        public void AddDuplicateValueShouldIncreaseValueCountButNotChangeNodesCount()
+        {
+            var tree = new BinarySearchTree<int>();
+            tree.Add(1);
+            tree.Add(1);
+
+            tree.Add(2);
+            tree.Add(2);
+
+            var values = new int[] { 1, 1, 2, 2 };
+            BinarySearchTreeTests.CheckTree(tree, 4, 1, values);
+
+            Assert.AreEqual(tree.GetNodesCount(), 2);
         }
 
         [TestMethod]
@@ -47,7 +92,7 @@ namespace NetCollectionsTests
                 tree.Add(val);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, 5, 2);
+            BinarySearchTreeTests.CheckTree(tree, 5, 2, new int[] { 60, 80, 92, 99, 155 });
         }
 
         [TestMethod]
@@ -62,7 +107,7 @@ namespace NetCollectionsTests
                 tree.Add(val);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, 5, 2);
+            BinarySearchTreeTests.CheckTree(tree, 5, 2, new int[] { 80, 90, 92, 99, 155 });
         }
 
         [TestMethod]
@@ -77,7 +122,7 @@ namespace NetCollectionsTests
                 tree.Add(val);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, 5, 2);
+            BinarySearchTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 189, 234 });
         }
 
         [TestMethod]
@@ -92,13 +137,13 @@ namespace NetCollectionsTests
                 tree.Add(val);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, 5, 2);
+            BinarySearchTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 234, 250 });
         }
 
         [TestMethod]
         public void AddRandomValuesShouldCreateBalancedBst()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new BinarySearchTree<byte>();
 
             var values = TestHelpers.CreateRandomValues();
             foreach (var value in values)
@@ -106,8 +151,78 @@ namespace NetCollectionsTests
                 tree.Add(value);
             }
 
-            Assert.IsTrue(tree.IsBalanced());
-            Assert.IsTrue(tree.IsValid());
+            BinarySearchTreeTests.CheckTree(tree, values.Count(), tree.Height, BinarySearchTreeTests.GetSorted(values));
         }
+
+        #endregion
+
+        #region Remove tests
+
+        [TestMethod]
+        public void RemoveNodeWithNoChildren()
+        {
+            var tree = new BinarySearchTree<int>();
+            tree.Add(1);
+
+            Assert.IsTrue(tree.Remove(1));
+            
+            BinarySearchTreeTests.CheckTree(tree, 0, 0, new int[] {  });
+        }
+
+        [TestMethod]
+        public void RemoveNodeWithOneChild()
+        {
+            var tree = new BinarySearchTree<int>();
+            tree.Add(1);
+            tree.Add(2);
+
+            // Remove should return removed parent to fix this bug ...
+            Assert.IsTrue(tree.Remove(1));
+            
+            BinarySearchTreeTests.CheckTree(tree, 1, 0, new int[] { 2 });
+        }
+
+        [TestMethod]
+        public void RemoveNodeWithBothChildren()
+        {
+            var tree = new BinarySearchTree<int>();
+            tree.Add(1);
+            tree.Add(2);
+            tree.Add(-1);
+
+            // Remove should return removed parent to fix this bug ...
+            Assert.IsTrue(tree.Remove(1));
+            
+            BinarySearchTreeTests.CheckTree(tree, 2, 1, new int[] { -1, 2 });
+        }
+
+        [TestMethod]
+        public void RemoveNonExistingValueShouldNotModifyTreeAndReturnFalse()
+        {
+            var tree = new BinarySearchTree<int>();
+            tree.Add(1);
+
+            Assert.IsFalse(tree.Remove(2));
+            
+            BinarySearchTreeTests.CheckTree(tree, 1, 0, new int[] { 1 });
+        }
+
+        [TestMethod]
+        public void RemoveDuplicateValueShouldReturnTrueUpdateValuesCountAndNotChangeNodesCount()
+        {
+            var tree = new BinarySearchTree<int>();
+            tree.Add(1);
+            tree.Add(1);
+            tree.Add(2);
+            
+            Assert.IsTrue(tree.Remove(1));
+
+            var values = new int[] { 1, 2 };
+            BinarySearchTreeTests.CheckTree(tree, 2, 1, values);
+
+            Assert.AreEqual(tree.GetNodesCount(), 2);
+        }
+
+        #endregion
     }
 }

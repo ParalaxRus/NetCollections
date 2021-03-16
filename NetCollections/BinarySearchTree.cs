@@ -91,6 +91,17 @@ namespace NetCollections
             return BinarySearchTree<T>.IsValid(n.Right, ref found, ref min);
         }
 
+        private static int GetNodesCount(Node node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            return BinarySearchTree<T>.GetNodesCount(node.Left) + 
+                   BinarySearchTree<T>.GetNodesCount(node.Right) + 1;
+        }
+
         /// <summary>Iterative implementation of the in-order traversal.</summary>
         private IEnumerable<T> InOrder()
         {
@@ -112,7 +123,11 @@ namespace NetCollections
             {
                 node = stack.Pop();
 
-                yield return node.Value;
+                // Duplicates support
+                for (int i = 0; i < node.Count; ++i)
+                {
+                    yield return node.Value;
+                }
                 
                 if (node.Right == null)
                 {
@@ -279,7 +294,7 @@ namespace NetCollections
             if (node == this.root)
             {
                 this.root = child;
-                return null;
+                return this.root;
             }
 
             if (node.Parent.Left == node)
@@ -491,6 +506,12 @@ namespace NetCollections
             return BinarySearchTree<T>.IsValid(this.root, ref found, ref min);
         }
 
+        /// <summary>Recursively gets nodes count.</summary>
+        internal int GetNodesCount()
+        {
+            return BinarySearchTree<T>.GetNodesCount(this.root);
+        }
+
         #endregion
 
         /// <summary>Gets tree size.</summary>
@@ -553,6 +574,8 @@ namespace NetCollections
                 return false;
             }
 
+            BinarySearchTree<T>.UpdateHeightBottomUp(node);
+
             this.Balance(node);
 
             --this.Count;
@@ -573,6 +596,7 @@ namespace NetCollections
         
         #region IEnumerable
 
+        /// <summary>Enumerates values as per in-order traversal.</summary>
         public IEnumerator<T> GetEnumerator()
         {
             return this.InOrder().GetEnumerator();
