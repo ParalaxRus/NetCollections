@@ -34,5 +34,80 @@ namespace NetCollectionsTests
 
             BinarySearchTreeTests.CheckTree(tree, 2, 1);
         }
+
+        [TestMethod]
+        public void LeftLeftHeavyCheck()
+        {
+            var values = new int[] { 99, 155, 92, 80, 60 };
+
+            var tree = new BinarySearchTree<int>();
+            
+            foreach (var val in values)
+            {
+                tree.Add(val);
+            }
+
+            BinarySearchTreeTests.CheckTree(tree, 5, 2);
+        }
+
+        [TestMethod]
+        public void LeftRightHeavyCheck()
+        {
+            var values = new int[] { 99, 155, 92, 80, 90 };
+
+            var tree = new BinarySearchTree<int>();
+            
+            foreach (var val in values)
+            {
+                tree.Add(val);
+            }
+
+            BinarySearchTreeTests.CheckTree(tree, 5, 2);
+        }
+
+        [TestMethod]
+        public void RightLeftHeavyCheck()
+        {
+            var values = new int[] { 99, 155, 92, 234, 189 };
+
+            var tree = new BinarySearchTree<int>();
+            
+            foreach (var val in values)
+            {
+                tree.Add(val);
+            }
+
+            BinarySearchTreeTests.CheckTree(tree, 5, 2);
+        }
+
+        [TestMethod]
+        public void RightRightHeavyCheck()
+        {
+            var values = new int[] { 99, 155, 92, 234, 250 };
+
+            var tree = new BinarySearchTree<int>();
+            
+            foreach (var val in values)
+            {
+                tree.Add(val);
+            }
+
+            BinarySearchTreeTests.CheckTree(tree, 5, 2);
+        }
+
+        [TestMethod]
+        public void AddRandomValuesShouldCreateBalancedBst()
+        {
+            var tree = new BinarySearchTree<int>();
+
+            var values = TestHelpers.CreateRandomValues();
+            foreach (var value in values)
+            {
+                tree.Add(value);
+            }
+
+            Assert.IsTrue(tree.IsBalanced());
+            Assert.IsTrue(tree.IsValid());
+        }
     }
 }

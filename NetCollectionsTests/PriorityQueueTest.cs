@@ -43,17 +43,6 @@ namespace NetCollectionsTests
             }
         }
 
-        private static IEnumerable<byte> CreateValues()
-        {
-            var rand = new Random();
-            int size = rand.Next(2, 20);
-
-            var values = new byte[size];
-            rand.NextBytes(values);
-
-            return values;
-        }
-
         private static IEnumerable<WeightedUri> CreateCustomValues()
         {
             var rand = new Random();
@@ -109,7 +98,7 @@ namespace NetCollectionsTests
 
         private static void AddRemoveAndAddIntsShouldProduceValidQueue(PriorityQueueType type)
         {
-            var values = PriorityQueueTests.CreateValues();
+            var values = TestHelpers.CreateRandomValues();
             
             var queue = new PriorityQueue<int>(type);
             foreach (var val in values)
@@ -124,7 +113,7 @@ namespace NetCollectionsTests
                 queue.Dequeue();
             }
 
-            values = PriorityQueueTests.CreateValues();
+            values = TestHelpers.CreateRandomValues();
             foreach (var val in values)
             {
                 queue.Enqueue(val);
@@ -223,42 +212,42 @@ namespace NetCollectionsTests
         public void AddValuesToMinHeapShouldConformMinHeapProperty()
         {
             PriorityQueueTests.AddValuesShouldConformHeapProperty(
-                PriorityQueueTests.CreateValues(),  PriorityQueueType.Min);
+                TestHelpers.CreateRandomValues(),  PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void AddValuesToMaxHeapShouldConformMaxHeapProperty()
         {
             PriorityQueueTests.AddValuesShouldConformHeapProperty(
-                PriorityQueueTests.CreateValues(),  PriorityQueueType.Max);
+                TestHelpers.CreateRandomValues(),  PriorityQueueType.Max);
         }
 
         [TestMethod]
         public void CreateMinHeapFromCollectionShouldCorrectlyHeapify()
         {
             PriorityQueueTests.CreateFromCollectionShouldHeapifyCorrecly(
-                PriorityQueueTests.CreateValues(), PriorityQueueType.Min);
+                TestHelpers.CreateRandomValues(), PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void CreateMaxHeapFromCollectionShouldCorrectlyHeapify()
         {
             PriorityQueueTests.CreateFromCollectionShouldHeapifyCorrecly(
-                PriorityQueueTests.CreateValues(), PriorityQueueType.Max);
+                TestHelpers.CreateRandomValues(), PriorityQueueType.Max);
         }
 
         [TestMethod]
         public void PeekMinQueueShouldReturnTheSameValuesAsTop()
         {
             PriorityQueueTests.PeekShouldReturnTheSameValuesAsTop(
-                PriorityQueueTests.CreateValues(), PriorityQueueType.Min);
+                TestHelpers.CreateRandomValues(), PriorityQueueType.Min);
         }
 
         [TestMethod]
         public void PeekMaxQueueShouldReturnTheSameValuesAsTop()
         {
             PriorityQueueTests.PeekShouldReturnTheSameValuesAsTop(
-                PriorityQueueTests.CreateValues(), PriorityQueueType.Max);
+                TestHelpers.CreateRandomValues(), PriorityQueueType.Max);
         }
 
         [TestMethod]

@@ -93,6 +93,12 @@ namespace NetCollections
                     throw new ArgumentException("Can't set root node as a child");
                 }
             }
+
+            public override string ToString()
+            {
+                return string.Format("Val={0} Height={1} Count={2}", 
+                                     this.Value, this.Height, this.Count);
+            }
         }
     }
 }

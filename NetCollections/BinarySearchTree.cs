@@ -357,16 +357,14 @@ namespace NetCollections
             if (factor > 1)
             {
                 // Left heavy
-                factor = BinarySearchTree<T>.GetHeight(node.Left.Left) - 
-                         BinarySearchTree<T>.GetHeight(node.Left.Right);
+                factor = BinarySearchTree<T>.GetFactor(node.Left);
 
                 return factor > 0 ? HeavinessType.LeftLeft : HeavinessType.LeftRight;
             }
             else
             {
                 // Right heavy
-                factor = BinarySearchTree<T>.GetHeight(node.Right.Left) - 
-                         BinarySearchTree<T>.GetHeight(node.Right.Right);
+                factor = BinarySearchTree<T>.GetFactor(node.Right);
 
                 return factor < 0 ? HeavinessType.RightRight : HeavinessType.RightLeft;
             }
@@ -382,8 +380,7 @@ namespace NetCollections
             root.Left = node;
             node.Right = left;
 
-            BinarySearchTree<T>.UpdateHeight(node.Right);
-            BinarySearchTree<T>.UpdateHeight(node);
+            BinarySearchTree<T>.UpdateHeight(root.Left);
 
             return root;
         }
@@ -398,15 +395,25 @@ namespace NetCollections
             root.Right = node;
             node.Left = right;
 
-            BinarySearchTree<T>.UpdateHeight(node.Left);
-            BinarySearchTree<T>.UpdateHeight(node);
+            BinarySearchTree<T>.UpdateHeight(root.Right);
 
             return root;
         }
 
+        /// <summary>Calculates specified node's balance factor.</summary>
+        private static int GetFactor(Node node)
+        {
+            int left = node.Left != null ? BinarySearchTree<T>.GetHeight(node.Left) + 1 : 0;
+            int right = node.Right != null ? BinarySearchTree<T>.GetHeight(node.Right) + 1 : 0;
+
+            return (left - right);
+        }
+
+        /// <summary>Balances subtree rooted at the specified node.</summary>
+        /// <returns>New root.</returns>
         private Node BalanceSubtree(Node node)
         {
-            int factor = BinarySearchTree<T>.GetHeight(node.Right) - BinarySearchTree<T>.GetHeight(node.Left);
+            int factor = BinarySearchTree<T>.GetFactor(node);
 
             if ((factor >= -1) && (factor <= 1))
             {
@@ -416,22 +423,27 @@ namespace NetCollections
             var heavy = BinarySearchTree<T>.GetHeaviness(node, factor);
             if (heavy == HeavinessType.LeftLeft)
             {
-                return this.RotateRight(node);
+                node = this.RotateRight(node);
             }
             else if (heavy == HeavinessType.LeftRight)
             {
                 node.Left = this.RotateLeft(node.Left);
-                return this.RotateRight(node);
+                node = this.RotateRight(node);
             }
             else if (heavy == HeavinessType.RightLeft)
             {
-                node.Right = this.RotateRight(node.Left);
-                return this.RotateLeft(node);
+                node.Right = this.RotateRight(node.Right);
+                node = this.RotateLeft(node);
             }
             else
             {
-                return this.RotateLeft(node);
+                node = this.RotateLeft(node);
             }
+
+            // Updating new root's height
+            BinarySearchTree<T>.UpdateHeight(node);
+
+            return node;
         }
 
         /// <summary>Performs bottom up tree balancing starting with the specified node.</summary>
@@ -451,6 +463,9 @@ namespace NetCollections
                 else
                 {
                     parent.Set(node, type);
+                    
+                    // Parent height might change after balancing
+                    BinarySearchTree<T>.UpdateHeight(parent);
                 }
 
                 node = parent;
