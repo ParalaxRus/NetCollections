@@ -75,11 +75,6 @@ namespace NetCollections
 
             public void Set(Node node, NodeType type)
             {
-                if (node == null)
-                {
-                    throw new ArgumentNullException("node");
-                }
-
                 if (type == NodeType.Left)
                 {
                     this.Left = node;
@@ -92,12 +87,18 @@ namespace NetCollections
                 {
                     throw new ArgumentException("Can't set root node as a child");
                 }
+
+                if (node != null)
+                {
+                    node.Parent = this;
+                }
             }
 
             public override string ToString()
             {
-                return string.Format("Val={0} Height={1} Count={2}", 
-                                     this.Value, this.Height, this.Count);
+                string parent = this.Parent == null ? "null" : this.Parent.Value.ToString();
+                return string.Format("Val={0} Height={1} Duplicates={2} Children={3} Parent={4}", 
+                                     this.Value, this.Height, this.Count, this.Children, parent);
             }
         }
     }

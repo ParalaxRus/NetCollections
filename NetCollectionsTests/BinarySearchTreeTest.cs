@@ -18,9 +18,6 @@ namespace NetCollectionsTests
             Assert.AreEqual(tree.Height, height);
             Assert.AreEqual(tree.Empty, count == 0);
 
-            Assert.IsTrue(tree.IsBalanced());
-            Assert.IsTrue(tree.IsValid());
-
             var values = new List<T>();
             foreach (var v in tree)
             {
@@ -28,6 +25,9 @@ namespace NetCollectionsTests
             }
 
             expectedValues.SequenceEqual(values);
+
+            Assert.IsTrue(tree.IsValid());
+            Assert.IsTrue(tree.IsBalanced());
         }
 
         private static IEnumerable<T> GetSorted<T>(IEnumerable<T> values)
@@ -148,6 +148,7 @@ namespace NetCollectionsTests
             var values = TestHelpers.CreateRandomValues();
             foreach (var value in values)
             {
+                Console.Write("{0}, ", value);
                 tree.Add(value);
             }
 
@@ -176,7 +177,6 @@ namespace NetCollectionsTests
             tree.Add(1);
             tree.Add(2);
 
-            // Remove should return removed parent to fix this bug ...
             Assert.IsTrue(tree.Remove(1));
             
             BinarySearchTreeTests.CheckTree(tree, 1, 0, new int[] { 2 });
@@ -221,6 +221,26 @@ namespace NetCollectionsTests
             BinarySearchTreeTests.CheckTree(tree, 2, 1, values);
 
             Assert.AreEqual(tree.GetNodesCount(), 2);
+        }
+
+        [TestMethod]
+        public void RemoveRandomValuesShouldKeepTreeBalanced()
+        {
+            var values = TestHelpers.CreateRandomValues();
+            var tree = new BinarySearchTree<byte>(values);
+            
+            var valuesList = values.ToList();
+
+            var rand = new Random();
+            while (valuesList.Count != 0)
+            {
+                int index = rand.Next(0, valuesList.Count);
+
+                Assert.IsTrue(tree.Remove(valuesList[index]));
+                valuesList.RemoveAt(index);
+                
+                BinarySearchTreeTests.CheckTree(tree, valuesList.Count, tree.Height, BinarySearchTreeTests.GetSorted(valuesList));
+            }
         }
 
         #endregion

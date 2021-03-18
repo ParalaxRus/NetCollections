@@ -102,6 +102,19 @@ namespace NetCollections
                    BinarySearchTree<T>.GetNodesCount(node.Right) + 1;
         }
 
+        /// <summary>Sets node as root.</summary>
+        private Node SetRoot(Node node)
+        {
+            this.root = node;
+
+            if (node != null)
+            {
+                node.Parent = null;
+            }
+
+            return this.root;
+        }
+
         /// <summary>Iterative implementation of the in-order traversal.</summary>
         private IEnumerable<T> InOrder()
         {
@@ -208,8 +221,7 @@ namespace NetCollections
         {
             if (this.root == null)
             {
-                this.root = new Node(value);
-                return this.root;
+                return this.SetRoot(new Node(value));
             }
 
             int compare = 0;
@@ -264,53 +276,47 @@ namespace NetCollections
         }
 
         /// <summary>Removes leaf node.</summary>
-        /// <returns>Removed node's parent.</returns>
+        /// <returns>Node from which heights should be invalidated.</returns>
         private Node RemoveLeaf(Node node)
         {
-            if (node == this.root)
+            var type = node.GetNodeType();
+
+            var parent = node.Parent;
+            node.Parent = null;
+
+            if (type == Node.NodeType.Root)
             {
-                this.root = null;
-                return null;
+                return this.SetRoot(null);
             }
 
-            if (node.Parent.Left == node)
-            {
-                node.Parent.Left = null;
-            }
-            else
-            {
-                node.Parent.Right = null;
-            }
-
-            return node.Parent;
+            parent.Set(null, type);
+            
+            return parent;
         }
 
         /// <summary>Removes node with the single child.</summary>
-        /// <returns>Removed node's parent.</returns>
+        /// <returns>Node from which heights should be invalidated.</returns>
         private Node RemoveWithOneChild(Node node)
         {
             var child = node.Left != null ? node.Left : node.Right;
 
-            if (node == this.root)
+            var type = node.GetNodeType();
+
+            var parent = node.Parent;
+            node.Parent = null;
+
+            if (type == Node.NodeType.Root)
             {
-                this.root = child;
-                return this.root;
+                return this.SetRoot(child);
             }
 
-            if (node.Parent.Left == node)
-            {
-                node.Parent.Left = child;
-            }
-            else
-            {
-                node.Parent.Right = child;
-            }
+            parent.Set(child, type);
 
-            return node.Parent;
+            return parent;
         }
 
         /// <summary>Removes node with both children.</summary>
-        /// <returns>Removed node's parent.</returns>
+        /// <returns>Node from which heights should be invalidated.</returns>
         private Node RemoveWithTwoChildren(Node node)
         {
             var successor = this.GetInorderSuccessor(node);
@@ -321,48 +327,27 @@ namespace NetCollections
         }
 
         /// <summary>Removes node iteratively.</summary>
-        private void Remove(Node node)
+        /// <returns>Node from which heights should be invalidated.</returns>
+        private Node Remove(Node node)
         {
-            // Removed node's parent
-            Node parent = null;
+            // Node with the height to be fixed
+            Node updateNode = null;
 
             int children = node.Children;
             if (children == 0)
             {
-                parent = this.RemoveLeaf(node);
+                updateNode = this.RemoveLeaf(node);
             }
             else if (children == 1)
             {
-                parent = this.RemoveWithOneChild(node);
+                updateNode = this.RemoveWithOneChild(node);
             }
             else
             {
-                parent = this.RemoveWithTwoChildren(node);
+                updateNode = this.RemoveWithTwoChildren(node);
             }
 
-            BinarySearchTree<T>.UpdateHeightBottomUp(parent);
-        }
-
-        /// <summary>Removes node iteratively.</summary>
-        /// <returns>Removed node.</returns>
-        private Node RemoveNode(T value)
-        {
-            var node = this.Find(value);
-            if (node == null)
-            {
-                return null;
-            }
-
-            // Making sure that no duplicates left
-            --node.Count;
-            if (node.Count != 0)
-            {
-                return node;
-            }
-
-            this.Remove(node);
-
-            return node;
+            return updateNode;
         }
 
         /// <summary>Gets heaviness type of the subtree rooted with the specified node and balance factor.</summary>
@@ -390,10 +375,10 @@ namespace NetCollections
         private Node RotateLeft(Node node)
         {
             var root = node.Right;
-
             var left = root.Left;
-            root.Left = node;
-            node.Right = left;
+
+            root.Set(node, Node.NodeType.Left);
+            node.Set(left, Node.NodeType.Right);
 
             BinarySearchTree<T>.UpdateHeight(root.Left);
 
@@ -405,10 +390,10 @@ namespace NetCollections
         private Node RotateRight(Node node)
         {
             var root = node.Left;
-
             var right = root.Right;
-            root.Right = node;
-            node.Left = right;
+
+            root.Set(node, Node.NodeType.Right);
+            node.Set(right, Node.NodeType.Left);
 
             BinarySearchTree<T>.UpdateHeight(root.Right);
 
@@ -442,12 +427,16 @@ namespace NetCollections
             }
             else if (heavy == HeavinessType.LeftRight)
             {
-                node.Left = this.RotateLeft(node.Left);
+                var subroot = this.RotateLeft(node.Left);
+                node.Set(subroot, Node.NodeType.Left);
+
                 node = this.RotateRight(node);
             }
             else if (heavy == HeavinessType.RightLeft)
             {
-                node.Right = this.RotateRight(node.Right);
+                var subroot = this.RotateRight(node.Right);
+                node.Set(subroot, Node.NodeType.Right);
+
                 node = this.RotateLeft(node);
             }
             else
@@ -473,7 +462,7 @@ namespace NetCollections
 
                 if (parent == null)
                 {
-                    this.root = node;
+                    this.SetRoot(node);
                 }
                 else
                 {
@@ -567,18 +556,27 @@ namespace NetCollections
         /// <timecomplexity>O(logN).</timecomplexity>
         public bool Remove(T value)
         {
-            var node = this.RemoveNode(value);
+            var node = this.Find(value);
             if (node == null)
             {
-                // Value does not exist
                 return false;
             }
 
-            BinarySearchTree<T>.UpdateHeightBottomUp(node);
-
-            this.Balance(node);
-
             --this.Count;
+
+            // Making sure that no duplicates left
+            --node.Count;
+            if (node.Count != 0)
+            {
+                // Duplicate value has been removed and tree has not been changed
+                return true;
+            }
+
+            var nodeToBalance = this.Remove(node);
+            
+            BinarySearchTree<T>.UpdateHeightBottomUp(nodeToBalance);
+
+            this.Balance(nodeToBalance);
 
             return true;
         }
