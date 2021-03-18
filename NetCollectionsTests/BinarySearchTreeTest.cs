@@ -46,7 +46,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void CtorWithValuesShouldCreateBalancedTree()
         {
-            var values = TestHelpers.CreateRandomValues();
+            var values = TestHelpers.CreateRandomValues(true);
             var tree = new BinarySearchTree<byte>(values);
 
             BinarySearchTreeTests.CheckTree(tree, values.Count(), tree.Height, BinarySearchTreeTests.GetSorted(values));
@@ -145,10 +145,9 @@ namespace NetCollectionsTests
         {
             var tree = new BinarySearchTree<byte>();
 
-            var values = TestHelpers.CreateRandomValues();
+            var values = TestHelpers.CreateRandomValues(true);
             foreach (var value in values)
             {
-                Console.Write("{0}, ", value);
                 tree.Add(value);
             }
 
@@ -158,6 +157,14 @@ namespace NetCollectionsTests
         #endregion
 
         #region Remove tests
+
+        [TestMethod]
+        public void RemoveForEmptyTreeShouldReturnFalse()
+        {
+            var tree = new BinarySearchTree<int>();
+
+            Assert.IsFalse(tree.Remove(0));
+        }
 
         [TestMethod]
         public void RemoveNodeWithNoChildren()
@@ -226,7 +233,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveRandomValuesShouldKeepTreeBalanced()
         {
-            var values = TestHelpers.CreateRandomValues();
+            var values = TestHelpers.CreateRandomValues(true);
             var tree = new BinarySearchTree<byte>(values);
             
             var valuesList = values.ToList();
@@ -235,8 +242,11 @@ namespace NetCollectionsTests
             while (valuesList.Count != 0)
             {
                 int index = rand.Next(0, valuesList.Count);
+                var value = valuesList[index];
 
-                Assert.IsTrue(tree.Remove(valuesList[index]));
+                Console.Write("{0}, ", value);
+
+                Assert.IsTrue(tree.Remove(value));
                 valuesList.RemoveAt(index);
                 
                 BinarySearchTreeTests.CheckTree(tree, valuesList.Count, tree.Height, BinarySearchTreeTests.GetSorted(valuesList));
@@ -244,5 +254,96 @@ namespace NetCollectionsTests
         }
 
         #endregion
+
+        #region Contains tests
+
+        [TestMethod]
+        public void ContainsForEmptyTreeShouldReturnFalse()
+        {
+            var tree = new BinarySearchTree<int>();
+
+            Assert.IsFalse(tree.Contains(0).Item1);
+        }
+
+        [TestMethod]
+        public void ContainsNonExistingValueShouldReturnFalse()
+        {
+            var tree = new BinarySearchTree<int>();
+            tree.Add(1);
+
+            Assert.IsFalse(tree.Contains(0).Item1);
+        }
+
+        [TestMethod]
+        public void ContainsExistingValueShouldReturnTrueAndDuplicatesCount()
+        {
+            var tree = new BinarySearchTree<int>();
+            tree.Add(1);
+            tree.Add(2);
+            tree.Add(3);
+            tree.Add(2);
+            tree.Add(2);
+
+            var res = tree.Contains(2);
+            Assert.IsTrue(res.Item1);
+            Assert.AreEqual(res.Item2, 3);
+        }
+
+        [TestMethod]
+        public void ContainsExistingValueAmongRandomGeneratesValuesShouldReturnTrueAndShouldNotChangeTree()
+        {
+            var values = TestHelpers.CreateRandomValues(true);
+            var tree = new BinarySearchTree<byte>(values);
+            
+            var valuesList = values.ToList();
+
+            var rand = new Random();
+            while (valuesList.Count != 0)
+            {
+                int index = rand.Next(0, valuesList.Count);
+                byte value = valuesList[index];
+
+                Console.Write("{0}, ", value);
+
+                var res = tree.Contains(value);
+                var duplicatesCount = valuesList.Where(v => v == value).Count();
+
+                Assert.IsTrue(res.Item1);
+                Assert.AreEqual(res.Item2, duplicatesCount);
+
+                BinarySearchTreeTests.CheckTree(tree, valuesList.Count, tree.Height, BinarySearchTreeTests.GetSorted(valuesList));
+
+                tree.Remove(value);
+                valuesList.RemoveAt(index);
+            }
+        }
+
+        #endregion
+
+        [TestMethod]
+        public void RandomAddRemoveValuesShouldKeepTreeBalanced()
+        {
+            var tree = new BinarySearchTree<byte>();
+
+            var random = new Random();
+            for (int i = 0; i < 3; ++i)
+            {
+                var toAddvalues = TestHelpers.CreateRandomValues(true);
+
+                tree.AddRange(toAddvalues);
+
+                var addValues = toAddvalues.ToList();
+
+                // First count of values
+                int removeCount = random.Next(1, addValues.Count);
+                for (int j = 0; j < removeCount; ++j)
+                {
+                    tree.Remove(addValues[j]);
+                }
+
+                Assert.IsTrue(tree.IsValid());
+                Assert.IsTrue(tree.IsBalanced());
+            }
+        }
     }
 }

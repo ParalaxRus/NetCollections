@@ -322,6 +322,7 @@ namespace NetCollections
             var successor = this.GetInorderSuccessor(node);
             
             node.Value = successor.Value;
+            node.Count = successor.Count;
 
             return this.RemoveWithOneChild(successor);
         }
@@ -527,6 +528,13 @@ namespace NetCollections
         /// <summary>Constructor with the specified input values.</summary>
         /// <timecomplexity>O(NlogN).</timecomplexity>
         public BinarySearchTree(IEnumerable<T> values)
+        {
+            this.AddRange(values);
+        }
+
+        /// <summary>Adds range of values to the tree.</summary>
+        /// <timecomplexity>O(KlogN).</timecomplexity>
+        public void AddRange(IEnumerable<T> values)
         {
             if (values == null)
             {
