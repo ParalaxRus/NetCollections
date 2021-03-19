@@ -345,5 +345,31 @@ namespace NetCollectionsTests
                 Assert.IsTrue(tree.IsBalanced());
             }
         }
+
+        [TestMethod]
+        public void RandomAddRemoveCustomValuesShouldKeepTreeBalanced()
+        {
+            var tree = new BinarySearchTree<WeightedUri>();
+
+            var random = new Random();
+            for (int i = 0; i < 3; ++i)
+            {
+                var toAddvalues = TestHelpers.CreateRandomCustomValues(true);
+
+                tree.AddRange(toAddvalues);
+
+                var addValues = toAddvalues.ToList();
+
+                // First count of values
+                int removeCount = random.Next(1, addValues.Count);
+                for (int j = 0; j < removeCount; ++j)
+                {
+                    tree.Remove(addValues[j]);
+                }
+
+                Assert.IsTrue(tree.IsValid());
+                Assert.IsTrue(tree.IsBalanced());
+            }
+        }
     }
 }

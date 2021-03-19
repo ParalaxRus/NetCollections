@@ -290,33 +290,6 @@ namespace NetCollectionsTests
 
         #region Custom type tests
 
-        public class WeightedUri : IComparable<WeightedUri>
-        {
-            public Uri Host { get; private set; }
-            public int Weight { get; private set; }
-
-            public WeightedUri(Uri host, int weight)
-            {
-                this.Host = host;
-                this.Weight = weight;
-            }
-
-            public int CompareTo(WeightedUri other)
-            {
-                if (other == null) 
-                {
-                    return 1;
-                }
-
-                return this.Weight.CompareTo(other.Weight);
-            }
-
-            public override string ToString()
-            {
-                return string.Format("Host={0} Weight={1}", this.Host.Host, this.Weight);
-            }
-        }
-
         [TestMethod]
         public void DefaultCtorShouldCreateEmptyMinHeapCustom()
         {
