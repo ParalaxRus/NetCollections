@@ -9,7 +9,7 @@ namespace NetCollectionsTests
     [TestClass]
     public class BinarySearchTreeTests
     {
-        private static void CheckTree<T>(BinarySearchTree<T> tree, 
+        private static void CheckTree<T>(AvlTree<T> tree, 
                                          int                 count, 
                                          int                 height, 
                                          IEnumerable<T>      expectedValues) where T : IComparable<T>
@@ -38,7 +38,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void DefaultCtorShouldCreateEmptyTree()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
 
             BinarySearchTreeTests.CheckTree(tree, 0, 0, new List<int>());
         }
@@ -47,7 +47,7 @@ namespace NetCollectionsTests
         public void CtorWithValuesShouldCreateBalancedTree()
         {
             var values = TestHelpers.CreateRandomValues(true);
-            var tree = new BinarySearchTree<byte>(values);
+            var tree = new AvlTree<byte>(values);
 
             BinarySearchTreeTests.CheckTree(tree, values.Count(), tree.Height, BinarySearchTreeTests.GetSorted(values));
         }
@@ -57,7 +57,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void AddTwoNodesShouldSetCountToTwoAndHeightToOne()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
             tree.Add(2);
 
@@ -67,7 +67,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void AddDuplicateValueShouldIncreaseValueCountButNotChangeNodesCount()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
             tree.Add(1);
 
@@ -85,7 +85,7 @@ namespace NetCollectionsTests
         {
             var values = new int[] { 99, 155, 92, 80, 60 };
 
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             
             foreach (var val in values)
             {
@@ -100,7 +100,7 @@ namespace NetCollectionsTests
         {
             var values = new int[] { 99, 155, 92, 80, 90 };
 
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             
             foreach (var val in values)
             {
@@ -115,7 +115,7 @@ namespace NetCollectionsTests
         {
             var values = new int[] { 99, 155, 92, 234, 189 };
 
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             
             foreach (var val in values)
             {
@@ -130,7 +130,7 @@ namespace NetCollectionsTests
         {
             var values = new int[] { 99, 155, 92, 234, 250 };
 
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             
             foreach (var val in values)
             {
@@ -143,7 +143,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void AddRandomValuesShouldCreateBalancedBst()
         {
-            var tree = new BinarySearchTree<byte>();
+            var tree = new AvlTree<byte>();
 
             var values = TestHelpers.CreateRandomValues(true);
             foreach (var value in values)
@@ -161,7 +161,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveForEmptyTreeShouldReturnFalse()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
 
             Assert.IsFalse(tree.Remove(0));
         }
@@ -169,7 +169,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveNodeWithNoChildren()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
 
             Assert.IsTrue(tree.Remove(1));
@@ -180,7 +180,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveNodeWithOneChild()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
             tree.Add(2);
 
@@ -192,7 +192,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveNodeWithBothChildren()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
             tree.Add(2);
             tree.Add(-1);
@@ -206,7 +206,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveNonExistingValueShouldNotModifyTreeAndReturnFalse()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
 
             Assert.IsFalse(tree.Remove(2));
@@ -217,7 +217,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveDuplicateValueShouldReturnTrueUpdateValuesCountAndNotChangeNodesCount()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
             tree.Add(1);
             tree.Add(2);
@@ -234,7 +234,7 @@ namespace NetCollectionsTests
         public void RemoveRandomValuesShouldKeepTreeBalanced()
         {
             var values = TestHelpers.CreateRandomValues(true);
-            var tree = new BinarySearchTree<byte>(values);
+            var tree = new AvlTree<byte>(values);
             
             var valuesList = values.ToList();
 
@@ -260,7 +260,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void ContainsForEmptyTreeShouldReturnFalse()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
 
             Assert.IsFalse(tree.Contains(0).Item1);
         }
@@ -268,7 +268,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void ContainsNonExistingValueShouldReturnFalse()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
 
             Assert.IsFalse(tree.Contains(0).Item1);
@@ -277,7 +277,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void ContainsExistingValueShouldReturnTrueAndDuplicatesCount()
         {
-            var tree = new BinarySearchTree<int>();
+            var tree = new AvlTree<int>();
             tree.Add(1);
             tree.Add(2);
             tree.Add(3);
@@ -293,7 +293,7 @@ namespace NetCollectionsTests
         public void ContainsExistingValueAmongRandomGeneratesValuesShouldReturnTrueAndShouldNotChangeTree()
         {
             var values = TestHelpers.CreateRandomValues(true);
-            var tree = new BinarySearchTree<byte>(values);
+            var tree = new AvlTree<byte>(values);
             
             var valuesList = values.ToList();
 
@@ -323,7 +323,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RandomAddRemoveValuesShouldKeepTreeBalanced()
         {
-            var tree = new BinarySearchTree<byte>();
+            var tree = new AvlTree<byte>();
 
             var random = new Random();
             for (int i = 0; i < 3; ++i)
@@ -349,7 +349,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RandomAddRemoveCustomValuesShouldKeepTreeBalanced()
         {
-            var tree = new BinarySearchTree<WeightedUri>();
+            var tree = new AvlTree<WeightedUri>();
 
             var random = new Random();
             for (int i = 0; i < 3; ++i)

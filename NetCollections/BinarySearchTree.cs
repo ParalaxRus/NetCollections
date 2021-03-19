@@ -7,14 +7,15 @@ using System.Runtime.CompilerServices;
 
 namespace NetCollections
 {
-    /// <summary>Self balancing binary search tree.</summary>
-    /// <remarks>Allows duplicates.<remarks>
-    public partial class BinarySearchTree<T> : IEnumerable<T> where T : IComparable<T>
+    /// <summary>Balanced binary search tree abstract class.</summary>
+    public abstract class BinarySearchTree<T> : IEnumerable<T> where T : IComparable<T>
     {
         #region Details
 
+        protected Node<T> root = null;
+
         /// <summary>Subtree type of heaviness.</summary>
-        private enum HeavinessType
+        protected enum HeavinessType
         {
             LeftLeft,
             LeftRight,
@@ -22,10 +23,8 @@ namespace NetCollections
             RightRight
         }
 
-        Node root = null;
-
         /// <summary>Recursively checks wether tree is balanced or not.</summary>
-        private static bool IsBalanced(Node node, ref int height)
+        protected static bool IsBalanced(Node<T> node, ref int height)
         {
             if (node == null)
             {
@@ -58,7 +57,7 @@ namespace NetCollections
         /// <summary>Recursively checks wether tree is a valid binary search tree or not.</summary>
         /// <remarks>Algorithm is based on the fact that each previous value in 
         /// in-order taraversal should be less than current.</remarks>
-        private static bool IsValid(Node n, ref bool found, ref T min)
+        protected static bool IsValid(Node<T> n, ref bool found, ref T min)
         {
             if (n == null)
             {   
@@ -91,7 +90,7 @@ namespace NetCollections
             return BinarySearchTree<T>.IsValid(n.Right, ref found, ref min);
         }
 
-        private static int GetNodesCount(Node node)
+        protected static int GetNodesCount(Node<T> node)
         {
             if (node == null)
             {
@@ -102,28 +101,15 @@ namespace NetCollections
                    BinarySearchTree<T>.GetNodesCount(node.Right) + 1;
         }
 
-        /// <summary>Sets node as root.</summary>
-        private Node SetRoot(Node node)
-        {
-            this.root = node;
-
-            if (node != null)
-            {
-                node.Parent = null;
-            }
-
-            return this.root;
-        }
-
         /// <summary>Iterative implementation of the in-order traversal.</summary>
-        private IEnumerable<T> InOrder()
+        protected IEnumerable<T> InOrder()
         {
             if (this.root == null)
             {
                 yield break;
             }
 
-            var stack = new Stack<Node>();
+            var stack = new Stack<Node<T>>();
 
             var node = this.root;
             while (node != null)
@@ -159,7 +145,7 @@ namespace NetCollections
         /// <summary>Searches for a node with the given value.</summary>
         /// <timecomplexity>O(logN).</timecomplexity>
         /// <returns>Node if successfull or null otherwise.</returns>
-        private Node Find(T value)
+        protected Node<T> Find(T value)
         {
             var node = this.root;
 
@@ -184,14 +170,14 @@ namespace NetCollections
             return node;
         }
 
-        /// <summary>Get height of the specified node.</summary>
-        private static int GetHeight(Node node)
+        /// <summary>Gets height of the specified node.</summary>
+        protected static int GetHeight(Node<T> node)
         {
             return node != null ? node.Height : 0;
         }
 
         /// <summary>Updates height of the specified node.</summary>
-        private static void UpdateHeight(Node node)
+        protected static void UpdateHeight(Node<T> node)
         {
             if (node.Children == 0)
             {
@@ -205,67 +191,14 @@ namespace NetCollections
             node.Height = Math.Max(left, right) + 1;
         }
 
-        /// <summary>Updates heights from the specified node and up to the root.</summary>
-        private static void UpdateHeightBottomUp(Node node)
-        {
-            while (node != null)
-            {
-                BinarySearchTree<T>.UpdateHeight(node);
-                node = node.Parent;
-            }
-        }
-
-        /// <summary>Adds node iteratively.</summary>
-        /// <returns>Newly added node.</returns>
-        private Node AddNode(T value)
-        {
-            if (this.root == null)
-            {
-                return this.SetRoot(new Node(value));
-            }
-
-            int compare = 0;
-            Node parent = null;
-            var current = this.root;
-            while (current != null)
-            {
-                compare = value.CompareTo(current.Value);
-                if (compare == 0)
-                {
-                    ++current.Count;
-                    return current;
-                }
-
-                parent = current;
-
-                if (compare > 0)
-                {
-                    current = current.Right;
-                }
-                else
-                {
-                    current = current.Left;
-                }
-            }
-
-            var node = new Node(value, parent);
-
-            if (compare > 0)
-            {
-                parent.Right = node;
-            }
-            else
-            {
-                parent.Left = node;
-            }
-            
-            return node;
-        }
-
         /// <summary>Gets in-order successor.</summary>
-        /// <remarks>Node should have right subtree.</remarks>
-        private Node GetInorderSuccessor(Node node)
+        protected static Node<T> GetInorderSuccessor(Node<T> node)
         {
+            if (node.Right == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             node = node.Right;
             while (node.Left != null)
             {
@@ -275,85 +208,9 @@ namespace NetCollections
             return node;
         }
 
-        /// <summary>Removes leaf node.</summary>
-        /// <returns>Node from which heights should be invalidated.</returns>
-        private Node RemoveLeaf(Node node)
-        {
-            var type = node.GetNodeType();
-
-            var parent = node.Parent;
-            node.Parent = null;
-
-            if (type == Node.NodeType.Root)
-            {
-                return this.SetRoot(null);
-            }
-
-            parent.Set(null, type);
-            
-            return parent;
-        }
-
-        /// <summary>Removes node with the single child.</summary>
-        /// <returns>Node from which heights should be invalidated.</returns>
-        private Node RemoveWithOneChild(Node node)
-        {
-            var child = node.Left != null ? node.Left : node.Right;
-
-            var type = node.GetNodeType();
-
-            var parent = node.Parent;
-            node.Parent = null;
-
-            if (type == Node.NodeType.Root)
-            {
-                return this.SetRoot(child);
-            }
-
-            parent.Set(child, type);
-
-            return parent;
-        }
-
-        /// <summary>Removes node with both children.</summary>
-        /// <returns>Node from which heights should be invalidated.</returns>
-        private Node RemoveWithTwoChildren(Node node)
-        {
-            var successor = this.GetInorderSuccessor(node);
-            
-            node.Value = successor.Value;
-            node.Count = successor.Count;
-
-            return this.RemoveWithOneChild(successor);
-        }
-
-        /// <summary>Removes node iteratively.</summary>
-        /// <returns>Node from which heights should be invalidated.</returns>
-        private Node Remove(Node node)
-        {
-            // Node with the height to be fixed
-            Node updateNode = null;
-
-            int children = node.Children;
-            if (children == 0)
-            {
-                updateNode = this.RemoveLeaf(node);
-            }
-            else if (children == 1)
-            {
-                updateNode = this.RemoveWithOneChild(node);
-            }
-            else
-            {
-                updateNode = this.RemoveWithTwoChildren(node);
-            }
-
-            return updateNode;
-        }
-
         /// <summary>Gets heaviness type of the subtree rooted with the specified node and balance factor.</summary>
         /// <remarks>Should be called for unbalanced subtrees so factor does not belong to [-1, 1].</remarks>
-        private static HeavinessType GetHeaviness(Node node, int factor)
+        protected static HeavinessType GetHeaviness(Node<T> node, int factor)
         {
             if (factor > 1)
             {
@@ -371,38 +228,8 @@ namespace NetCollections
             }
         }
 
-        /// <summary>Rotates subtree rooted at the specified node to the left.</summary>
-        /// <returns>New subtree root.</returns>
-        private Node RotateLeft(Node node)
-        {
-            var root = node.Right;
-            var left = root.Left;
-
-            root.Set(node, Node.NodeType.Left);
-            node.Set(left, Node.NodeType.Right);
-
-            BinarySearchTree<T>.UpdateHeight(root.Left);
-
-            return root;
-        }
-
-        /// <summary>Rotates subtree rooted at the specified node to the right.</summary>
-        /// <returns>New subtree root.</returns>
-        private Node RotateRight(Node node)
-        {
-            var root = node.Left;
-            var right = root.Right;
-
-            root.Set(node, Node.NodeType.Right);
-            node.Set(right, Node.NodeType.Left);
-
-            BinarySearchTree<T>.UpdateHeight(root.Right);
-
-            return root;
-        }
-
         /// <summary>Calculates specified node's balance factor.</summary>
-        private static int GetFactor(Node node)
+        protected static int GetFactor(Node<T> node)
         {
             int left = node.Left != null ? BinarySearchTree<T>.GetHeight(node.Left) + 1 : 0;
             int right = node.Right != null ? BinarySearchTree<T>.GetHeight(node.Right) + 1 : 0;
@@ -410,71 +237,21 @@ namespace NetCollections
             return (left - right);
         }
 
-        /// <summary>Balances subtree rooted at the specified node.</summary>
-        /// <returns>New root.</returns>
-        private Node BalanceSubtree(Node node)
+        /// <summary>Removes value from the tree.</summary>
+        /// <remarks>Returns node be removed if successfull or null if value does not exist.</remarks>
+        protected Node<T> RemoveNode(T value)
         {
-            int factor = BinarySearchTree<T>.GetFactor(node);
-
-            if ((factor >= -1) && (factor <= 1))
+            var node = this.Find(value);
+            if (node == null)
             {
-                return node;
+                // Value does not exist
+                return null;
             }
 
-            var heavy = BinarySearchTree<T>.GetHeaviness(node, factor);
-            if (heavy == HeavinessType.LeftLeft)
-            {
-                node = this.RotateRight(node);
-            }
-            else if (heavy == HeavinessType.LeftRight)
-            {
-                var subroot = this.RotateLeft(node.Left);
-                node.Set(subroot, Node.NodeType.Left);
-
-                node = this.RotateRight(node);
-            }
-            else if (heavy == HeavinessType.RightLeft)
-            {
-                var subroot = this.RotateRight(node.Right);
-                node.Set(subroot, Node.NodeType.Right);
-
-                node = this.RotateLeft(node);
-            }
-            else
-            {
-                node = this.RotateLeft(node);
-            }
-
-            // Updating new root's height
-            BinarySearchTree<T>.UpdateHeight(node);
-
+            --node.Count;
+            --this.Count;
+            
             return node;
-        }
-
-        /// <summary>Performs bottom up tree balancing starting with the specified node.</summary>
-        private void Balance(Node node)
-        {
-            while (node != null)
-            {
-                var parent = node.Parent;
-                var type = node.GetNodeType();
-
-                node = this.BalanceSubtree(node);
-
-                if (parent == null)
-                {
-                    this.SetRoot(node);
-                }
-                else
-                {
-                    parent.Set(node, type);
-                    
-                    // Parent height might change after balancing
-                    BinarySearchTree<T>.UpdateHeight(parent);
-                }
-
-                node = parent;
-            }
         }
 
         #endregion
@@ -549,45 +326,14 @@ namespace NetCollections
 
         /// <summary>Adds value to the tree.</summary>
         /// <timecomplexity>O(logN).</timecomplexity>
-        public void Add(T value)
+        public virtual void Add(T value)
         {
-            var node = this.AddNode(value);
-
-            BinarySearchTree<T>.UpdateHeightBottomUp(node);
-
-            this.Balance(node);
-
             ++this.Count;
         }
 
         /// <summary>Removes value from the tree.</summary>
         /// <timecomplexity>O(logN).</timecomplexity>
-        public bool Remove(T value)
-        {
-            var node = this.Find(value);
-            if (node == null)
-            {
-                return false;
-            }
-
-            --this.Count;
-
-            // Making sure that no duplicates left
-            --node.Count;
-            if (node.Count != 0)
-            {
-                // Duplicate value has been removed and tree has not been changed
-                return true;
-            }
-
-            var nodeToBalance = this.Remove(node);
-            
-            BinarySearchTree<T>.UpdateHeightBottomUp(nodeToBalance);
-
-            this.Balance(nodeToBalance);
-
-            return true;
-        }
+        public abstract bool Remove(T value);
 
         /// <summary>Checks wether tree contains specified value or not.</summary>
         /// <timecomplexity>O(logN).</timecomplexity>
