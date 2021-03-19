@@ -7,7 +7,7 @@ using NetCollections;
 namespace NetCollectionsTests
 {
     [TestClass]
-    public class BinarySearchTreeTests
+    public class AvlTreeTests
     {
         private static void CheckTree<T>(AvlTree<T> tree, 
                                          int                 count, 
@@ -40,7 +40,7 @@ namespace NetCollectionsTests
         {
             var tree = new AvlTree<int>();
 
-            BinarySearchTreeTests.CheckTree(tree, 0, 0, new List<int>());
+            AvlTreeTests.CheckTree(tree, 0, 0, new List<int>());
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace NetCollectionsTests
             var values = TestHelpers.CreateRandomValues(true);
             var tree = new AvlTree<byte>(values);
 
-            BinarySearchTreeTests.CheckTree(tree, values.Count(), tree.Height, BinarySearchTreeTests.GetSorted(values));
+            AvlTreeTests.CheckTree(tree, values.Count(), tree.Height, AvlTreeTests.GetSorted(values));
         }
 
         #region Add tests
@@ -61,7 +61,7 @@ namespace NetCollectionsTests
             tree.Add(1);
             tree.Add(2);
 
-            BinarySearchTreeTests.CheckTree(tree, 2, 1, new int[] { 1, 2 });
+            AvlTreeTests.CheckTree(tree, 2, 1, new int[] { 1, 2 });
         }
 
         [TestMethod]
@@ -75,7 +75,7 @@ namespace NetCollectionsTests
             tree.Add(2);
 
             var values = new int[] { 1, 1, 2, 2 };
-            BinarySearchTreeTests.CheckTree(tree, 4, 1, values);
+            AvlTreeTests.CheckTree(tree, 4, 1, values);
 
             Assert.AreEqual(tree.GetNodesCount(), 2);
         }
@@ -92,7 +92,7 @@ namespace NetCollectionsTests
                 tree.Add(val);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, 5, 2, new int[] { 60, 80, 92, 99, 155 });
+            AvlTreeTests.CheckTree(tree, 5, 2, new int[] { 60, 80, 92, 99, 155 });
         }
 
         [TestMethod]
@@ -107,7 +107,7 @@ namespace NetCollectionsTests
                 tree.Add(val);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, 5, 2, new int[] { 80, 90, 92, 99, 155 });
+            AvlTreeTests.CheckTree(tree, 5, 2, new int[] { 80, 90, 92, 99, 155 });
         }
 
         [TestMethod]
@@ -122,7 +122,7 @@ namespace NetCollectionsTests
                 tree.Add(val);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 189, 234 });
+            AvlTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 189, 234 });
         }
 
         [TestMethod]
@@ -137,7 +137,7 @@ namespace NetCollectionsTests
                 tree.Add(val);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 234, 250 });
+            AvlTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 234, 250 });
         }
 
         [TestMethod]
@@ -151,7 +151,7 @@ namespace NetCollectionsTests
                 tree.Add(value);
             }
 
-            BinarySearchTreeTests.CheckTree(tree, values.Count(), tree.Height, BinarySearchTreeTests.GetSorted(values));
+            AvlTreeTests.CheckTree(tree, values.Count(), tree.Height, AvlTreeTests.GetSorted(values));
         }
 
         #endregion
@@ -174,7 +174,7 @@ namespace NetCollectionsTests
 
             Assert.IsTrue(tree.Remove(1));
             
-            BinarySearchTreeTests.CheckTree(tree, 0, 0, new int[] {  });
+            AvlTreeTests.CheckTree(tree, 0, 0, new int[] {  });
         }
 
         [TestMethod]
@@ -186,7 +186,7 @@ namespace NetCollectionsTests
 
             Assert.IsTrue(tree.Remove(1));
             
-            BinarySearchTreeTests.CheckTree(tree, 1, 0, new int[] { 2 });
+            AvlTreeTests.CheckTree(tree, 1, 0, new int[] { 2 });
         }
 
         [TestMethod]
@@ -200,7 +200,7 @@ namespace NetCollectionsTests
             // Remove should return removed parent to fix this bug ...
             Assert.IsTrue(tree.Remove(1));
             
-            BinarySearchTreeTests.CheckTree(tree, 2, 1, new int[] { -1, 2 });
+            AvlTreeTests.CheckTree(tree, 2, 1, new int[] { -1, 2 });
         }
 
         [TestMethod]
@@ -211,7 +211,7 @@ namespace NetCollectionsTests
 
             Assert.IsFalse(tree.Remove(2));
             
-            BinarySearchTreeTests.CheckTree(tree, 1, 0, new int[] { 1 });
+            AvlTreeTests.CheckTree(tree, 1, 0, new int[] { 1 });
         }
 
         [TestMethod]
@@ -225,7 +225,7 @@ namespace NetCollectionsTests
             Assert.IsTrue(tree.Remove(1));
 
             var values = new int[] { 1, 2 };
-            BinarySearchTreeTests.CheckTree(tree, 2, 1, values);
+            AvlTreeTests.CheckTree(tree, 2, 1, values);
 
             Assert.AreEqual(tree.GetNodesCount(), 2);
         }
@@ -249,7 +249,7 @@ namespace NetCollectionsTests
                 Assert.IsTrue(tree.Remove(value));
                 valuesList.RemoveAt(index);
                 
-                BinarySearchTreeTests.CheckTree(tree, valuesList.Count, tree.Height, BinarySearchTreeTests.GetSorted(valuesList));
+                AvlTreeTests.CheckTree(tree, valuesList.Count, tree.Height, AvlTreeTests.GetSorted(valuesList));
             }
         }
 
@@ -311,7 +311,7 @@ namespace NetCollectionsTests
                 Assert.IsTrue(res.Item1);
                 Assert.AreEqual(res.Item2, duplicatesCount);
 
-                BinarySearchTreeTests.CheckTree(tree, valuesList.Count, tree.Height, BinarySearchTreeTests.GetSorted(valuesList));
+                AvlTreeTests.CheckTree(tree, valuesList.Count, tree.Height, AvlTreeTests.GetSorted(valuesList));
 
                 tree.Remove(value);
                 valuesList.RemoveAt(index);

@@ -13,12 +13,12 @@ DocFx project to generate docs
 NetCollections library:
  - PriorityQueue: binary heap based min/max priority queue implementation
  - PriorityLookupQueue: Binary heap based min/max priority queue implementation with the fast lookup
- - BinarySearchTree: Self balanced AVL binary search tree
+ - AvlTree: Self balanced (AVL) binary search tree
 
 NetCollectionsTests library:
  - PriorityQueue unit tests
  - PriorityLookupQueue unit tests
- - BinarySearchTree unit tests
+ - AvlTree unit tests
 
 NetCollections online docs build with DocFx:
  https://paralaxrus.github.io/PriorityQueue/
