@@ -26,7 +26,7 @@ namespace NetCollections
         {
             while (node != null)
             {
-                AvlTree<T>.UpdateHeight(node);
+                BinarySearchTree<T>.UpdateHeight(node);
                 node = node.Parent;
             }
         }
@@ -164,7 +164,7 @@ namespace NetCollections
             root.Set(node, NodeP<T>.NodeType.Left);
             node.Set(left, NodeP<T>.NodeType.Right);
 
-            AvlTree<T>.UpdateHeight(root.Left);
+            BinarySearchTree<T>.UpdateHeight(root.Left);
 
             return root;
         }
@@ -179,7 +179,7 @@ namespace NetCollections
             root.Set(node, NodeP<T>.NodeType.Right);
             node.Set(right, NodeP<T>.NodeType.Left);
 
-            AvlTree<T>.UpdateHeight(root.Right);
+            BinarySearchTree<T>.UpdateHeight(root.Right);
 
             return root;
         }
@@ -188,14 +188,14 @@ namespace NetCollections
         /// <returns>New root.</returns>
         private NodeP<T> BalanceSubtree(NodeP<T> node)
         {
-            int factor = AvlTree<T>.GetFactor(node);
+            int factor = BinarySearchTree<T>.GetFactor(node);
 
             if ((factor >= -1) && (factor <= 1))
             {
                 return node;
             }
 
-            var heavy = AvlTree<T>.GetHeaviness(node, factor);
+            var heavy = BinarySearchTree<T>.GetHeaviness(node, factor);
             if (heavy == HeavinessType.LeftLeft)
             {
                 node = this.RotateRight(node);
@@ -220,7 +220,7 @@ namespace NetCollections
             }
 
             // Updating new root's height
-            AvlTree<T>.UpdateHeight(node);
+            BinarySearchTree<T>.UpdateHeight(node);
 
             return node;
         }
@@ -244,7 +244,7 @@ namespace NetCollections
                     parent.Set(node, type);
                     
                     // Parent height might change after balancing
-                    AvlTree<T>.UpdateHeight(parent);
+                    BinarySearchTree<T>.UpdateHeight(parent);
                 }
 
                 node = parent;
@@ -268,31 +268,35 @@ namespace NetCollections
         /// <timecomplexity>O(logN).</timecomplexity>
         public override void Add(T value)
         {
-            base.Add(value);
-
             var node = this.AddNode(value);
 
             AvlTree<T>.UpdateHeightBottomUp(node);
 
-            this.Balance(node);            
+            this.Balance(node);
+
+            ++this.Count;
         }
 
         /// <summary>Removes value from the tree.</summary>
         /// <timecomplexity>O(logN).</timecomplexity>
         public override bool Remove(T value)
         {
-            var node = base.RemoveNode(value);
+            var node = this.Find(value);
             if (node == null)
             {
+                // Value does not exist
                 return false;
             }
 
+            --this.Count;
+
+            --node.Count;
             if (node.Count > 0)            
             {
                 // Node should not be deleted because it still contains duplicates
                 return true;
             }
-
+            
             var nodeToBalance = this.Remove((NodeP<T>)node);
             
             AvlTree<T>.UpdateHeightBottomUp(nodeToBalance);

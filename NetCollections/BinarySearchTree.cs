@@ -237,23 +237,6 @@ namespace NetCollections
             return (left - right);
         }
 
-        /// <summary>Removes value from the tree.</summary>
-        /// <remarks>Returns node be removed if successfull or null if value does not exist.</remarks>
-        protected Node<T> RemoveNode(T value)
-        {
-            var node = this.Find(value);
-            if (node == null)
-            {
-                // Value does not exist
-                return null;
-            }
-
-            --node.Count;
-            --this.Count;
-            
-            return node;
-        }
-
         #endregion
 
         #region Internals for unit tests mostly
@@ -283,7 +266,7 @@ namespace NetCollections
 
         /// <summary>Gets tree size.</summary>
         /// <remarks>Includes duplicates count.</remarks>
-        public int Count { get; private set; }
+        public int Count { get; protected set; }
 
         /// <summary>Checks whether tree is empty or not.</summary>
         public bool Empty 
@@ -326,10 +309,7 @@ namespace NetCollections
 
         /// <summary>Adds value to the tree.</summary>
         /// <timecomplexity>O(logN).</timecomplexity>
-        public virtual void Add(T value)
-        {
-            ++this.Count;
-        }
+        public abstract void Add(T value);
 
         /// <summary>Removes value from the tree.</summary>
         /// <timecomplexity>O(logN).</timecomplexity>

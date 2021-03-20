@@ -9,10 +9,10 @@ namespace NetCollectionsTests
     [TestClass]
     public class AvlTreeTests
     {
-        private static void CheckTree<T>(AvlTree<T> tree, 
-                                         int                 count, 
-                                         int                 height, 
-                                         IEnumerable<T>      expectedValues) where T : IComparable<T>
+        private static void CheckTree<T>(AvlTree<T>     tree, 
+                                         int            count, 
+                                         int            height, 
+                                         IEnumerable<T> expectedValues) where T : IComparable<T>
         {
             Assert.AreEqual(tree.Count, count);
             Assert.AreEqual(tree.Height, height);
