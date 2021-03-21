@@ -78,28 +78,8 @@ namespace NetCollections
             return node;
         }
 
-        /// <summary>Removes leaf node.</summary>
-        /// <returns>Node from which heights should be invalidated.</returns>
-        private NodeP<T> RemoveLeaf(NodeP<T> node)
-        {
-            var type = node.GetNodeType();
-
-            var parent = node.Parent;
-            node.Parent = null;
-
-            if (type == NodeP<T>.NodeType.Root)
-            {
-                return this.SetRoot(null);
-            }
-
-            parent.Set(null, type);
-            
-            return parent;
-        }
-
-        /// <summary>Removes node with the single child.</summary>
-        /// <returns>Node from which heights should be invalidated.</returns>
-        private NodeP<T> RemoveWithOneChild(NodeP<T> node)
+        /// <summary>Removes node with the one or zero children.</summary>
+        private NodeP<T> RemoveWithOneOrZeroChildren(NodeP<T> node)
         {
             var child = (NodeP<T>) (node.Left != null ? node.Left : node.Right);
 
@@ -127,31 +107,15 @@ namespace NetCollections
             node.Value = successor.Value;
             node.Count = successor.Count;
 
-            return this.RemoveWithOneChild(successor);
+            return this.RemoveWithOneOrZeroChildren(successor);
         }
 
         /// <summary>Removes node iteratively.</summary>
         /// <returns>Node from which heights should be invalidated.</returns>
         private NodeP<T> Remove(NodeP<T> node)
         {
-            // Node with the height to be fixed
-            NodeP<T> updateNode = null;
-
-            int children = node.Children;
-            if (children == 0)
-            {
-                updateNode = this.RemoveLeaf(node);
-            }
-            else if (children == 1)
-            {
-                updateNode = this.RemoveWithOneChild(node);
-            }
-            else
-            {
-                updateNode = this.RemoveWithTwoChildren(node);
-            }
-
-            return updateNode;
+            return node.Children <= 1 ? this.RemoveWithOneOrZeroChildren(node) : 
+                                        this.RemoveWithTwoChildren(node);
         }
 
         /// <summary>Rotates subtree rooted at the specified node to the left.</summary>
@@ -195,19 +159,19 @@ namespace NetCollections
                 return node;
             }
 
-            var heavy = BinarySearchTree<T>.GetHeaviness(node, factor);
-            if (heavy == HeavinessType.LeftLeft)
+            var imbalance = BinarySearchTree<T>.GetImbalance(node, factor);
+            if (imbalance == ImbalanceType.LeftLeft)
             {
                 node = this.RotateRight(node);
             }
-            else if (heavy == HeavinessType.LeftRight)
+            else if (imbalance == ImbalanceType.LeftRight)
             {
                 var subroot = this.RotateLeft((NodeP<T>)node.Left);
                 node.Set(subroot, NodeP<T>.NodeType.Left);
 
                 node = this.RotateRight(node);
             }
-            else if (heavy == HeavinessType.RightLeft)
+            else if (imbalance == ImbalanceType.RightLeft)
             {
                 var subroot = this.RotateRight((NodeP<T>)node.Right);
                 node.Set(subroot, NodeP<T>.NodeType.Right);

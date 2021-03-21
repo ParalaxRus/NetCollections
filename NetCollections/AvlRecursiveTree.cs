@@ -36,6 +36,8 @@ namespace NetCollections
 
             node = this.BalanceSubtree(node);
 
+            BinarySearchTree<T>.UpdateHeight(node);
+
             return node;
         }
 
@@ -45,28 +47,36 @@ namespace NetCollections
             return null;
         }
 
-        /// <summary>Removes node with the single child.</summary>
+        /// <summary>Removes node with one child.</summary>
         private Node<T> RemoveWithOneChild(Node<T> node)
         {
-            var child = node.Left != null ? node.Left : node.Right;
-            
-            return child;
+            return node.Left != null ? node.Left : node.Right;
         }
 
         /// <summary>Removes node with both children.</summary>
-        /// <returns>Node from which heights should be invalidated.</returns>
         private Node<T> RemoveWithTwoChildren(Node<T> node)
         {
             var successor = BinarySearchTree<T>.GetInorderSuccessor(node);
-            
-            node.Value = successor.Value;
-            node.Count = successor.Count;
 
-            return this.RemoveWithOneChild(successor);
+            var value = successor.Value;
+            var count = successor.Count;
+
+            // Recursively removing in-order successor starting from the current node
+            // to make sure that node's subtree properly balanced before unwinding recursion 
+            // recursion stack up from the call to RemoveWithTwoChildren()
+            bool exists = false;
+            successor.Count = 1; // Successor should be removed no matter how many duplicates it contains
+            this.RemoveNode(node, successor.Value, ref exists);
+            
+            // Updating current node with the successor data which should be deleted by now
+            node.Value = value;
+            node.Count = count;
+
+            return node;
         }
 
         /// <summary>Removes node iteratively.</summary>
-        /// <returns>Root of the subtree.</returns>
+        /// <returns>Root of the new subtree.</returns>
         private Node<T> RemoveNode(Node<T> node)
         {
             int children = node.Children;
@@ -82,8 +92,8 @@ namespace NetCollections
             {
                 node = this.RemoveWithTwoChildren(node);
             }
-
-            return node;
+            
+            return node;                            
         }
 
         /// <summary>Rotates subtree rooted at the specified node to the left.</summary>
@@ -127,17 +137,17 @@ namespace NetCollections
                 return node;
             }
 
-            var heavy = BinarySearchTree<T>.GetHeaviness(node, factor);
-            if (heavy == HeavinessType.LeftLeft)
+            var imbalance = BinarySearchTree<T>.GetImbalance(node, factor);
+            if (imbalance == ImbalanceType.LeftLeft)
             {
                 node = this.RotateRight(node);
             }
-            else if (heavy == HeavinessType.LeftRight)
+            else if (imbalance == ImbalanceType.LeftRight)
             {
                 node.Left = this.RotateLeft(node.Left);
                 node = this.RotateRight(node);
             }
-            else if (heavy == HeavinessType.RightLeft)
+            else if (imbalance == ImbalanceType.RightLeft)
             {
                 node.Right = this.RotateRight(node.Right);
                 node = this.RotateLeft(node);
@@ -146,9 +156,6 @@ namespace NetCollections
             {
                 node = this.RotateLeft(node);
             }
-
-            // Updating balanced subtree root's height
-            BinarySearchTree<T>.UpdateHeight(node);
 
             return node;
         }
@@ -165,7 +172,13 @@ namespace NetCollections
             int compare = value.CompareTo(node.Value);
             if (compare == 0)
             {
-                node = RemoveNode(node);
+                --node.Count;
+
+                if (node.Count == 0)
+                {
+                    node = RemoveNode(node);
+                }
+                
                 exists = true;
             }
             else if (compare > 0)

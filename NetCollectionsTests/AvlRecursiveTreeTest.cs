@@ -7,10 +7,8 @@ using NetCollections;
 namespace NetCollectionsTests
 {
     [TestClass]
-    public class AvlTreeTests
+    public class AvlRecursiveTreeTests
     {
-        #region Private methods
-
         private static void CheckTree<T>(BinarySearchTree<T> tree, 
                                          int                 count, 
                                          int                 height, 
@@ -37,23 +35,21 @@ namespace NetCollectionsTests
             return values.OrderBy(v => v);
         }
 
-        #endregion
-
         [TestMethod]
         public void DefaultCtorShouldCreateEmptyTree()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
 
-            AvlTreeTests.CheckTree(tree, 0, 0, new List<int>());
+            AvlRecursiveTreeTests.CheckTree(tree, 0, 0, new List<int>());
         }
 
         [TestMethod]
         public void CtorWithValuesShouldCreateBalancedTree()
         {
             var values = TestHelpers.CreateRandomValues(true);
-            var tree = new AvlTree<byte>(values);
+            var tree = new AvlRecursiveTree<byte>(values);
 
-            AvlTreeTests.CheckTree(tree, values.Count(), tree.Height, AvlTreeTests.GetSorted(values));
+            AvlRecursiveTreeTests.CheckTree(tree, values.Count(), tree.Height, AvlRecursiveTreeTests.GetSorted(values));
         }
 
         #region Add tests
@@ -61,17 +57,17 @@ namespace NetCollectionsTests
         [TestMethod]
         public void AddTwoNodesShouldSetCountToTwoAndHeightToOne()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
             tree.Add(2);
 
-            AvlTreeTests.CheckTree(tree, 2, 1, new int[] { 1, 2 });
+            AvlRecursiveTreeTests.CheckTree(tree, 2, 1, new int[] { 1, 2 });
         }
 
         [TestMethod]
         public void AddDuplicateValueShouldIncreaseValueCountButNotChangeNodesCount()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
             tree.Add(1);
 
@@ -79,7 +75,7 @@ namespace NetCollectionsTests
             tree.Add(2);
 
             var values = new int[] { 1, 1, 2, 2 };
-            AvlTreeTests.CheckTree(tree, 4, 1, values);
+            AvlRecursiveTreeTests.CheckTree(tree, 4, 1, values);
 
             Assert.AreEqual(tree.GetNodesCount(), 2);
         }
@@ -89,14 +85,14 @@ namespace NetCollectionsTests
         {
             var values = new int[] { 99, 155, 92, 80, 60 };
 
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             
             foreach (var val in values)
             {
                 tree.Add(val);
             }
 
-            AvlTreeTests.CheckTree(tree, 5, 2, new int[] { 60, 80, 92, 99, 155 });
+            AvlRecursiveTreeTests.CheckTree(tree, 5, 2, new int[] { 60, 80, 92, 99, 155 });
         }
 
         [TestMethod]
@@ -104,14 +100,14 @@ namespace NetCollectionsTests
         {
             var values = new int[] { 99, 155, 92, 80, 90 };
 
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             
             foreach (var val in values)
             {
                 tree.Add(val);
             }
 
-            AvlTreeTests.CheckTree(tree, 5, 2, new int[] { 80, 90, 92, 99, 155 });
+            AvlRecursiveTreeTests.CheckTree(tree, 5, 2, new int[] { 80, 90, 92, 99, 155 });
         }
 
         [TestMethod]
@@ -119,14 +115,14 @@ namespace NetCollectionsTests
         {
             var values = new int[] { 99, 155, 92, 234, 189 };
 
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             
             foreach (var val in values)
             {
                 tree.Add(val);
             }
 
-            AvlTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 189, 234 });
+            AvlRecursiveTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 189, 234 });
         }
 
         [TestMethod]
@@ -134,20 +130,20 @@ namespace NetCollectionsTests
         {
             var values = new int[] { 99, 155, 92, 234, 250 };
 
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             
             foreach (var val in values)
             {
                 tree.Add(val);
             }
 
-            AvlTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 234, 250 });
+            AvlRecursiveTreeTests.CheckTree(tree, 5, 2, new int[] { 92, 99, 155, 234, 250 });
         }
 
         [TestMethod]
         public void AddRandomValuesShouldCreateBalancedBst()
         {
-            var tree = new AvlTree<byte>();
+            var tree = new AvlRecursiveTree<byte>();
 
             var values = TestHelpers.CreateRandomValues(true);
             foreach (var value in values)
@@ -155,7 +151,7 @@ namespace NetCollectionsTests
                 tree.Add(value);
             }
 
-            AvlTreeTests.CheckTree(tree, values.Count(), tree.Height, AvlTreeTests.GetSorted(values));
+            AvlRecursiveTreeTests.CheckTree(tree, values.Count(), tree.Height, AvlRecursiveTreeTests.GetSorted(values));
         }
 
         #endregion
@@ -165,7 +161,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveForEmptyTreeShouldReturnFalse()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
 
             Assert.IsFalse(tree.Remove(0));
         }
@@ -173,54 +169,54 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveNodeWithNoChildren()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
 
             Assert.IsTrue(tree.Remove(1));
             
-            AvlTreeTests.CheckTree(tree, 0, 0, new int[] {  });
+            AvlRecursiveTreeTests.CheckTree(tree, 0, 0, new int[] {  });
         }
 
         [TestMethod]
         public void RemoveNodeWithOneChild()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
             tree.Add(2);
 
             Assert.IsTrue(tree.Remove(1));
             
-            AvlTreeTests.CheckTree(tree, 1, 0, new int[] { 2 });
+            AvlRecursiveTreeTests.CheckTree(tree, 1, 0, new int[] { 2 });
         }
 
         [TestMethod]
         public void RemoveNodeWithBothChildren()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
             tree.Add(2);
             tree.Add(-1);
 
             Assert.IsTrue(tree.Remove(1));
             
-            AvlTreeTests.CheckTree(tree, 2, 1, new int[] { -1, 2 });
+            AvlRecursiveTreeTests.CheckTree(tree, 2, 1, new int[] { -1, 2 });
         }
 
         [TestMethod]
         public void RemoveNonExistingValueShouldNotModifyTreeAndReturnFalse()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
 
             Assert.IsFalse(tree.Remove(2));
             
-            AvlTreeTests.CheckTree(tree, 1, 0, new int[] { 1 });
+            AvlRecursiveTreeTests.CheckTree(tree, 1, 0, new int[] { 1 });
         }
 
         [TestMethod]
         public void RemoveDuplicateValueShouldReturnTrueUpdateValuesCountAndNotChangeNodesCount()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
             tree.Add(1);
             tree.Add(2);
@@ -228,7 +224,7 @@ namespace NetCollectionsTests
             Assert.IsTrue(tree.Remove(1));
 
             var values = new int[] { 1, 2 };
-            AvlTreeTests.CheckTree(tree, 2, 1, values);
+            AvlRecursiveTreeTests.CheckTree(tree, 2, 1, values);
 
             Assert.AreEqual(tree.GetNodesCount(), 2);
         }
@@ -237,30 +233,49 @@ namespace NetCollectionsTests
         public void RemoveRootWithRebalanceShouldProduceBalancedTree()
         {
             var values = new byte[] { 165, 77, 222, 1, 251, 184, 169 };
-            var tree = new AvlTree<byte>(values);
+            var tree = new AvlRecursiveTree<byte>(values);
 
             Assert.IsTrue(tree.Remove(165));
 
-            AvlTreeTests.CheckTree(tree, 6, 2, new byte[] { 1, 77, 169, 184, 222, 251 });
+            AvlRecursiveTreeTests.CheckTree(tree, 6, 2, new byte[] { 1, 77, 169, 184, 222, 251 });
         }
 
         [TestMethod]
         public void RemoveNodeWithBothChildrenAndInorderSuccessorContainingDuplicatesShouldProduceBalancedTree()
         {           
             var values = new byte[] { 34, 17, 86, 8, 32, 50, 50, 87 };
-            var tree = new AvlTree<byte>(values);
+            var tree = new AvlRecursiveTree<byte>(values);
 
             Assert.IsTrue(tree.Remove(34));
 
-            Assert.IsTrue(tree.IsValid());
-            Assert.IsTrue(tree.IsBalanced());
+            var expectedValues = new byte[] { 17, 86, 8, 32, 50, 50, 87 };
+            AvlRecursiveTreeTests.CheckTree(tree, values.Length - 1, 2, AvlRecursiveTreeTests.GetSorted(expectedValues));
+        }
+
+        [TestMethod]
+        public void FailingTest()
+        {
+            var values = new byte[] { 116, 248, 195, 231, 42, 60, 54, 18, 192, 116, 214, 211, 165, 128, 24, 180 };
+            var tree = new AvlRecursiveTree<byte>(values);
+            
+            var toRemove = new byte[] { 231, 211 };
+            foreach (var v in toRemove)
+            {
+                Assert.IsTrue(tree.Remove(v));
+
+                Assert.IsTrue(tree.IsValid());
+                Assert.IsTrue(tree.IsBalanced());
+            }
         }
 
         [TestMethod]
         public void RemoveRandomValuesShouldKeepTreeBalanced()
         {
+            // Random values: 116, 248, 195, 231, 42, 60, 54, 18, 192, 116, 214, 211, 165, 128, 24, 180, 
+            // 231, 211, 
+
             var values = TestHelpers.CreateRandomValues(true);
-            var tree = new AvlTree<byte>(values);
+            var tree = new AvlRecursiveTree<byte>(values);
             
             var valuesList = values.ToList();
 
@@ -275,7 +290,7 @@ namespace NetCollectionsTests
                 Assert.IsTrue(tree.Remove(value));
                 valuesList.RemoveAt(index);
                 
-                AvlTreeTests.CheckTree(tree, valuesList.Count, tree.Height, AvlTreeTests.GetSorted(valuesList));
+                AvlRecursiveTreeTests.CheckTree(tree, valuesList.Count, tree.Height, AvlRecursiveTreeTests.GetSorted(valuesList));
             }
         }
 
@@ -286,7 +301,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void ContainsForEmptyTreeShouldReturnFalse()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
 
             Assert.IsFalse(tree.Contains(0).Item1);
         }
@@ -294,7 +309,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void ContainsNonExistingValueShouldReturnFalse()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
 
             Assert.IsFalse(tree.Contains(0).Item1);
@@ -303,7 +318,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void ContainsExistingValueShouldReturnTrueAndDuplicatesCount()
         {
-            var tree = new AvlTree<int>();
+            var tree = new AvlRecursiveTree<int>();
             tree.Add(1);
             tree.Add(2);
             tree.Add(3);
@@ -319,7 +334,7 @@ namespace NetCollectionsTests
         public void ContainsExistingValueAmongRandomGeneratesValuesShouldReturnTrueAndShouldNotChangeTree()
         {
             var values = TestHelpers.CreateRandomValues(true);
-            var tree = new AvlTree<byte>(values);
+            var tree = new AvlRecursiveTree<byte>(values);
             
             var valuesList = values.ToList();
 
@@ -337,7 +352,7 @@ namespace NetCollectionsTests
                 Assert.IsTrue(res.Item1);
                 Assert.AreEqual(res.Item2, duplicatesCount);
 
-                AvlTreeTests.CheckTree(tree, valuesList.Count, tree.Height, AvlTreeTests.GetSorted(valuesList));
+                AvlRecursiveTreeTests.CheckTree(tree, valuesList.Count, tree.Height, AvlRecursiveTreeTests.GetSorted(valuesList));
 
                 tree.Remove(value);
                 valuesList.RemoveAt(index);
@@ -349,7 +364,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RandomAddRemoveValuesShouldKeepTreeBalanced()
         {
-            var tree = new AvlTree<byte>();
+            var tree = new AvlRecursiveTree<byte>();
 
             var random = new Random();
             for (int i = 0; i < 3; ++i)
@@ -378,7 +393,7 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RandomAddRemoveCustomValuesShouldKeepTreeBalanced()
         {
-            var tree = new AvlTree<WeightedUri>();
+            var tree = new AvlRecursiveTree<WeightedUri>();
 
             var random = new Random();
             for (int i = 0; i < 3; ++i)

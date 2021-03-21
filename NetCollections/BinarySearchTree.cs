@@ -14,8 +14,8 @@ namespace NetCollections
 
         protected Node<T> root = null;
 
-        /// <summary>Subtree type of heaviness.</summary>
-        protected enum HeavinessType
+        /// <summary>Type of imbalance.</summary>
+        protected enum ImbalanceType
         {
             LeftLeft,
             LeftRight,
@@ -179,6 +179,11 @@ namespace NetCollections
         /// <summary>Updates height of the specified node.</summary>
         protected static void UpdateHeight(Node<T> node)
         {
+            if (node == null)
+            {
+                return;
+            }
+
             if (node.Children == 0)
             {
                 node.Height = 0;
@@ -199,38 +204,45 @@ namespace NetCollections
                 throw new ArgumentNullException();
             }
 
+            var parent = node;
             node = node.Right;
             while (node.Left != null)
             {
+                parent = node;
                 node = node.Left;
             }
 
             return node;
         }
 
-        /// <summary>Gets heaviness type of the subtree rooted with the specified node and balance factor.</summary>
+        /// <summary>Gets imbalance type of the subtree rooted with the specified node and balance factor.</summary>
         /// <remarks>Should be called for unbalanced subtrees so factor does not belong to [-1, 1].</remarks>
-        protected static HeavinessType GetHeaviness(Node<T> node, int factor)
+        protected static ImbalanceType GetImbalance(Node<T> node, int factor)
         {
             if (factor > 1)
             {
-                // Left heavy
+                // Left heavy imbalance
                 factor = BinarySearchTree<T>.GetFactor(node.Left);
 
-                return factor > 0 ? HeavinessType.LeftLeft : HeavinessType.LeftRight;
+                return factor > 0 ? ImbalanceType.LeftLeft : ImbalanceType.LeftRight;
             }
             else
             {
-                // Right heavy
+                // Right heavy imbalance
                 factor = BinarySearchTree<T>.GetFactor(node.Right);
 
-                return factor < 0 ? HeavinessType.RightRight : HeavinessType.RightLeft;
+                return factor < 0 ? ImbalanceType.RightRight : ImbalanceType.RightLeft;
             }
         }
 
         /// <summary>Calculates specified node's balance factor.</summary>
         protected static int GetFactor(Node<T> node)
         {
+            if (node == null)
+            {
+                return 0;
+            }
+
             int left = node.Left != null ? BinarySearchTree<T>.GetHeight(node.Left) + 1 : 0;
             int right = node.Right != null ? BinarySearchTree<T>.GetHeight(node.Right) + 1 : 0;
 
