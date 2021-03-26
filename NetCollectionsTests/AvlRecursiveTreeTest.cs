@@ -253,14 +253,14 @@ namespace NetCollectionsTests
         }
 
         [TestMethod]
-        public void FailingTest()
+        public void RemovingNodeInTheRightSubtreeLeadingToRebalancingWholeTreeShouldProduceBalancedTree()
         {
-            var values = new byte[] { 116, 248, 195, 231, 42, 60, 54, 18, 192, 116, 214, 211, 165, 128, 24, 180 };
+            var values = new byte[] { 116, 248, 195, 231, 42, 60, 54, 18, 192, 116, 214, 211 };
             var tree = new AvlRecursiveTree<byte>(values);
             
             var toRemove = new byte[] { 231, 211 };
             foreach (var v in toRemove)
-            {
+            { 
                 Assert.IsTrue(tree.Remove(v));
 
                 Assert.IsTrue(tree.IsValid());
@@ -271,9 +271,6 @@ namespace NetCollectionsTests
         [TestMethod]
         public void RemoveRandomValuesShouldKeepTreeBalanced()
         {
-            // Random values: 116, 248, 195, 231, 42, 60, 54, 18, 192, 116, 214, 211, 165, 128, 24, 180, 
-            // 231, 211, 
-
             var values = TestHelpers.CreateRandomValues(true);
             var tree = new AvlRecursiveTree<byte>(values);
             

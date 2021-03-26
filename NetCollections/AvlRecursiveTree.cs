@@ -57,7 +57,7 @@ namespace NetCollections
         private Node<T> RemoveWithTwoChildren(Node<T> node)
         {
             var successor = BinarySearchTree<T>.GetInorderSuccessor(node);
-
+            
             var value = successor.Value;
             var count = successor.Count;
 
@@ -66,7 +66,7 @@ namespace NetCollections
             // recursion stack up from the call to RemoveWithTwoChildren()
             bool exists = false;
             successor.Count = 1; // Successor should be removed no matter how many duplicates it contains
-            this.RemoveNode(node, successor.Value, ref exists);
+            node.Right = this.RemoveNode(node.Right, successor.Value, ref exists);
             
             // Updating current node with the successor data which should be deleted by now
             node.Value = value;

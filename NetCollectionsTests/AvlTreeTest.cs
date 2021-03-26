@@ -257,6 +257,22 @@ namespace NetCollectionsTests
         }
 
         [TestMethod]
+        public void RemovingNodeInTheRightSubtreeLeadingToRebalancingWholeTreeShouldProduceBalancedTree()
+        {
+            var values = new byte[] { 116, 248, 195, 231, 42, 60, 54, 18, 192, 116, 214, 211 };
+            var tree = new AvlTree<byte>(values);
+            
+            var toRemove = new byte[] { 231, 211 };
+            foreach (var v in toRemove)
+            { 
+                Assert.IsTrue(tree.Remove(v));
+
+                Assert.IsTrue(tree.IsValid());
+                Assert.IsTrue(tree.IsBalanced());
+            }
+        }
+
+        [TestMethod]
         public void RemoveRandomValuesShouldKeepTreeBalanced()
         {
             var values = TestHelpers.CreateRandomValues(true);
