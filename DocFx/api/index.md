@@ -1,4 +1,4 @@
-# Priority queue library
+# .Net collections library
 
 Contains following classes:  
 
