@@ -23,6 +23,6 @@ NetCollectionsTests library:
  - AvlRecursiveTree unit tests
 
 NetCollections online docs build with DocFx:
- https://paralaxrus.github.io/PriorityQueue/
+ https://paralaxrus.github.io/NetCollections/
 
 
