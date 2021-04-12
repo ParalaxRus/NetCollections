@@ -1,0 +1,1447 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: NetCollections
+  name: NetCollections
+  href: api/NetCollections.html
+  commentId: N:NetCollections
+  fullName: NetCollections
+  nameWithType: NetCollections
+- uid: NetCollections.AvlRecursiveTree`1
+  name: AvlRecursiveTree<T>
+  href: api/NetCollections.AvlRecursiveTree-1.html
+  commentId: T:NetCollections.AvlRecursiveTree`1
+  name.vb: AvlRecursiveTree(Of T)
+  fullName: NetCollections.AvlRecursiveTree<T>
+  fullName.vb: NetCollections.AvlRecursiveTree(Of T)
+  nameWithType: AvlRecursiveTree<T>
+  nameWithType.vb: AvlRecursiveTree(Of T)
+- uid: NetCollections.AvlRecursiveTree`1.#ctor
+  name: AvlRecursiveTree()
+  href: api/NetCollections.AvlRecursiveTree-1.html#NetCollections_AvlRecursiveTree_1__ctor
+  commentId: M:NetCollections.AvlRecursiveTree`1.#ctor
+  fullName: NetCollections.AvlRecursiveTree<T>.AvlRecursiveTree()
+  fullName.vb: NetCollections.AvlRecursiveTree(Of T).AvlRecursiveTree()
+  nameWithType: AvlRecursiveTree<T>.AvlRecursiveTree()
+  nameWithType.vb: AvlRecursiveTree(Of T).AvlRecursiveTree()
+- uid: NetCollections.AvlRecursiveTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  name: AvlRecursiveTree(IEnumerable<T>)
+  href: api/NetCollections.AvlRecursiveTree-1.html#NetCollections_AvlRecursiveTree_1__ctor_System_Collections_Generic_IEnumerable__0__
+  commentId: M:NetCollections.AvlRecursiveTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  name.vb: AvlRecursiveTree(IEnumerable(Of T))
+  fullName: NetCollections.AvlRecursiveTree<T>.AvlRecursiveTree(System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: NetCollections.AvlRecursiveTree(Of T).AvlRecursiveTree(System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: AvlRecursiveTree<T>.AvlRecursiveTree(IEnumerable<T>)
+  nameWithType.vb: AvlRecursiveTree(Of T).AvlRecursiveTree(IEnumerable(Of T))
+- uid: NetCollections.AvlRecursiveTree`1.#ctor*
+  name: AvlRecursiveTree
+  href: api/NetCollections.AvlRecursiveTree-1.html#NetCollections_AvlRecursiveTree_1__ctor_
+  commentId: Overload:NetCollections.AvlRecursiveTree`1.#ctor
+  isSpec: "True"
+  fullName: NetCollections.AvlRecursiveTree<T>.AvlRecursiveTree
+  fullName.vb: NetCollections.AvlRecursiveTree(Of T).AvlRecursiveTree
+  nameWithType: AvlRecursiveTree<T>.AvlRecursiveTree
+  nameWithType.vb: AvlRecursiveTree(Of T).AvlRecursiveTree
+- uid: NetCollections.AvlRecursiveTree`1.Add(`0)
+  name: Add(T)
+  href: api/NetCollections.AvlRecursiveTree-1.html#NetCollections_AvlRecursiveTree_1_Add__0_
+  commentId: M:NetCollections.AvlRecursiveTree`1.Add(`0)
+  fullName: NetCollections.AvlRecursiveTree<T>.Add(T)
+  fullName.vb: NetCollections.AvlRecursiveTree(Of T).Add(T)
+  nameWithType: AvlRecursiveTree<T>.Add(T)
+  nameWithType.vb: AvlRecursiveTree(Of T).Add(T)
+- uid: NetCollections.AvlRecursiveTree`1.Add*
+  name: Add
+  href: api/NetCollections.AvlRecursiveTree-1.html#NetCollections_AvlRecursiveTree_1_Add_
+  commentId: Overload:NetCollections.AvlRecursiveTree`1.Add
+  isSpec: "True"
+  fullName: NetCollections.AvlRecursiveTree<T>.Add
+  fullName.vb: NetCollections.AvlRecursiveTree(Of T).Add
+  nameWithType: AvlRecursiveTree<T>.Add
+  nameWithType.vb: AvlRecursiveTree(Of T).Add
+- uid: NetCollections.AvlRecursiveTree`1.Remove(`0)
+  name: Remove(T)
+  href: api/NetCollections.AvlRecursiveTree-1.html#NetCollections_AvlRecursiveTree_1_Remove__0_
+  commentId: M:NetCollections.AvlRecursiveTree`1.Remove(`0)
+  fullName: NetCollections.AvlRecursiveTree<T>.Remove(T)
+  fullName.vb: NetCollections.AvlRecursiveTree(Of T).Remove(T)
+  nameWithType: AvlRecursiveTree<T>.Remove(T)
+  nameWithType.vb: AvlRecursiveTree(Of T).Remove(T)
+- uid: NetCollections.AvlRecursiveTree`1.Remove*
+  name: Remove
+  href: api/NetCollections.AvlRecursiveTree-1.html#NetCollections_AvlRecursiveTree_1_Remove_
+  commentId: Overload:NetCollections.AvlRecursiveTree`1.Remove
+  isSpec: "True"
+  fullName: NetCollections.AvlRecursiveTree<T>.Remove
+  fullName.vb: NetCollections.AvlRecursiveTree(Of T).Remove
+  nameWithType: AvlRecursiveTree<T>.Remove
+  nameWithType.vb: AvlRecursiveTree(Of T).Remove
+- uid: NetCollections.AvlTree`1
+  name: AvlTree<T>
+  href: api/NetCollections.AvlTree-1.html
+  commentId: T:NetCollections.AvlTree`1
+  name.vb: AvlTree(Of T)
+  fullName: NetCollections.AvlTree<T>
+  fullName.vb: NetCollections.AvlTree(Of T)
+  nameWithType: AvlTree<T>
+  nameWithType.vb: AvlTree(Of T)
+- uid: NetCollections.AvlTree`1.#ctor
+  name: AvlTree()
+  href: api/NetCollections.AvlTree-1.html#NetCollections_AvlTree_1__ctor
+  commentId: M:NetCollections.AvlTree`1.#ctor
+  fullName: NetCollections.AvlTree<T>.AvlTree()
+  fullName.vb: NetCollections.AvlTree(Of T).AvlTree()
+  nameWithType: AvlTree<T>.AvlTree()
+  nameWithType.vb: AvlTree(Of T).AvlTree()
+- uid: NetCollections.AvlTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  name: AvlTree(IEnumerable<T>)
+  href: api/NetCollections.AvlTree-1.html#NetCollections_AvlTree_1__ctor_System_Collections_Generic_IEnumerable__0__
+  commentId: M:NetCollections.AvlTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  name.vb: AvlTree(IEnumerable(Of T))
+  fullName: NetCollections.AvlTree<T>.AvlTree(System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: NetCollections.AvlTree(Of T).AvlTree(System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: AvlTree<T>.AvlTree(IEnumerable<T>)
+  nameWithType.vb: AvlTree(Of T).AvlTree(IEnumerable(Of T))
+- uid: NetCollections.AvlTree`1.#ctor*
+  name: AvlTree
+  href: api/NetCollections.AvlTree-1.html#NetCollections_AvlTree_1__ctor_
+  commentId: Overload:NetCollections.AvlTree`1.#ctor
+  isSpec: "True"
+  fullName: NetCollections.AvlTree<T>.AvlTree
+  fullName.vb: NetCollections.AvlTree(Of T).AvlTree
+  nameWithType: AvlTree<T>.AvlTree
+  nameWithType.vb: AvlTree(Of T).AvlTree
+- uid: NetCollections.AvlTree`1.Add(`0)
+  name: Add(T)
+  href: api/NetCollections.AvlTree-1.html#NetCollections_AvlTree_1_Add__0_
+  commentId: M:NetCollections.AvlTree`1.Add(`0)
+  fullName: NetCollections.AvlTree<T>.Add(T)
+  fullName.vb: NetCollections.AvlTree(Of T).Add(T)
+  nameWithType: AvlTree<T>.Add(T)
+  nameWithType.vb: AvlTree(Of T).Add(T)
+- uid: NetCollections.AvlTree`1.Add*
+  name: Add
+  href: api/NetCollections.AvlTree-1.html#NetCollections_AvlTree_1_Add_
+  commentId: Overload:NetCollections.AvlTree`1.Add
+  isSpec: "True"
+  fullName: NetCollections.AvlTree<T>.Add
+  fullName.vb: NetCollections.AvlTree(Of T).Add
+  nameWithType: AvlTree<T>.Add
+  nameWithType.vb: AvlTree(Of T).Add
+- uid: NetCollections.AvlTree`1.Remove(`0)
+  name: Remove(T)
+  href: api/NetCollections.AvlTree-1.html#NetCollections_AvlTree_1_Remove__0_
+  commentId: M:NetCollections.AvlTree`1.Remove(`0)
+  fullName: NetCollections.AvlTree<T>.Remove(T)
+  fullName.vb: NetCollections.AvlTree(Of T).Remove(T)
+  nameWithType: AvlTree<T>.Remove(T)
+  nameWithType.vb: AvlTree(Of T).Remove(T)
+- uid: NetCollections.AvlTree`1.Remove*
+  name: Remove
+  href: api/NetCollections.AvlTree-1.html#NetCollections_AvlTree_1_Remove_
+  commentId: Overload:NetCollections.AvlTree`1.Remove
+  isSpec: "True"
+  fullName: NetCollections.AvlTree<T>.Remove
+  fullName.vb: NetCollections.AvlTree(Of T).Remove
+  nameWithType: AvlTree<T>.Remove
+  nameWithType.vb: AvlTree(Of T).Remove
+- uid: NetCollections.BinarySearchTree`1
+  name: BinarySearchTree<T>
+  href: api/NetCollections.BinarySearchTree-1.html
+  commentId: T:NetCollections.BinarySearchTree`1
+  name.vb: BinarySearchTree(Of T)
+  fullName: NetCollections.BinarySearchTree<T>
+  fullName.vb: NetCollections.BinarySearchTree(Of T)
+  nameWithType: BinarySearchTree<T>
+  nameWithType.vb: BinarySearchTree(Of T)
+- uid: NetCollections.BinarySearchTree`1.#ctor
+  name: BinarySearchTree()
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1__ctor
+  commentId: M:NetCollections.BinarySearchTree`1.#ctor
+  fullName: NetCollections.BinarySearchTree<T>.BinarySearchTree()
+  fullName.vb: NetCollections.BinarySearchTree(Of T).BinarySearchTree()
+  nameWithType: BinarySearchTree<T>.BinarySearchTree()
+  nameWithType.vb: BinarySearchTree(Of T).BinarySearchTree()
+- uid: NetCollections.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  name: BinarySearchTree(IEnumerable<T>)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1__ctor_System_Collections_Generic_IEnumerable__0__
+  commentId: M:NetCollections.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  name.vb: BinarySearchTree(IEnumerable(Of T))
+  fullName: NetCollections.BinarySearchTree<T>.BinarySearchTree(System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).BinarySearchTree(System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: BinarySearchTree<T>.BinarySearchTree(IEnumerable<T>)
+  nameWithType.vb: BinarySearchTree(Of T).BinarySearchTree(IEnumerable(Of T))
+- uid: NetCollections.BinarySearchTree`1.#ctor*
+  name: BinarySearchTree
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1__ctor_
+  commentId: Overload:NetCollections.BinarySearchTree`1.#ctor
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.BinarySearchTree
+  fullName.vb: NetCollections.BinarySearchTree(Of T).BinarySearchTree
+  nameWithType: BinarySearchTree<T>.BinarySearchTree
+  nameWithType.vb: BinarySearchTree(Of T).BinarySearchTree
+- uid: NetCollections.BinarySearchTree`1.Add(`0)
+  name: Add(T)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Add__0_
+  commentId: M:NetCollections.BinarySearchTree`1.Add(`0)
+  fullName: NetCollections.BinarySearchTree<T>.Add(T)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Add(T)
+  nameWithType: BinarySearchTree<T>.Add(T)
+  nameWithType.vb: BinarySearchTree(Of T).Add(T)
+- uid: NetCollections.BinarySearchTree`1.Add*
+  name: Add
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Add_
+  commentId: Overload:NetCollections.BinarySearchTree`1.Add
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.Add
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Add
+  nameWithType: BinarySearchTree<T>.Add
+  nameWithType.vb: BinarySearchTree(Of T).Add
+- uid: NetCollections.BinarySearchTree`1.AddRange(System.Collections.Generic.IEnumerable{`0})
+  name: AddRange(IEnumerable<T>)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_AddRange_System_Collections_Generic_IEnumerable__0__
+  commentId: M:NetCollections.BinarySearchTree`1.AddRange(System.Collections.Generic.IEnumerable{`0})
+  name.vb: AddRange(IEnumerable(Of T))
+  fullName: NetCollections.BinarySearchTree<T>.AddRange(System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).AddRange(System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: BinarySearchTree<T>.AddRange(IEnumerable<T>)
+  nameWithType.vb: BinarySearchTree(Of T).AddRange(IEnumerable(Of T))
+- uid: NetCollections.BinarySearchTree`1.AddRange*
+  name: AddRange
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_AddRange_
+  commentId: Overload:NetCollections.BinarySearchTree`1.AddRange
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.AddRange
+  fullName.vb: NetCollections.BinarySearchTree(Of T).AddRange
+  nameWithType: BinarySearchTree<T>.AddRange
+  nameWithType.vb: BinarySearchTree(Of T).AddRange
+- uid: NetCollections.BinarySearchTree`1.Contains(`0)
+  name: Contains(T)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Contains__0_
+  commentId: M:NetCollections.BinarySearchTree`1.Contains(`0)
+  fullName: NetCollections.BinarySearchTree<T>.Contains(T)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Contains(T)
+  nameWithType: BinarySearchTree<T>.Contains(T)
+  nameWithType.vb: BinarySearchTree(Of T).Contains(T)
+- uid: NetCollections.BinarySearchTree`1.Contains*
+  name: Contains
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Contains_
+  commentId: Overload:NetCollections.BinarySearchTree`1.Contains
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.Contains
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Contains
+  nameWithType: BinarySearchTree<T>.Contains
+  nameWithType.vb: BinarySearchTree(Of T).Contains
+- uid: NetCollections.BinarySearchTree`1.Count
+  name: Count
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Count
+  commentId: P:NetCollections.BinarySearchTree`1.Count
+  fullName: NetCollections.BinarySearchTree<T>.Count
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Count
+  nameWithType: BinarySearchTree<T>.Count
+  nameWithType.vb: BinarySearchTree(Of T).Count
+- uid: NetCollections.BinarySearchTree`1.Count*
+  name: Count
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Count_
+  commentId: Overload:NetCollections.BinarySearchTree`1.Count
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.Count
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Count
+  nameWithType: BinarySearchTree<T>.Count
+  nameWithType.vb: BinarySearchTree(Of T).Count
+- uid: NetCollections.BinarySearchTree`1.Empty
+  name: Empty
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Empty
+  commentId: P:NetCollections.BinarySearchTree`1.Empty
+  fullName: NetCollections.BinarySearchTree<T>.Empty
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Empty
+  nameWithType: BinarySearchTree<T>.Empty
+  nameWithType.vb: BinarySearchTree(Of T).Empty
+- uid: NetCollections.BinarySearchTree`1.Empty*
+  name: Empty
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Empty_
+  commentId: Overload:NetCollections.BinarySearchTree`1.Empty
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.Empty
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Empty
+  nameWithType: BinarySearchTree<T>.Empty
+  nameWithType.vb: BinarySearchTree(Of T).Empty
+- uid: NetCollections.BinarySearchTree`1.Find(`0)
+  name: Find(T)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Find__0_
+  commentId: M:NetCollections.BinarySearchTree`1.Find(`0)
+  fullName: NetCollections.BinarySearchTree<T>.Find(T)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Find(T)
+  nameWithType: BinarySearchTree<T>.Find(T)
+  nameWithType.vb: BinarySearchTree(Of T).Find(T)
+- uid: NetCollections.BinarySearchTree`1.Find*
+  name: Find
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Find_
+  commentId: Overload:NetCollections.BinarySearchTree`1.Find
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.Find
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Find
+  nameWithType: BinarySearchTree<T>.Find
+  nameWithType.vb: BinarySearchTree(Of T).Find
+- uid: NetCollections.BinarySearchTree`1.GetEnumerator
+  name: GetEnumerator()
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetEnumerator
+  commentId: M:NetCollections.BinarySearchTree`1.GetEnumerator
+  fullName: NetCollections.BinarySearchTree<T>.GetEnumerator()
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetEnumerator()
+  nameWithType: BinarySearchTree<T>.GetEnumerator()
+  nameWithType.vb: BinarySearchTree(Of T).GetEnumerator()
+- uid: NetCollections.BinarySearchTree`1.GetEnumerator*
+  name: GetEnumerator
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetEnumerator_
+  commentId: Overload:NetCollections.BinarySearchTree`1.GetEnumerator
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.GetEnumerator
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetEnumerator
+  nameWithType: BinarySearchTree<T>.GetEnumerator
+  nameWithType.vb: BinarySearchTree(Of T).GetEnumerator
+- uid: NetCollections.BinarySearchTree`1.GetFactor(NetCollections.Node{`0})
+  name: GetFactor(Node<T>)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetFactor_NetCollections_Node__0__
+  commentId: M:NetCollections.BinarySearchTree`1.GetFactor(NetCollections.Node{`0})
+  name.vb: GetFactor(Node(Of T))
+  fullName: NetCollections.BinarySearchTree<T>.GetFactor(NetCollections.Node<T>)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetFactor(NetCollections.Node(Of T))
+  nameWithType: BinarySearchTree<T>.GetFactor(Node<T>)
+  nameWithType.vb: BinarySearchTree(Of T).GetFactor(Node(Of T))
+- uid: NetCollections.BinarySearchTree`1.GetFactor*
+  name: GetFactor
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetFactor_
+  commentId: Overload:NetCollections.BinarySearchTree`1.GetFactor
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.GetFactor
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetFactor
+  nameWithType: BinarySearchTree<T>.GetFactor
+  nameWithType.vb: BinarySearchTree(Of T).GetFactor
+- uid: NetCollections.BinarySearchTree`1.GetHeight(NetCollections.Node{`0})
+  name: GetHeight(Node<T>)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetHeight_NetCollections_Node__0__
+  commentId: M:NetCollections.BinarySearchTree`1.GetHeight(NetCollections.Node{`0})
+  name.vb: GetHeight(Node(Of T))
+  fullName: NetCollections.BinarySearchTree<T>.GetHeight(NetCollections.Node<T>)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetHeight(NetCollections.Node(Of T))
+  nameWithType: BinarySearchTree<T>.GetHeight(Node<T>)
+  nameWithType.vb: BinarySearchTree(Of T).GetHeight(Node(Of T))
+- uid: NetCollections.BinarySearchTree`1.GetHeight*
+  name: GetHeight
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetHeight_
+  commentId: Overload:NetCollections.BinarySearchTree`1.GetHeight
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.GetHeight
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetHeight
+  nameWithType: BinarySearchTree<T>.GetHeight
+  nameWithType.vb: BinarySearchTree(Of T).GetHeight
+- uid: NetCollections.BinarySearchTree`1.GetImbalance(NetCollections.Node{`0},System.Int32)
+  name: GetImbalance(Node<T>, Int32)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetImbalance_NetCollections_Node__0__System_Int32_
+  commentId: M:NetCollections.BinarySearchTree`1.GetImbalance(NetCollections.Node{`0},System.Int32)
+  name.vb: GetImbalance(Node(Of T), Int32)
+  fullName: NetCollections.BinarySearchTree<T>.GetImbalance(NetCollections.Node<T>, System.Int32)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetImbalance(NetCollections.Node(Of T), System.Int32)
+  nameWithType: BinarySearchTree<T>.GetImbalance(Node<T>, Int32)
+  nameWithType.vb: BinarySearchTree(Of T).GetImbalance(Node(Of T), Int32)
+- uid: NetCollections.BinarySearchTree`1.GetImbalance*
+  name: GetImbalance
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetImbalance_
+  commentId: Overload:NetCollections.BinarySearchTree`1.GetImbalance
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.GetImbalance
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetImbalance
+  nameWithType: BinarySearchTree<T>.GetImbalance
+  nameWithType.vb: BinarySearchTree(Of T).GetImbalance
+- uid: NetCollections.BinarySearchTree`1.GetInorderSuccessor(NetCollections.Node{`0})
+  name: GetInorderSuccessor(Node<T>)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetInorderSuccessor_NetCollections_Node__0__
+  commentId: M:NetCollections.BinarySearchTree`1.GetInorderSuccessor(NetCollections.Node{`0})
+  name.vb: GetInorderSuccessor(Node(Of T))
+  fullName: NetCollections.BinarySearchTree<T>.GetInorderSuccessor(NetCollections.Node<T>)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetInorderSuccessor(NetCollections.Node(Of T))
+  nameWithType: BinarySearchTree<T>.GetInorderSuccessor(Node<T>)
+  nameWithType.vb: BinarySearchTree(Of T).GetInorderSuccessor(Node(Of T))
+- uid: NetCollections.BinarySearchTree`1.GetInorderSuccessor*
+  name: GetInorderSuccessor
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetInorderSuccessor_
+  commentId: Overload:NetCollections.BinarySearchTree`1.GetInorderSuccessor
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.GetInorderSuccessor
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetInorderSuccessor
+  nameWithType: BinarySearchTree<T>.GetInorderSuccessor
+  nameWithType.vb: BinarySearchTree(Of T).GetInorderSuccessor
+- uid: NetCollections.BinarySearchTree`1.GetNodesCount(NetCollections.Node{`0})
+  name: GetNodesCount(Node<T>)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetNodesCount_NetCollections_Node__0__
+  commentId: M:NetCollections.BinarySearchTree`1.GetNodesCount(NetCollections.Node{`0})
+  name.vb: GetNodesCount(Node(Of T))
+  fullName: NetCollections.BinarySearchTree<T>.GetNodesCount(NetCollections.Node<T>)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetNodesCount(NetCollections.Node(Of T))
+  nameWithType: BinarySearchTree<T>.GetNodesCount(Node<T>)
+  nameWithType.vb: BinarySearchTree(Of T).GetNodesCount(Node(Of T))
+- uid: NetCollections.BinarySearchTree`1.GetNodesCount*
+  name: GetNodesCount
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_GetNodesCount_
+  commentId: Overload:NetCollections.BinarySearchTree`1.GetNodesCount
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.GetNodesCount
+  fullName.vb: NetCollections.BinarySearchTree(Of T).GetNodesCount
+  nameWithType: BinarySearchTree<T>.GetNodesCount
+  nameWithType.vb: BinarySearchTree(Of T).GetNodesCount
+- uid: NetCollections.BinarySearchTree`1.Height
+  name: Height
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Height
+  commentId: P:NetCollections.BinarySearchTree`1.Height
+  fullName: NetCollections.BinarySearchTree<T>.Height
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Height
+  nameWithType: BinarySearchTree<T>.Height
+  nameWithType.vb: BinarySearchTree(Of T).Height
+- uid: NetCollections.BinarySearchTree`1.Height*
+  name: Height
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Height_
+  commentId: Overload:NetCollections.BinarySearchTree`1.Height
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.Height
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Height
+  nameWithType: BinarySearchTree<T>.Height
+  nameWithType.vb: BinarySearchTree(Of T).Height
+- uid: NetCollections.BinarySearchTree`1.ImbalanceType
+  name: BinarySearchTree<T>.ImbalanceType
+  href: api/NetCollections.BinarySearchTree-1.ImbalanceType.html
+  commentId: T:NetCollections.BinarySearchTree`1.ImbalanceType
+  name.vb: BinarySearchTree(Of T).ImbalanceType
+  fullName: NetCollections.BinarySearchTree<T>.ImbalanceType
+  fullName.vb: NetCollections.BinarySearchTree(Of T).ImbalanceType
+  nameWithType: BinarySearchTree<T>.ImbalanceType
+  nameWithType.vb: BinarySearchTree(Of T).ImbalanceType
+- uid: NetCollections.BinarySearchTree`1.ImbalanceType.LeftLeft
+  name: LeftLeft
+  href: api/NetCollections.BinarySearchTree-1.ImbalanceType.html#NetCollections_BinarySearchTree_1_ImbalanceType_LeftLeft
+  commentId: F:NetCollections.BinarySearchTree`1.ImbalanceType.LeftLeft
+  fullName: NetCollections.BinarySearchTree<T>.ImbalanceType.LeftLeft
+  fullName.vb: NetCollections.BinarySearchTree(Of T).ImbalanceType.LeftLeft
+  nameWithType: BinarySearchTree<T>.ImbalanceType.LeftLeft
+  nameWithType.vb: BinarySearchTree(Of T).ImbalanceType.LeftLeft
+- uid: NetCollections.BinarySearchTree`1.ImbalanceType.LeftRight
+  name: LeftRight
+  href: api/NetCollections.BinarySearchTree-1.ImbalanceType.html#NetCollections_BinarySearchTree_1_ImbalanceType_LeftRight
+  commentId: F:NetCollections.BinarySearchTree`1.ImbalanceType.LeftRight
+  fullName: NetCollections.BinarySearchTree<T>.ImbalanceType.LeftRight
+  fullName.vb: NetCollections.BinarySearchTree(Of T).ImbalanceType.LeftRight
+  nameWithType: BinarySearchTree<T>.ImbalanceType.LeftRight
+  nameWithType.vb: BinarySearchTree(Of T).ImbalanceType.LeftRight
+- uid: NetCollections.BinarySearchTree`1.ImbalanceType.RightLeft
+  name: RightLeft
+  href: api/NetCollections.BinarySearchTree-1.ImbalanceType.html#NetCollections_BinarySearchTree_1_ImbalanceType_RightLeft
+  commentId: F:NetCollections.BinarySearchTree`1.ImbalanceType.RightLeft
+  fullName: NetCollections.BinarySearchTree<T>.ImbalanceType.RightLeft
+  fullName.vb: NetCollections.BinarySearchTree(Of T).ImbalanceType.RightLeft
+  nameWithType: BinarySearchTree<T>.ImbalanceType.RightLeft
+  nameWithType.vb: BinarySearchTree(Of T).ImbalanceType.RightLeft
+- uid: NetCollections.BinarySearchTree`1.ImbalanceType.RightRight
+  name: RightRight
+  href: api/NetCollections.BinarySearchTree-1.ImbalanceType.html#NetCollections_BinarySearchTree_1_ImbalanceType_RightRight
+  commentId: F:NetCollections.BinarySearchTree`1.ImbalanceType.RightRight
+  fullName: NetCollections.BinarySearchTree<T>.ImbalanceType.RightRight
+  fullName.vb: NetCollections.BinarySearchTree(Of T).ImbalanceType.RightRight
+  nameWithType: BinarySearchTree<T>.ImbalanceType.RightRight
+  nameWithType.vb: BinarySearchTree(Of T).ImbalanceType.RightRight
+- uid: NetCollections.BinarySearchTree`1.InOrder
+  name: InOrder()
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_InOrder
+  commentId: M:NetCollections.BinarySearchTree`1.InOrder
+  fullName: NetCollections.BinarySearchTree<T>.InOrder()
+  fullName.vb: NetCollections.BinarySearchTree(Of T).InOrder()
+  nameWithType: BinarySearchTree<T>.InOrder()
+  nameWithType.vb: BinarySearchTree(Of T).InOrder()
+- uid: NetCollections.BinarySearchTree`1.InOrder*
+  name: InOrder
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_InOrder_
+  commentId: Overload:NetCollections.BinarySearchTree`1.InOrder
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.InOrder
+  fullName.vb: NetCollections.BinarySearchTree(Of T).InOrder
+  nameWithType: BinarySearchTree<T>.InOrder
+  nameWithType.vb: BinarySearchTree(Of T).InOrder
+- uid: NetCollections.BinarySearchTree`1.IsBalanced(NetCollections.Node{`0},System.Int32@)
+  name: IsBalanced(Node<T>, ref Int32)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_IsBalanced_NetCollections_Node__0__System_Int32__
+  commentId: M:NetCollections.BinarySearchTree`1.IsBalanced(NetCollections.Node{`0},System.Int32@)
+  name.vb: IsBalanced(Node(Of T), ByRef Int32)
+  fullName: NetCollections.BinarySearchTree<T>.IsBalanced(NetCollections.Node<T>, ref System.Int32)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).IsBalanced(NetCollections.Node(Of T), ByRef System.Int32)
+  nameWithType: BinarySearchTree<T>.IsBalanced(Node<T>, ref Int32)
+  nameWithType.vb: BinarySearchTree(Of T).IsBalanced(Node(Of T), ByRef Int32)
+- uid: NetCollections.BinarySearchTree`1.IsBalanced*
+  name: IsBalanced
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_IsBalanced_
+  commentId: Overload:NetCollections.BinarySearchTree`1.IsBalanced
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.IsBalanced
+  fullName.vb: NetCollections.BinarySearchTree(Of T).IsBalanced
+  nameWithType: BinarySearchTree<T>.IsBalanced
+  nameWithType.vb: BinarySearchTree(Of T).IsBalanced
+- uid: NetCollections.BinarySearchTree`1.IsValid(NetCollections.Node{`0},System.Boolean@,`0@)
+  name: IsValid(Node<T>, ref Boolean, ref T)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_IsValid_NetCollections_Node__0__System_Boolean___0__
+  commentId: M:NetCollections.BinarySearchTree`1.IsValid(NetCollections.Node{`0},System.Boolean@,`0@)
+  name.vb: IsValid(Node(Of T), ByRef Boolean, ByRef T)
+  fullName: NetCollections.BinarySearchTree<T>.IsValid(NetCollections.Node<T>, ref System.Boolean, ref T)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).IsValid(NetCollections.Node(Of T), ByRef System.Boolean, ByRef T)
+  nameWithType: BinarySearchTree<T>.IsValid(Node<T>, ref Boolean, ref T)
+  nameWithType.vb: BinarySearchTree(Of T).IsValid(Node(Of T), ByRef Boolean, ByRef T)
+- uid: NetCollections.BinarySearchTree`1.IsValid*
+  name: IsValid
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_IsValid_
+  commentId: Overload:NetCollections.BinarySearchTree`1.IsValid
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.IsValid
+  fullName.vb: NetCollections.BinarySearchTree(Of T).IsValid
+  nameWithType: BinarySearchTree<T>.IsValid
+  nameWithType.vb: BinarySearchTree(Of T).IsValid
+- uid: NetCollections.BinarySearchTree`1.Remove(`0)
+  name: Remove(T)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Remove__0_
+  commentId: M:NetCollections.BinarySearchTree`1.Remove(`0)
+  fullName: NetCollections.BinarySearchTree<T>.Remove(T)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Remove(T)
+  nameWithType: BinarySearchTree<T>.Remove(T)
+  nameWithType.vb: BinarySearchTree(Of T).Remove(T)
+- uid: NetCollections.BinarySearchTree`1.Remove*
+  name: Remove
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_Remove_
+  commentId: Overload:NetCollections.BinarySearchTree`1.Remove
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.Remove
+  fullName.vb: NetCollections.BinarySearchTree(Of T).Remove
+  nameWithType: BinarySearchTree<T>.Remove
+  nameWithType.vb: BinarySearchTree(Of T).Remove
+- uid: NetCollections.BinarySearchTree`1.root
+  name: root
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_root
+  commentId: F:NetCollections.BinarySearchTree`1.root
+  fullName: NetCollections.BinarySearchTree<T>.root
+  fullName.vb: NetCollections.BinarySearchTree(Of T).root
+  nameWithType: BinarySearchTree<T>.root
+  nameWithType.vb: BinarySearchTree(Of T).root
+- uid: NetCollections.BinarySearchTree`1.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:NetCollections.BinarySearchTree`1.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: NetCollections.BinarySearchTree<T>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: NetCollections.BinarySearchTree(Of T).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: BinarySearchTree<T>.IEnumerable.GetEnumerator()
+  nameWithType.vb: BinarySearchTree(Of T).System.Collections.IEnumerable.GetEnumerator()
+- uid: NetCollections.BinarySearchTree`1.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:NetCollections.BinarySearchTree`1.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: NetCollections.BinarySearchTree<T>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: NetCollections.BinarySearchTree(Of T).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: BinarySearchTree<T>.IEnumerable.GetEnumerator
+  nameWithType.vb: BinarySearchTree(Of T).System.Collections.IEnumerable.GetEnumerator
+- uid: NetCollections.BinarySearchTree`1.UpdateHeight(NetCollections.Node{`0})
+  name: UpdateHeight(Node<T>)
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_UpdateHeight_NetCollections_Node__0__
+  commentId: M:NetCollections.BinarySearchTree`1.UpdateHeight(NetCollections.Node{`0})
+  name.vb: UpdateHeight(Node(Of T))
+  fullName: NetCollections.BinarySearchTree<T>.UpdateHeight(NetCollections.Node<T>)
+  fullName.vb: NetCollections.BinarySearchTree(Of T).UpdateHeight(NetCollections.Node(Of T))
+  nameWithType: BinarySearchTree<T>.UpdateHeight(Node<T>)
+  nameWithType.vb: BinarySearchTree(Of T).UpdateHeight(Node(Of T))
+- uid: NetCollections.BinarySearchTree`1.UpdateHeight*
+  name: UpdateHeight
+  href: api/NetCollections.BinarySearchTree-1.html#NetCollections_BinarySearchTree_1_UpdateHeight_
+  commentId: Overload:NetCollections.BinarySearchTree`1.UpdateHeight
+  isSpec: "True"
+  fullName: NetCollections.BinarySearchTree<T>.UpdateHeight
+  fullName.vb: NetCollections.BinarySearchTree(Of T).UpdateHeight
+  nameWithType: BinarySearchTree<T>.UpdateHeight
+  nameWithType.vb: BinarySearchTree(Of T).UpdateHeight
+- uid: NetCollections.Node`1
+  name: Node<T>
+  href: api/NetCollections.Node-1.html
+  commentId: T:NetCollections.Node`1
+  name.vb: Node(Of T)
+  fullName: NetCollections.Node<T>
+  fullName.vb: NetCollections.Node(Of T)
+  nameWithType: Node<T>
+  nameWithType.vb: Node(Of T)
+- uid: NetCollections.Node`1.#ctor(`0)
+  name: Node(T)
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1__ctor__0_
+  commentId: M:NetCollections.Node`1.#ctor(`0)
+  fullName: NetCollections.Node<T>.Node(T)
+  fullName.vb: NetCollections.Node(Of T).Node(T)
+  nameWithType: Node<T>.Node(T)
+  nameWithType.vb: Node(Of T).Node(T)
+- uid: NetCollections.Node`1.#ctor*
+  name: Node
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1__ctor_
+  commentId: Overload:NetCollections.Node`1.#ctor
+  isSpec: "True"
+  fullName: NetCollections.Node<T>.Node
+  fullName.vb: NetCollections.Node(Of T).Node
+  nameWithType: Node<T>.Node
+  nameWithType.vb: Node(Of T).Node
+- uid: NetCollections.Node`1.Children
+  name: Children
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Children
+  commentId: P:NetCollections.Node`1.Children
+  fullName: NetCollections.Node<T>.Children
+  fullName.vb: NetCollections.Node(Of T).Children
+  nameWithType: Node<T>.Children
+  nameWithType.vb: Node(Of T).Children
+- uid: NetCollections.Node`1.Children*
+  name: Children
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Children_
+  commentId: Overload:NetCollections.Node`1.Children
+  isSpec: "True"
+  fullName: NetCollections.Node<T>.Children
+  fullName.vb: NetCollections.Node(Of T).Children
+  nameWithType: Node<T>.Children
+  nameWithType.vb: Node(Of T).Children
+- uid: NetCollections.Node`1.Count
+  name: Count
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Count
+  commentId: P:NetCollections.Node`1.Count
+  fullName: NetCollections.Node<T>.Count
+  fullName.vb: NetCollections.Node(Of T).Count
+  nameWithType: Node<T>.Count
+  nameWithType.vb: Node(Of T).Count
+- uid: NetCollections.Node`1.Count*
+  name: Count
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Count_
+  commentId: Overload:NetCollections.Node`1.Count
+  isSpec: "True"
+  fullName: NetCollections.Node<T>.Count
+  fullName.vb: NetCollections.Node(Of T).Count
+  nameWithType: Node<T>.Count
+  nameWithType.vb: Node(Of T).Count
+- uid: NetCollections.Node`1.Height
+  name: Height
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Height
+  commentId: P:NetCollections.Node`1.Height
+  fullName: NetCollections.Node<T>.Height
+  fullName.vb: NetCollections.Node(Of T).Height
+  nameWithType: Node<T>.Height
+  nameWithType.vb: Node(Of T).Height
+- uid: NetCollections.Node`1.Height*
+  name: Height
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Height_
+  commentId: Overload:NetCollections.Node`1.Height
+  isSpec: "True"
+  fullName: NetCollections.Node<T>.Height
+  fullName.vb: NetCollections.Node(Of T).Height
+  nameWithType: Node<T>.Height
+  nameWithType.vb: Node(Of T).Height
+- uid: NetCollections.Node`1.Left
+  name: Left
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Left
+  commentId: P:NetCollections.Node`1.Left
+  fullName: NetCollections.Node<T>.Left
+  fullName.vb: NetCollections.Node(Of T).Left
+  nameWithType: Node<T>.Left
+  nameWithType.vb: Node(Of T).Left
+- uid: NetCollections.Node`1.Left*
+  name: Left
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Left_
+  commentId: Overload:NetCollections.Node`1.Left
+  isSpec: "True"
+  fullName: NetCollections.Node<T>.Left
+  fullName.vb: NetCollections.Node(Of T).Left
+  nameWithType: Node<T>.Left
+  nameWithType.vb: Node(Of T).Left
+- uid: NetCollections.Node`1.Right
+  name: Right
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Right
+  commentId: P:NetCollections.Node`1.Right
+  fullName: NetCollections.Node<T>.Right
+  fullName.vb: NetCollections.Node(Of T).Right
+  nameWithType: Node<T>.Right
+  nameWithType.vb: Node(Of T).Right
+- uid: NetCollections.Node`1.Right*
+  name: Right
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Right_
+  commentId: Overload:NetCollections.Node`1.Right
+  isSpec: "True"
+  fullName: NetCollections.Node<T>.Right
+  fullName.vb: NetCollections.Node(Of T).Right
+  nameWithType: Node<T>.Right
+  nameWithType.vb: Node(Of T).Right
+- uid: NetCollections.Node`1.ToString
+  name: ToString()
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_ToString
+  commentId: M:NetCollections.Node`1.ToString
+  fullName: NetCollections.Node<T>.ToString()
+  fullName.vb: NetCollections.Node(Of T).ToString()
+  nameWithType: Node<T>.ToString()
+  nameWithType.vb: Node(Of T).ToString()
+- uid: NetCollections.Node`1.ToString*
+  name: ToString
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_ToString_
+  commentId: Overload:NetCollections.Node`1.ToString
+  isSpec: "True"
+  fullName: NetCollections.Node<T>.ToString
+  fullName.vb: NetCollections.Node(Of T).ToString
+  nameWithType: Node<T>.ToString
+  nameWithType.vb: Node(Of T).ToString
+- uid: NetCollections.Node`1.Value
+  name: Value
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Value
+  commentId: P:NetCollections.Node`1.Value
+  fullName: NetCollections.Node<T>.Value
+  fullName.vb: NetCollections.Node(Of T).Value
+  nameWithType: Node<T>.Value
+  nameWithType.vb: Node(Of T).Value
+- uid: NetCollections.Node`1.Value*
+  name: Value
+  href: api/NetCollections.Node-1.html#NetCollections_Node_1_Value_
+  commentId: Overload:NetCollections.Node`1.Value
+  isSpec: "True"
+  fullName: NetCollections.Node<T>.Value
+  fullName.vb: NetCollections.Node(Of T).Value
+  nameWithType: Node<T>.Value
+  nameWithType.vb: Node(Of T).Value
+- uid: NetCollections.NodeP`1
+  name: NodeP<T>
+  href: api/NetCollections.NodeP-1.html
+  commentId: T:NetCollections.NodeP`1
+  name.vb: NodeP(Of T)
+  fullName: NetCollections.NodeP<T>
+  fullName.vb: NetCollections.NodeP(Of T)
+  nameWithType: NodeP<T>
+  nameWithType.vb: NodeP(Of T)
+- uid: NetCollections.NodeP`1.#ctor(`0)
+  name: NodeP(T)
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1__ctor__0_
+  commentId: M:NetCollections.NodeP`1.#ctor(`0)
+  fullName: NetCollections.NodeP<T>.NodeP(T)
+  fullName.vb: NetCollections.NodeP(Of T).NodeP(T)
+  nameWithType: NodeP<T>.NodeP(T)
+  nameWithType.vb: NodeP(Of T).NodeP(T)
+- uid: NetCollections.NodeP`1.#ctor(`0,NetCollections.NodeP{`0})
+  name: NodeP(T, NodeP<T>)
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1__ctor__0_NetCollections_NodeP__0__
+  commentId: M:NetCollections.NodeP`1.#ctor(`0,NetCollections.NodeP{`0})
+  name.vb: NodeP(T, NodeP(Of T))
+  fullName: NetCollections.NodeP<T>.NodeP(T, NetCollections.NodeP<T>)
+  fullName.vb: NetCollections.NodeP(Of T).NodeP(T, NetCollections.NodeP(Of T))
+  nameWithType: NodeP<T>.NodeP(T, NodeP<T>)
+  nameWithType.vb: NodeP(Of T).NodeP(T, NodeP(Of T))
+- uid: NetCollections.NodeP`1.#ctor*
+  name: NodeP
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1__ctor_
+  commentId: Overload:NetCollections.NodeP`1.#ctor
+  isSpec: "True"
+  fullName: NetCollections.NodeP<T>.NodeP
+  fullName.vb: NetCollections.NodeP(Of T).NodeP
+  nameWithType: NodeP<T>.NodeP
+  nameWithType.vb: NodeP(Of T).NodeP
+- uid: NetCollections.NodeP`1.GetNodeType
+  name: GetNodeType()
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1_GetNodeType
+  commentId: M:NetCollections.NodeP`1.GetNodeType
+  fullName: NetCollections.NodeP<T>.GetNodeType()
+  fullName.vb: NetCollections.NodeP(Of T).GetNodeType()
+  nameWithType: NodeP<T>.GetNodeType()
+  nameWithType.vb: NodeP(Of T).GetNodeType()
+- uid: NetCollections.NodeP`1.GetNodeType*
+  name: GetNodeType
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1_GetNodeType_
+  commentId: Overload:NetCollections.NodeP`1.GetNodeType
+  isSpec: "True"
+  fullName: NetCollections.NodeP<T>.GetNodeType
+  fullName.vb: NetCollections.NodeP(Of T).GetNodeType
+  nameWithType: NodeP<T>.GetNodeType
+  nameWithType.vb: NodeP(Of T).GetNodeType
+- uid: NetCollections.NodeP`1.NodeType
+  name: NodeP<T>.NodeType
+  href: api/NetCollections.NodeP-1.NodeType.html
+  commentId: T:NetCollections.NodeP`1.NodeType
+  name.vb: NodeP(Of T).NodeType
+  fullName: NetCollections.NodeP<T>.NodeType
+  fullName.vb: NetCollections.NodeP(Of T).NodeType
+  nameWithType: NodeP<T>.NodeType
+  nameWithType.vb: NodeP(Of T).NodeType
+- uid: NetCollections.NodeP`1.NodeType.Left
+  name: Left
+  href: api/NetCollections.NodeP-1.NodeType.html#NetCollections_NodeP_1_NodeType_Left
+  commentId: F:NetCollections.NodeP`1.NodeType.Left
+  fullName: NetCollections.NodeP<T>.NodeType.Left
+  fullName.vb: NetCollections.NodeP(Of T).NodeType.Left
+  nameWithType: NodeP<T>.NodeType.Left
+  nameWithType.vb: NodeP(Of T).NodeType.Left
+- uid: NetCollections.NodeP`1.NodeType.Right
+  name: Right
+  href: api/NetCollections.NodeP-1.NodeType.html#NetCollections_NodeP_1_NodeType_Right
+  commentId: F:NetCollections.NodeP`1.NodeType.Right
+  fullName: NetCollections.NodeP<T>.NodeType.Right
+  fullName.vb: NetCollections.NodeP(Of T).NodeType.Right
+  nameWithType: NodeP<T>.NodeType.Right
+  nameWithType.vb: NodeP(Of T).NodeType.Right
+- uid: NetCollections.NodeP`1.NodeType.Root
+  name: Root
+  href: api/NetCollections.NodeP-1.NodeType.html#NetCollections_NodeP_1_NodeType_Root
+  commentId: F:NetCollections.NodeP`1.NodeType.Root
+  fullName: NetCollections.NodeP<T>.NodeType.Root
+  fullName.vb: NetCollections.NodeP(Of T).NodeType.Root
+  nameWithType: NodeP<T>.NodeType.Root
+  nameWithType.vb: NodeP(Of T).NodeType.Root
+- uid: NetCollections.NodeP`1.Parent
+  name: Parent
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1_Parent
+  commentId: P:NetCollections.NodeP`1.Parent
+  fullName: NetCollections.NodeP<T>.Parent
+  fullName.vb: NetCollections.NodeP(Of T).Parent
+  nameWithType: NodeP<T>.Parent
+  nameWithType.vb: NodeP(Of T).Parent
+- uid: NetCollections.NodeP`1.Parent*
+  name: Parent
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1_Parent_
+  commentId: Overload:NetCollections.NodeP`1.Parent
+  isSpec: "True"
+  fullName: NetCollections.NodeP<T>.Parent
+  fullName.vb: NetCollections.NodeP(Of T).Parent
+  nameWithType: NodeP<T>.Parent
+  nameWithType.vb: NodeP(Of T).Parent
+- uid: NetCollections.NodeP`1.Set(NetCollections.NodeP{`0},NetCollections.NodeP{`0}.NodeType)
+  name: Set(NodeP<T>, NodeP<T>.NodeType)
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1_Set_NetCollections_NodeP__0__NetCollections_NodeP__0__NodeType_
+  commentId: M:NetCollections.NodeP`1.Set(NetCollections.NodeP{`0},NetCollections.NodeP{`0}.NodeType)
+  name.vb: Set(NodeP(Of T), NodeP(Of T).NodeType)
+  fullName: NetCollections.NodeP<T>.Set(NetCollections.NodeP<T>, NetCollections.NodeP<T>.NodeType)
+  fullName.vb: NetCollections.NodeP(Of T).Set(NetCollections.NodeP(Of T), NetCollections.NodeP(Of T).NodeType)
+  nameWithType: NodeP<T>.Set(NodeP<T>, NodeP<T>.NodeType)
+  nameWithType.vb: NodeP(Of T).Set(NodeP(Of T), NodeP(Of T).NodeType)
+- uid: NetCollections.NodeP`1.Set*
+  name: Set
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1_Set_
+  commentId: Overload:NetCollections.NodeP`1.Set
+  isSpec: "True"
+  fullName: NetCollections.NodeP<T>.Set
+  fullName.vb: NetCollections.NodeP(Of T).Set
+  nameWithType: NodeP<T>.Set
+  nameWithType.vb: NodeP(Of T).Set
+- uid: NetCollections.NodeP`1.ToString
+  name: ToString()
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1_ToString
+  commentId: M:NetCollections.NodeP`1.ToString
+  fullName: NetCollections.NodeP<T>.ToString()
+  fullName.vb: NetCollections.NodeP(Of T).ToString()
+  nameWithType: NodeP<T>.ToString()
+  nameWithType.vb: NodeP(Of T).ToString()
+- uid: NetCollections.NodeP`1.ToString*
+  name: ToString
+  href: api/NetCollections.NodeP-1.html#NetCollections_NodeP_1_ToString_
+  commentId: Overload:NetCollections.NodeP`1.ToString
+  isSpec: "True"
+  fullName: NetCollections.NodeP<T>.ToString
+  fullName.vb: NetCollections.NodeP(Of T).ToString
+  nameWithType: NodeP<T>.ToString
+  nameWithType.vb: NodeP(Of T).ToString
+- uid: NetCollections.PriorityLookupQueue`2
+  name: PriorityLookupQueue<K, V>
+  href: api/NetCollections.PriorityLookupQueue-2.html
+  commentId: T:NetCollections.PriorityLookupQueue`2
+  name.vb: PriorityLookupQueue(Of K, V)
+  fullName: NetCollections.PriorityLookupQueue<K, V>
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V)
+  nameWithType: PriorityLookupQueue<K, V>
+  nameWithType.vb: PriorityLookupQueue(Of K, V)
+- uid: NetCollections.PriorityLookupQueue`2.#ctor(NetCollections.PriorityQueueType)
+  name: PriorityLookupQueue(PriorityQueueType)
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2__ctor_NetCollections_PriorityQueueType_
+  commentId: M:NetCollections.PriorityLookupQueue`2.#ctor(NetCollections.PriorityQueueType)
+  fullName: NetCollections.PriorityLookupQueue<K, V>.PriorityLookupQueue(NetCollections.PriorityQueueType)
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).PriorityLookupQueue(NetCollections.PriorityQueueType)
+  nameWithType: PriorityLookupQueue<K, V>.PriorityLookupQueue(PriorityQueueType)
+  nameWithType.vb: PriorityLookupQueue(Of K, V).PriorityLookupQueue(PriorityQueueType)
+- uid: NetCollections.PriorityLookupQueue`2.#ctor(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`1},NetCollections.PriorityQueueType)
+  name: PriorityLookupQueue(IEnumerable<K>, IEnumerable<V>, PriorityQueueType)
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2__ctor_System_Collections_Generic_IEnumerable__0__System_Collections_Generic_IEnumerable__1__NetCollections_PriorityQueueType_
+  commentId: M:NetCollections.PriorityLookupQueue`2.#ctor(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`1},NetCollections.PriorityQueueType)
+  name.vb: PriorityLookupQueue(IEnumerable(Of K), IEnumerable(Of V), PriorityQueueType)
+  fullName: NetCollections.PriorityLookupQueue<K, V>.PriorityLookupQueue(System.Collections.Generic.IEnumerable<K>, System.Collections.Generic.IEnumerable<V>, NetCollections.PriorityQueueType)
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).PriorityLookupQueue(System.Collections.Generic.IEnumerable(Of K), System.Collections.Generic.IEnumerable(Of V), NetCollections.PriorityQueueType)
+  nameWithType: PriorityLookupQueue<K, V>.PriorityLookupQueue(IEnumerable<K>, IEnumerable<V>, PriorityQueueType)
+  nameWithType.vb: PriorityLookupQueue(Of K, V).PriorityLookupQueue(IEnumerable(Of K), IEnumerable(Of V), PriorityQueueType)
+- uid: NetCollections.PriorityLookupQueue`2.#ctor*
+  name: PriorityLookupQueue
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2__ctor_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.#ctor
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.PriorityLookupQueue
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).PriorityLookupQueue
+  nameWithType: PriorityLookupQueue<K, V>.PriorityLookupQueue
+  nameWithType.vb: PriorityLookupQueue(Of K, V).PriorityLookupQueue
+- uid: NetCollections.PriorityLookupQueue`2.ContainsValue(`1)
+  name: ContainsValue(V)
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_ContainsValue__1_
+  commentId: M:NetCollections.PriorityLookupQueue`2.ContainsValue(`1)
+  fullName: NetCollections.PriorityLookupQueue<K, V>.ContainsValue(V)
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).ContainsValue(V)
+  nameWithType: PriorityLookupQueue<K, V>.ContainsValue(V)
+  nameWithType.vb: PriorityLookupQueue(Of K, V).ContainsValue(V)
+- uid: NetCollections.PriorityLookupQueue`2.ContainsValue*
+  name: ContainsValue
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_ContainsValue_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.ContainsValue
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.ContainsValue
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).ContainsValue
+  nameWithType: PriorityLookupQueue<K, V>.ContainsValue
+  nameWithType.vb: PriorityLookupQueue(Of K, V).ContainsValue
+- uid: NetCollections.PriorityLookupQueue`2.Count
+  name: Count
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Count
+  commentId: P:NetCollections.PriorityLookupQueue`2.Count
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Count
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Count
+  nameWithType: PriorityLookupQueue<K, V>.Count
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Count
+- uid: NetCollections.PriorityLookupQueue`2.Count*
+  name: Count
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Count_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.Count
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Count
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Count
+  nameWithType: PriorityLookupQueue<K, V>.Count
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Count
+- uid: NetCollections.PriorityLookupQueue`2.Dequeue
+  name: Dequeue()
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Dequeue
+  commentId: M:NetCollections.PriorityLookupQueue`2.Dequeue
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Dequeue()
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Dequeue()
+  nameWithType: PriorityLookupQueue<K, V>.Dequeue()
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Dequeue()
+- uid: NetCollections.PriorityLookupQueue`2.Dequeue*
+  name: Dequeue
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Dequeue_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.Dequeue
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Dequeue
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Dequeue
+  nameWithType: PriorityLookupQueue<K, V>.Dequeue
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Dequeue
+- uid: NetCollections.PriorityLookupQueue`2.Empty
+  name: Empty
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Empty
+  commentId: P:NetCollections.PriorityLookupQueue`2.Empty
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Empty
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Empty
+  nameWithType: PriorityLookupQueue<K, V>.Empty
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Empty
+- uid: NetCollections.PriorityLookupQueue`2.Empty*
+  name: Empty
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Empty_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.Empty
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Empty
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Empty
+  nameWithType: PriorityLookupQueue<K, V>.Empty
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Empty
+- uid: NetCollections.PriorityLookupQueue`2.Enqueue(`0,`1)
+  name: Enqueue(K, V)
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Enqueue__0__1_
+  commentId: M:NetCollections.PriorityLookupQueue`2.Enqueue(`0,`1)
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Enqueue(K, V)
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Enqueue(K, V)
+  nameWithType: PriorityLookupQueue<K, V>.Enqueue(K, V)
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Enqueue(K, V)
+- uid: NetCollections.PriorityLookupQueue`2.Enqueue*
+  name: Enqueue
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Enqueue_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.Enqueue
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Enqueue
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Enqueue
+  nameWithType: PriorityLookupQueue<K, V>.Enqueue
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Enqueue
+- uid: NetCollections.PriorityLookupQueue`2.GetEnumerator
+  name: GetEnumerator()
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_GetEnumerator
+  commentId: M:NetCollections.PriorityLookupQueue`2.GetEnumerator
+  fullName: NetCollections.PriorityLookupQueue<K, V>.GetEnumerator()
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).GetEnumerator()
+  nameWithType: PriorityLookupQueue<K, V>.GetEnumerator()
+  nameWithType.vb: PriorityLookupQueue(Of K, V).GetEnumerator()
+- uid: NetCollections.PriorityLookupQueue`2.GetEnumerator*
+  name: GetEnumerator
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_GetEnumerator_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.GetEnumerator
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.GetEnumerator
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).GetEnumerator
+  nameWithType: PriorityLookupQueue<K, V>.GetEnumerator
+  nameWithType.vb: PriorityLookupQueue(Of K, V).GetEnumerator
+- uid: NetCollections.PriorityLookupQueue`2.GetPriority(`1)
+  name: GetPriority(V)
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_GetPriority__1_
+  commentId: M:NetCollections.PriorityLookupQueue`2.GetPriority(`1)
+  fullName: NetCollections.PriorityLookupQueue<K, V>.GetPriority(V)
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).GetPriority(V)
+  nameWithType: PriorityLookupQueue<K, V>.GetPriority(V)
+  nameWithType.vb: PriorityLookupQueue(Of K, V).GetPriority(V)
+- uid: NetCollections.PriorityLookupQueue`2.GetPriority*
+  name: GetPriority
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_GetPriority_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.GetPriority
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.GetPriority
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).GetPriority
+  nameWithType: PriorityLookupQueue<K, V>.GetPriority
+  nameWithType.vb: PriorityLookupQueue(Of K, V).GetPriority
+- uid: NetCollections.PriorityLookupQueue`2.MoveDown(System.Int32)
+  name: MoveDown(Int32)
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_MoveDown_System_Int32_
+  commentId: M:NetCollections.PriorityLookupQueue`2.MoveDown(System.Int32)
+  fullName: NetCollections.PriorityLookupQueue<K, V>.MoveDown(System.Int32)
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).MoveDown(System.Int32)
+  nameWithType: PriorityLookupQueue<K, V>.MoveDown(Int32)
+  nameWithType.vb: PriorityLookupQueue(Of K, V).MoveDown(Int32)
+- uid: NetCollections.PriorityLookupQueue`2.MoveDown*
+  name: MoveDown
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_MoveDown_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.MoveDown
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.MoveDown
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).MoveDown
+  nameWithType: PriorityLookupQueue<K, V>.MoveDown
+  nameWithType.vb: PriorityLookupQueue(Of K, V).MoveDown
+- uid: NetCollections.PriorityLookupQueue`2.Peek
+  name: Peek()
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Peek
+  commentId: M:NetCollections.PriorityLookupQueue`2.Peek
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Peek()
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Peek()
+  nameWithType: PriorityLookupQueue<K, V>.Peek()
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Peek()
+- uid: NetCollections.PriorityLookupQueue`2.Peek*
+  name: Peek
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_Peek_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.Peek
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.Peek
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).Peek
+  nameWithType: PriorityLookupQueue<K, V>.Peek
+  nameWithType.vb: PriorityLookupQueue(Of K, V).Peek
+- uid: NetCollections.PriorityLookupQueue`2.SetPriority(`1,`0)
+  name: SetPriority(V, K)
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_SetPriority__1__0_
+  commentId: M:NetCollections.PriorityLookupQueue`2.SetPriority(`1,`0)
+  fullName: NetCollections.PriorityLookupQueue<K, V>.SetPriority(V, K)
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).SetPriority(V, K)
+  nameWithType: PriorityLookupQueue<K, V>.SetPriority(V, K)
+  nameWithType.vb: PriorityLookupQueue(Of K, V).SetPriority(V, K)
+- uid: NetCollections.PriorityLookupQueue`2.SetPriority*
+  name: SetPriority
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_SetPriority_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.SetPriority
+  isSpec: "True"
+  fullName: NetCollections.PriorityLookupQueue<K, V>.SetPriority
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).SetPriority
+  nameWithType: PriorityLookupQueue<K, V>.SetPriority
+  nameWithType.vb: PriorityLookupQueue(Of K, V).SetPriority
+- uid: NetCollections.PriorityLookupQueue`2.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:NetCollections.PriorityLookupQueue`2.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: NetCollections.PriorityLookupQueue<K, V>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: PriorityLookupQueue<K, V>.IEnumerable.GetEnumerator()
+  nameWithType.vb: PriorityLookupQueue(Of K, V).System.Collections.IEnumerable.GetEnumerator()
+- uid: NetCollections.PriorityLookupQueue`2.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: api/NetCollections.PriorityLookupQueue-2.html#NetCollections_PriorityLookupQueue_2_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:NetCollections.PriorityLookupQueue`2.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: NetCollections.PriorityLookupQueue<K, V>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: NetCollections.PriorityLookupQueue(Of K, V).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: PriorityLookupQueue<K, V>.IEnumerable.GetEnumerator
+  nameWithType.vb: PriorityLookupQueue(Of K, V).System.Collections.IEnumerable.GetEnumerator
+- uid: NetCollections.PriorityQueue`1
+  name: PriorityQueue<T>
+  href: api/NetCollections.PriorityQueue-1.html
+  commentId: T:NetCollections.PriorityQueue`1
+  name.vb: PriorityQueue(Of T)
+  fullName: NetCollections.PriorityQueue<T>
+  fullName.vb: NetCollections.PriorityQueue(Of T)
+  nameWithType: PriorityQueue<T>
+  nameWithType.vb: PriorityQueue(Of T)
+- uid: NetCollections.PriorityQueue`1.#ctor(NetCollections.PriorityQueueType)
+  name: PriorityQueue(PriorityQueueType)
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1__ctor_NetCollections_PriorityQueueType_
+  commentId: M:NetCollections.PriorityQueue`1.#ctor(NetCollections.PriorityQueueType)
+  fullName: NetCollections.PriorityQueue<T>.PriorityQueue(NetCollections.PriorityQueueType)
+  fullName.vb: NetCollections.PriorityQueue(Of T).PriorityQueue(NetCollections.PriorityQueueType)
+  nameWithType: PriorityQueue<T>.PriorityQueue(PriorityQueueType)
+  nameWithType.vb: PriorityQueue(Of T).PriorityQueue(PriorityQueueType)
+- uid: NetCollections.PriorityQueue`1.#ctor(System.Collections.Generic.IEnumerable{`0},NetCollections.PriorityQueueType)
+  name: PriorityQueue(IEnumerable<T>, PriorityQueueType)
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1__ctor_System_Collections_Generic_IEnumerable__0__NetCollections_PriorityQueueType_
+  commentId: M:NetCollections.PriorityQueue`1.#ctor(System.Collections.Generic.IEnumerable{`0},NetCollections.PriorityQueueType)
+  name.vb: PriorityQueue(IEnumerable(Of T), PriorityQueueType)
+  fullName: NetCollections.PriorityQueue<T>.PriorityQueue(System.Collections.Generic.IEnumerable<T>, NetCollections.PriorityQueueType)
+  fullName.vb: NetCollections.PriorityQueue(Of T).PriorityQueue(System.Collections.Generic.IEnumerable(Of T), NetCollections.PriorityQueueType)
+  nameWithType: PriorityQueue<T>.PriorityQueue(IEnumerable<T>, PriorityQueueType)
+  nameWithType.vb: PriorityQueue(Of T).PriorityQueue(IEnumerable(Of T), PriorityQueueType)
+- uid: NetCollections.PriorityQueue`1.#ctor*
+  name: PriorityQueue
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1__ctor_
+  commentId: Overload:NetCollections.PriorityQueue`1.#ctor
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.PriorityQueue
+  fullName.vb: NetCollections.PriorityQueue(Of T).PriorityQueue
+  nameWithType: PriorityQueue<T>.PriorityQueue
+  nameWithType.vb: PriorityQueue(Of T).PriorityQueue
+- uid: NetCollections.PriorityQueue`1.Contains(`0)
+  name: Contains(T)
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Contains__0_
+  commentId: M:NetCollections.PriorityQueue`1.Contains(`0)
+  fullName: NetCollections.PriorityQueue<T>.Contains(T)
+  fullName.vb: NetCollections.PriorityQueue(Of T).Contains(T)
+  nameWithType: PriorityQueue<T>.Contains(T)
+  nameWithType.vb: PriorityQueue(Of T).Contains(T)
+- uid: NetCollections.PriorityQueue`1.Contains*
+  name: Contains
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Contains_
+  commentId: Overload:NetCollections.PriorityQueue`1.Contains
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.Contains
+  fullName.vb: NetCollections.PriorityQueue(Of T).Contains
+  nameWithType: PriorityQueue<T>.Contains
+  nameWithType.vb: PriorityQueue(Of T).Contains
+- uid: NetCollections.PriorityQueue`1.Count
+  name: Count
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Count
+  commentId: P:NetCollections.PriorityQueue`1.Count
+  fullName: NetCollections.PriorityQueue<T>.Count
+  fullName.vb: NetCollections.PriorityQueue(Of T).Count
+  nameWithType: PriorityQueue<T>.Count
+  nameWithType.vb: PriorityQueue(Of T).Count
+- uid: NetCollections.PriorityQueue`1.Count*
+  name: Count
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Count_
+  commentId: Overload:NetCollections.PriorityQueue`1.Count
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.Count
+  fullName.vb: NetCollections.PriorityQueue(Of T).Count
+  nameWithType: PriorityQueue<T>.Count
+  nameWithType.vb: PriorityQueue(Of T).Count
+- uid: NetCollections.PriorityQueue`1.Dequeue
+  name: Dequeue()
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Dequeue
+  commentId: M:NetCollections.PriorityQueue`1.Dequeue
+  fullName: NetCollections.PriorityQueue<T>.Dequeue()
+  fullName.vb: NetCollections.PriorityQueue(Of T).Dequeue()
+  nameWithType: PriorityQueue<T>.Dequeue()
+  nameWithType.vb: PriorityQueue(Of T).Dequeue()
+- uid: NetCollections.PriorityQueue`1.Dequeue*
+  name: Dequeue
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Dequeue_
+  commentId: Overload:NetCollections.PriorityQueue`1.Dequeue
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.Dequeue
+  fullName.vb: NetCollections.PriorityQueue(Of T).Dequeue
+  nameWithType: PriorityQueue<T>.Dequeue
+  nameWithType.vb: PriorityQueue(Of T).Dequeue
+- uid: NetCollections.PriorityQueue`1.Empty
+  name: Empty
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Empty
+  commentId: P:NetCollections.PriorityQueue`1.Empty
+  fullName: NetCollections.PriorityQueue<T>.Empty
+  fullName.vb: NetCollections.PriorityQueue(Of T).Empty
+  nameWithType: PriorityQueue<T>.Empty
+  nameWithType.vb: PriorityQueue(Of T).Empty
+- uid: NetCollections.PriorityQueue`1.Empty*
+  name: Empty
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Empty_
+  commentId: Overload:NetCollections.PriorityQueue`1.Empty
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.Empty
+  fullName.vb: NetCollections.PriorityQueue(Of T).Empty
+  nameWithType: PriorityQueue<T>.Empty
+  nameWithType.vb: PriorityQueue(Of T).Empty
+- uid: NetCollections.PriorityQueue`1.Enqueue(`0)
+  name: Enqueue(T)
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Enqueue__0_
+  commentId: M:NetCollections.PriorityQueue`1.Enqueue(`0)
+  fullName: NetCollections.PriorityQueue<T>.Enqueue(T)
+  fullName.vb: NetCollections.PriorityQueue(Of T).Enqueue(T)
+  nameWithType: PriorityQueue<T>.Enqueue(T)
+  nameWithType.vb: PriorityQueue(Of T).Enqueue(T)
+- uid: NetCollections.PriorityQueue`1.Enqueue*
+  name: Enqueue
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Enqueue_
+  commentId: Overload:NetCollections.PriorityQueue`1.Enqueue
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.Enqueue
+  fullName.vb: NetCollections.PriorityQueue(Of T).Enqueue
+  nameWithType: PriorityQueue<T>.Enqueue
+  nameWithType.vb: PriorityQueue(Of T).Enqueue
+- uid: NetCollections.PriorityQueue`1.GetEnumerator
+  name: GetEnumerator()
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_GetEnumerator
+  commentId: M:NetCollections.PriorityQueue`1.GetEnumerator
+  fullName: NetCollections.PriorityQueue<T>.GetEnumerator()
+  fullName.vb: NetCollections.PriorityQueue(Of T).GetEnumerator()
+  nameWithType: PriorityQueue<T>.GetEnumerator()
+  nameWithType.vb: PriorityQueue(Of T).GetEnumerator()
+- uid: NetCollections.PriorityQueue`1.GetEnumerator*
+  name: GetEnumerator
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_GetEnumerator_
+  commentId: Overload:NetCollections.PriorityQueue`1.GetEnumerator
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.GetEnumerator
+  fullName.vb: NetCollections.PriorityQueue(Of T).GetEnumerator
+  nameWithType: PriorityQueue<T>.GetEnumerator
+  nameWithType.vb: PriorityQueue(Of T).GetEnumerator
+- uid: NetCollections.PriorityQueue`1.MoveDown(System.Int32)
+  name: MoveDown(Int32)
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_MoveDown_System_Int32_
+  commentId: M:NetCollections.PriorityQueue`1.MoveDown(System.Int32)
+  fullName: NetCollections.PriorityQueue<T>.MoveDown(System.Int32)
+  fullName.vb: NetCollections.PriorityQueue(Of T).MoveDown(System.Int32)
+  nameWithType: PriorityQueue<T>.MoveDown(Int32)
+  nameWithType.vb: PriorityQueue(Of T).MoveDown(Int32)
+- uid: NetCollections.PriorityQueue`1.MoveDown*
+  name: MoveDown
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_MoveDown_
+  commentId: Overload:NetCollections.PriorityQueue`1.MoveDown
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.MoveDown
+  fullName.vb: NetCollections.PriorityQueue(Of T).MoveDown
+  nameWithType: PriorityQueue<T>.MoveDown
+  nameWithType.vb: PriorityQueue(Of T).MoveDown
+- uid: NetCollections.PriorityQueue`1.Peek
+  name: Peek()
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Peek
+  commentId: M:NetCollections.PriorityQueue`1.Peek
+  fullName: NetCollections.PriorityQueue<T>.Peek()
+  fullName.vb: NetCollections.PriorityQueue(Of T).Peek()
+  nameWithType: PriorityQueue<T>.Peek()
+  nameWithType.vb: PriorityQueue(Of T).Peek()
+- uid: NetCollections.PriorityQueue`1.Peek*
+  name: Peek
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_Peek_
+  commentId: Overload:NetCollections.PriorityQueue`1.Peek
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueue<T>.Peek
+  fullName.vb: NetCollections.PriorityQueue(Of T).Peek
+  nameWithType: PriorityQueue<T>.Peek
+  nameWithType.vb: PriorityQueue(Of T).Peek
+- uid: NetCollections.PriorityQueue`1.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:NetCollections.PriorityQueue`1.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: NetCollections.PriorityQueue<T>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: NetCollections.PriorityQueue(Of T).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: PriorityQueue<T>.IEnumerable.GetEnumerator()
+  nameWithType.vb: PriorityQueue(Of T).System.Collections.IEnumerable.GetEnumerator()
+- uid: NetCollections.PriorityQueue`1.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: api/NetCollections.PriorityQueue-1.html#NetCollections_PriorityQueue_1_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:NetCollections.PriorityQueue`1.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: NetCollections.PriorityQueue<T>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: NetCollections.PriorityQueue(Of T).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: PriorityQueue<T>.IEnumerable.GetEnumerator
+  nameWithType.vb: PriorityQueue(Of T).System.Collections.IEnumerable.GetEnumerator
+- uid: NetCollections.PriorityQueueBase
+  name: PriorityQueueBase
+  href: api/NetCollections.PriorityQueueBase.html
+  commentId: T:NetCollections.PriorityQueueBase
+  fullName: NetCollections.PriorityQueueBase
+  nameWithType: PriorityQueueBase
+- uid: NetCollections.PriorityQueueBase.#ctor(NetCollections.PriorityQueueType)
+  name: PriorityQueueBase(PriorityQueueType)
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase__ctor_NetCollections_PriorityQueueType_
+  commentId: M:NetCollections.PriorityQueueBase.#ctor(NetCollections.PriorityQueueType)
+  fullName: NetCollections.PriorityQueueBase.PriorityQueueBase(NetCollections.PriorityQueueType)
+  nameWithType: PriorityQueueBase.PriorityQueueBase(PriorityQueueType)
+- uid: NetCollections.PriorityQueueBase.#ctor*
+  name: PriorityQueueBase
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase__ctor_
+  commentId: Overload:NetCollections.PriorityQueueBase.#ctor
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.PriorityQueueBase
+  nameWithType: PriorityQueueBase.PriorityQueueBase
+- uid: NetCollections.PriorityQueueBase.BubbleDown(System.Int32)
+  name: BubbleDown(Int32)
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_BubbleDown_System_Int32_
+  commentId: M:NetCollections.PriorityQueueBase.BubbleDown(System.Int32)
+  fullName: NetCollections.PriorityQueueBase.BubbleDown(System.Int32)
+  nameWithType: PriorityQueueBase.BubbleDown(Int32)
+- uid: NetCollections.PriorityQueueBase.BubbleDown*
+  name: BubbleDown
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_BubbleDown_
+  commentId: Overload:NetCollections.PriorityQueueBase.BubbleDown
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.BubbleDown
+  nameWithType: PriorityQueueBase.BubbleDown
+- uid: NetCollections.PriorityQueueBase.ComparisonSign
+  name: ComparisonSign
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_ComparisonSign
+  commentId: P:NetCollections.PriorityQueueBase.ComparisonSign
+  fullName: NetCollections.PriorityQueueBase.ComparisonSign
+  nameWithType: PriorityQueueBase.ComparisonSign
+- uid: NetCollections.PriorityQueueBase.ComparisonSign*
+  name: ComparisonSign
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_ComparisonSign_
+  commentId: Overload:NetCollections.PriorityQueueBase.ComparisonSign
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.ComparisonSign
+  nameWithType: PriorityQueueBase.ComparisonSign
+- uid: NetCollections.PriorityQueueBase.Count
+  name: Count
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_Count
+  commentId: P:NetCollections.PriorityQueueBase.Count
+  fullName: NetCollections.PriorityQueueBase.Count
+  nameWithType: PriorityQueueBase.Count
+- uid: NetCollections.PriorityQueueBase.Count*
+  name: Count
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_Count_
+  commentId: Overload:NetCollections.PriorityQueueBase.Count
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.Count
+  nameWithType: PriorityQueueBase.Count
+- uid: NetCollections.PriorityQueueBase.Empty
+  name: Empty
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_Empty
+  commentId: P:NetCollections.PriorityQueueBase.Empty
+  fullName: NetCollections.PriorityQueueBase.Empty
+  nameWithType: PriorityQueueBase.Empty
+- uid: NetCollections.PriorityQueueBase.Empty*
+  name: Empty
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_Empty_
+  commentId: Overload:NetCollections.PriorityQueueBase.Empty
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.Empty
+  nameWithType: PriorityQueueBase.Empty
+- uid: NetCollections.PriorityQueueBase.GetLast
+  name: GetLast()
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_GetLast
+  commentId: M:NetCollections.PriorityQueueBase.GetLast
+  fullName: NetCollections.PriorityQueueBase.GetLast()
+  nameWithType: PriorityQueueBase.GetLast()
+- uid: NetCollections.PriorityQueueBase.GetLast*
+  name: GetLast
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_GetLast_
+  commentId: Overload:NetCollections.PriorityQueueBase.GetLast
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.GetLast
+  nameWithType: PriorityQueueBase.GetLast
+- uid: NetCollections.PriorityQueueBase.GetLeft(System.Int32)
+  name: GetLeft(Int32)
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_GetLeft_System_Int32_
+  commentId: M:NetCollections.PriorityQueueBase.GetLeft(System.Int32)
+  fullName: NetCollections.PriorityQueueBase.GetLeft(System.Int32)
+  nameWithType: PriorityQueueBase.GetLeft(Int32)
+- uid: NetCollections.PriorityQueueBase.GetLeft*
+  name: GetLeft
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_GetLeft_
+  commentId: Overload:NetCollections.PriorityQueueBase.GetLeft
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.GetLeft
+  nameWithType: PriorityQueueBase.GetLeft
+- uid: NetCollections.PriorityQueueBase.GetParent(System.Int32)
+  name: GetParent(Int32)
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_GetParent_System_Int32_
+  commentId: M:NetCollections.PriorityQueueBase.GetParent(System.Int32)
+  fullName: NetCollections.PriorityQueueBase.GetParent(System.Int32)
+  nameWithType: PriorityQueueBase.GetParent(Int32)
+- uid: NetCollections.PriorityQueueBase.GetParent*
+  name: GetParent
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_GetParent_
+  commentId: Overload:NetCollections.PriorityQueueBase.GetParent
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.GetParent
+  nameWithType: PriorityQueueBase.GetParent
+- uid: NetCollections.PriorityQueueBase.GetRight(System.Int32)
+  name: GetRight(Int32)
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_GetRight_System_Int32_
+  commentId: M:NetCollections.PriorityQueueBase.GetRight(System.Int32)
+  fullName: NetCollections.PriorityQueueBase.GetRight(System.Int32)
+  nameWithType: PriorityQueueBase.GetRight(Int32)
+- uid: NetCollections.PriorityQueueBase.GetRight*
+  name: GetRight
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_GetRight_
+  commentId: Overload:NetCollections.PriorityQueueBase.GetRight
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.GetRight
+  nameWithType: PriorityQueueBase.GetRight
+- uid: NetCollections.PriorityQueueBase.Heapify
+  name: Heapify()
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_Heapify
+  commentId: M:NetCollections.PriorityQueueBase.Heapify
+  fullName: NetCollections.PriorityQueueBase.Heapify()
+  nameWithType: PriorityQueueBase.Heapify()
+- uid: NetCollections.PriorityQueueBase.Heapify*
+  name: Heapify
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_Heapify_
+  commentId: Overload:NetCollections.PriorityQueueBase.Heapify
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.Heapify
+  nameWithType: PriorityQueueBase.Heapify
+- uid: NetCollections.PriorityQueueBase.MoveDown(System.Int32)
+  name: MoveDown(Int32)
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_MoveDown_System_Int32_
+  commentId: M:NetCollections.PriorityQueueBase.MoveDown(System.Int32)
+  fullName: NetCollections.PriorityQueueBase.MoveDown(System.Int32)
+  nameWithType: PriorityQueueBase.MoveDown(Int32)
+- uid: NetCollections.PriorityQueueBase.MoveDown*
+  name: MoveDown
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_MoveDown_
+  commentId: Overload:NetCollections.PriorityQueueBase.MoveDown
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.MoveDown
+  nameWithType: PriorityQueueBase.MoveDown
+- uid: NetCollections.PriorityQueueBase.NotFound
+  name: NotFound
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_NotFound
+  commentId: F:NetCollections.PriorityQueueBase.NotFound
+  fullName: NetCollections.PriorityQueueBase.NotFound
+  nameWithType: PriorityQueueBase.NotFound
+- uid: NetCollections.PriorityQueueBase.QueueType
+  name: QueueType
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_QueueType
+  commentId: P:NetCollections.PriorityQueueBase.QueueType
+  fullName: NetCollections.PriorityQueueBase.QueueType
+  nameWithType: PriorityQueueBase.QueueType
+- uid: NetCollections.PriorityQueueBase.QueueType*
+  name: QueueType
+  href: api/NetCollections.PriorityQueueBase.html#NetCollections_PriorityQueueBase_QueueType_
+  commentId: Overload:NetCollections.PriorityQueueBase.QueueType
+  isSpec: "True"
+  fullName: NetCollections.PriorityQueueBase.QueueType
+  nameWithType: PriorityQueueBase.QueueType
+- uid: NetCollections.PriorityQueueType
+  name: PriorityQueueType
+  href: api/NetCollections.PriorityQueueType.html
+  commentId: T:NetCollections.PriorityQueueType
+  fullName: NetCollections.PriorityQueueType
+  nameWithType: PriorityQueueType
+- uid: NetCollections.PriorityQueueType.Max
+  name: Max
+  href: api/NetCollections.PriorityQueueType.html#NetCollections_PriorityQueueType_Max
+  commentId: F:NetCollections.PriorityQueueType.Max
+  fullName: NetCollections.PriorityQueueType.Max
+  nameWithType: PriorityQueueType.Max
+- uid: NetCollections.PriorityQueueType.Min
+  name: Min
+  href: api/NetCollections.PriorityQueueType.html#NetCollections_PriorityQueueType_Min
+  commentId: F:NetCollections.PriorityQueueType.Min
+  fullName: NetCollections.PriorityQueueType.Min
+  nameWithType: PriorityQueueType.Min

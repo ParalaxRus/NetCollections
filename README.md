@@ -4,11 +4,11 @@
 - Priority queue implementation C#
 - Height balanced binary search tree implementation C#
 
-docs:
+Docs:
 Online site generated with the help of DocFx tool
 
-PriorityQueueDocFx:
-DocFx project to generate docs
+DocFx:
+DocFx project to generate NetCollections docs
 
 NetCollections library:
  - PriorityQueue: binary heap based min/max priority queue implementation
