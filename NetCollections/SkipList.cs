@@ -66,6 +66,7 @@ public class SkipList<T> where T : struct, IComparable<T>
     {
         if (this.head == null) 
         {
+            // TO-DO: head should have minimal(T) value. How do we do it or maybe a sentinel type? 
             this.head = new Node();
         }
     }
@@ -77,6 +78,14 @@ public class SkipList<T> where T : struct, IComparable<T>
             var s = head;
             head = head.Down;
         }
+    }
+
+    /// <summary>Gets number of elements in the skiplist.</summary>
+    public int Count { get; private set; }
+
+    public SkipList()
+    {
+        this.Count = 0;
     }
     
     /// <summary>Gets list as a string.</summary>
@@ -135,6 +144,8 @@ public class SkipList<T> where T : struct, IComparable<T>
             bottom = SkipList<T>.Add(prev, bottom, value);
         }
         while (this.TossACoin());
+
+        ++this.Count;
     }
    
     /// <summary>Removes specified value from the list</summary>
@@ -160,6 +171,8 @@ public class SkipList<T> where T : struct, IComparable<T>
         }
         
         this.Compact();
+
+        --this.Count;
        
         return true;
     }
