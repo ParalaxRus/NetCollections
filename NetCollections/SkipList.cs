@@ -36,7 +36,7 @@ public class SkipList<T> where T : struct, IComparable<T>
         return (this.random.Next(2) == 0);
     }
     
-    private bool Find(T value, Stack<Node> s)
+    private bool Find(T value, Stack<Node> path)
     {
         Node prev = null;
         var cur = head;
@@ -44,19 +44,18 @@ public class SkipList<T> where T : struct, IComparable<T>
         {
             prev = cur;
             
-            if ((cur.Next == null) || (cur.Next.Value.CompareTo(value) >= 0)) 
-            {
-                if (s != null) 
-                {
-                    s.Push(cur);
-                }
-                
-                cur = cur.Down;
-            }
-            else 
+            if ((cur.Next != null) && (cur.Next.Value.CompareTo(value) < 0)) 
             {
                 cur = cur.Next;
+                continue;
             }
+            
+            if (path != null) 
+            {
+                path.Push(cur);
+            }
+                
+            cur = cur.Down;
         }
         
         return (prev != null) && (prev.Next != null) && (prev.Next.Value.CompareTo(value) == 0);
@@ -66,7 +65,8 @@ public class SkipList<T> where T : struct, IComparable<T>
     {
         if (this.head == null) 
         {
-            // TO-DO: head should have minimal(T) value. How do we do it or maybe a sentinel type? 
+            // It does not matter what value sentinel/head node has 
+            // because find() never comares head value anyways
             this.head = new Node();
         }
     }
@@ -83,6 +83,7 @@ public class SkipList<T> where T : struct, IComparable<T>
     /// <summary>Gets number of elements in the skiplist.</summary>
     public int Count { get; private set; }
 
+    /// <summary>Default ctor.</summary>
     public SkipList()
     {
         this.Count = 0;
@@ -133,7 +134,7 @@ public class SkipList<T> where T : struct, IComparable<T>
         Node bottom = null;
         do 
         {
-            if (path.Count != 0) 
+            if (path.Count == 0) 
             {
                 head = new Node(default(T), null, head);
                 path.Push(head);
